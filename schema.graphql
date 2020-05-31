@@ -1,0 +1,119 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Mutation {
+    loginByEmail(credentials: LoginByEmailInput): OAuth
+    signUp(email: String, name: String, password: String, phone: String): User
+}
+
+type OAuth {
+    access_token: String
+    expires_in: Int
+    refresh_token: String
+    token_type: String
+    user: User
+}
+
+"Pagination information about the corresponding list of items."
+type PageInfo {
+    "Count of nodes in current request."
+    count: Int
+    "Current page of request."
+    currentPage: Int
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "Last page in connection."
+    lastPage: Int
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+    "Total number of node in connection."
+    total: Int
+}
+
+"Pagination information about the corresponding list of items."
+type PaginatorInfo {
+    "Total count of available items in the page."
+    count: Int!
+    "Current pagination page."
+    currentPage: Int!
+    "Index of first item in the current page."
+    firstItem: Int
+    "If collection has more pages."
+    hasMorePages: Boolean!
+    "Index of last item in the current page."
+    lastItem: Int
+    "Last page number of the collection."
+    lastPage: Int!
+    "Number of items per page in the collection."
+    perPage: Int!
+    "Total items available in the collection."
+    total: Int!
+}
+
+type Pong {
+    pong: String
+}
+
+type Query {
+    me: User
+    ping: Pong
+    privatePing: Pong
+}
+
+type User {
+    created_at: String!
+    email: String!
+    id: ID!
+    name: String!
+    phone: String!
+    updated_at: String!
+}
+
+"The available directions for ordering a list of records."
+enum SortOrder {
+    #Sort records in ascending order.
+    ASC
+    #Sort records in descending order.
+    DESC
+}
+
+"Specify if you want to include or exclude trashed results from a query."
+enum Trashed {
+    #Only return trashed results.
+    ONLY
+    #Return both trashed and non-trashed results.
+    WITH
+    #Only return non-trashed results.
+    WITHOUT
+}
+
+input LoginByEmailInput {
+    email: String
+    password: String
+}
+
+"Allows ordering a list of records."
+input OrderByClause {
+    "The column that is used for ordering."
+    field: String!
+    "The direction that is used for ordering."
+    order: SortOrder!
+}
+
+
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime
+
+"A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sO`, e.g. `2020-04-20T13:53:12+02:00`."
+scalar DateTimeTz

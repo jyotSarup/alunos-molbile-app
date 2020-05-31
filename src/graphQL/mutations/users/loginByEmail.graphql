@@ -1,0 +1,16 @@
+mutation ($email: String, $password: String)  {
+    loginByEmail(credentials: { email: $email, password: $password }) {
+        token_type
+        expires_in
+        access_token
+        refresh_token
+        user {
+            id,
+            name,
+            email,
+            phone,
+            created_at,
+            updated_at
+        }
+    }
+}
