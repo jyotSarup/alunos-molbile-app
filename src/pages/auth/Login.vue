@@ -8,13 +8,13 @@
             <q-form @submit="login" class="login-form ">
                 <q-card class="card-style">
                     <q-card-section>
-                        <q-input label="Email" class="q-mt-lg" />
+                        <EmailInput v-model="email" class="q-mt-lg" />
                         <q-input label="Password" class="q-mt-lg" />
 
                         <q-checkbox
                             class="q-mt-xl"
                             v-model="customModel"
-                            color="secondary"
+                            color="primary"
                             label="Remember me"
                             true-value="yes"
                             false-value="no"
@@ -40,13 +40,18 @@
 
 <script>
 import LoginByEmail from "../../graphQL/mutations/users/loginByEmail.graphql";
+import EmailInput from "components/input/EmailInput";
 
 export default {
     name: "Login",
     data: () => ({
         response: null,
-        customModel: "no"
+        customModel: "no",
+        email: ""
     }),
+    components: {
+        EmailInput
+    },
     methods: {
         login() {
             this.$apollo.mutate({
@@ -65,11 +70,9 @@ export default {
 </script>
 
 <style lang="scss">
-// .q-page-container {
-//     // height: 640px !important;
-// }
 .login-style {
     background-image: url("../../statics/img/login-bg.jpg");
+    background-position: center;
 
     .inline-block {
         display: inline-block;
