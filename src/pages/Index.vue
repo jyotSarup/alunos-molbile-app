@@ -4,6 +4,7 @@
         <div v-else>
             Pinging
         </div>
+        <feed style="width : 90%"></feed>
     </q-page>
 </template>
 
@@ -25,6 +26,9 @@
                     }
                 }`
             }
-        }
+        },
+        components: {
+        'feed' : require('./Feed.vue').default
+    }
     }
 </script>
