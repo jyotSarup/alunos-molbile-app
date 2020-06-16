@@ -70,7 +70,12 @@ module.exports = function (/* ctx */) {
                 'QInfiniteScroll',
                 'QSpinner',
                 'QSpinnerDots',
-                'QPullToRefresh'
+                'QPullToRefresh',
+                'QImg',
+                'QSeparator',
+                'QFooter',
+                'QTab',
+                'QTabs'
             ],
 
             directives: [

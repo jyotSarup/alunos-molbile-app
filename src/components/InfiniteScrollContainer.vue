@@ -1,18 +1,13 @@
 <template>
-    <div class="q-pa-md scroll">
-        <q-pull-to-refresh @refresh="refresh">
+    <div class="q-pa-md scroll" style="padding: 16px ; padding-top: 16px">
+        <q-pull-to-refresh @refresh="refresh" style="width:100%">
             <q-infinite-scroll @load="onLoad" :offset="250">
                 <div
                     v-for="(item, index) in items"
                     :key="index"
                     class="caption"
                 >
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Rerum repellendus sit voluptate voluptas eveniet porro.
-                        Rerum blanditiis perferendis totam, ea at omnis vel
-                        numquam exercitationem aut, natus minima, porro labore.
-                    </p>
+                    <FeedCard style="width:100%"></FeedCard>
                 </div>
                 <template v-slot:loading>
                     <div class="row justify-center q-my-md">
@@ -27,6 +22,9 @@
 <script>
 export default {
     name: "InfiniteScrollContainer",
+    components: {
+        FeedCard: require("./FeedCard.vue").default
+    },
     data() {
         return {
             items: [{}, {}, {}, {}, {}, {}, {}]
@@ -52,4 +50,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>
