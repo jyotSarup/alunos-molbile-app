@@ -1,7 +1,7 @@
 <template>    
         <q-card
             class="my-card text-white"
-            style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+            style="background: #1976D2; border-radius:20px"
         >
             <q-card-section>
                 <div class="text-h6">Tip of the day</div>

@@ -1,5 +1,6 @@
 <template>
     <q-footer bordered class="bg-white text-primary">
+    
         <q-tabs
             no-caps
             active-color="primary"

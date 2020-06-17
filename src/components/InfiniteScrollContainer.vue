@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md scroll" style="padding: 16px ; padding-top: 16px">
+    <div class="q-pa-md scroll" style=" padding: 0 ; padding-top: 16px; margin: auto ; margin-top:16px; border: 1px solid grey; border-radius:20px">
         <q-pull-to-refresh @refresh="refresh" style="width:100%">
             <q-infinite-scroll @load="onLoad" :offset="250">
                 <div
@@ -7,7 +7,7 @@
                     :key="index"
                     class="caption"
                 >
-                    <FeedCard style="width:100%"></FeedCard>
+                    <FeedCard ></FeedCard>
                 </div>
                 <template v-slot:loading>
                     <div class="row justify-center q-my-md">
@@ -51,4 +51,7 @@ export default {
 </script>
 
 <style>
+.q-gutter-x-md, .q-gutter-md :{
+    
+}
 </style>
