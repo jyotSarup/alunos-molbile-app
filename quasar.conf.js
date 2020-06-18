@@ -66,7 +66,12 @@ module.exports = function(/* ctx */) {
                 "QForm",
                 "QCheckbox",
                 "QSpace",
-                "QImg"
+                "QImg",
+                "QExpansionItem",
+                "QCard",
+                "QCardSection",
+                "QSeparator",
+                "QAvatar"
             ],
 
             directives: ["Ripple"],
