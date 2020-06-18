@@ -12,6 +12,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
     "@quasar/extras": "^1.0.0",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
