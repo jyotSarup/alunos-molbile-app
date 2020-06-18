@@ -21,7 +21,7 @@
                         />
                     </q-card-section>
                 </q-card>
-                <div class="text-subtitle1 text-grey-4 float-right q-mt-lg">
+                <div class="text-subtitle1 text-grey-6 float-right q-mt-lg">
                     Forget Password?
                 </div>
                 <q-btn

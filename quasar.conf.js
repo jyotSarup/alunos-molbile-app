@@ -65,7 +65,8 @@ module.exports = function(/* ctx */) {
                 "QCardActions",
                 "QForm",
                 "QCheckbox",
-                "QSpace"
+                "QSpace",
+                "QImg"
             ],
 
             directives: ["Ripple"],
