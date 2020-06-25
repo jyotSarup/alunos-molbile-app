@@ -13,27 +13,41 @@ const routes = [
     },
     {
         path: "/homestay",
-        component: () => import("pages/Homestay.vue"),
-        children: [{ path: "", component: () => import("pages/Homestay.vue") }]
+        component: () => import("pages/Homestay.vue")
     },
     {
         path: "/homestay/myhomestay",
-        component: () => import("pages/MyHomestay.vue"),
-        children: [
-            { path: "", component: () => import("pages/MyHomestay.vue") }
-        ]
+        component: () => import("pages/MyHomestay.vue")
     },
     {
         path: "/homestay/houseissues",
-        component: () => import("pages/HouseIssues.vue"),
-        children: [
-            { path: "", component: () => import("pages/HouseIssues.vue") }
-        ]
+        component: () => import("pages/HouseIssues.vue")
     },
     {
         path: "/homestay/rules",
-        component: () => import("pages/Rules.vue"),
-        children: [{ path: "", component: () => import("pages/Rules.vue") }]
+        component: () => import("pages/Rules.vue")
+    },
+    {
+        path: "/homestay/rules",
+        component: () => import("pages/Rules.vue")
+    },
+    {
+        path: "/homestay/rules",
+        component: () => import("pages/Rules.vue")
+    },
+    {
+        path: "/help",
+        component: () => import("pages/Help.vue")
+    },
+    {
+        name: "help.emergency.call",
+        path: "/help/emergency-call",
+        component: () => import("pages/EmergencyCall.vue")
+    },
+    {
+        name: "help.faqs",
+        path: "/help/faqs",
+        component: () => import("pages/Faqs.vue")
     }
 ];
 
