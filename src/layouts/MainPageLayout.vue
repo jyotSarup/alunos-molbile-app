@@ -7,20 +7,33 @@
                         {{ title }}
                     </div>
                     <div class="text-white">
-                        <q-icon name="notifications" class="icon-position" />
+                        <q-icon
+                            name="notifications_none"
+                            class="icon-position"
+                        />
                     </div>
                 </q-toolbar-title>
             </q-toolbar>
         </q-header>
         <q-page-container>
-            <router-view />
+            <router-view @updateTitle="updateTitle" />
         </q-page-container>
     </q-layout>
 </template>
 
 <script>
 export default {
-    name: "MainLayout"
+    name: "MainLayout",
+    data() {
+        return {
+            title: ""
+        };
+    },
+    methods: {
+        updateTitle(value) {
+            this.title = value;
+        }
+    }
 };
 </script>
 <style lang="scss">

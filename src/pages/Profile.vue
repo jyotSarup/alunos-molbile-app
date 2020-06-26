@@ -24,7 +24,10 @@
 </template>
 <script>
 export default {
-    name: "profile",
+    name: "Profile",
+    created() {
+        this.$emit("updateTitle", "Profile");
+    },
     data() {
         return {
             profileImg: "../statics/img/profile.jpg"
