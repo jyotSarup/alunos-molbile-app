@@ -36,4 +36,27 @@ export default {
 .img {
     border-radius: 50px;
 }
+
+.q-header {
+    border-radius: 0px 0px 0px 90px;
+    .q-layout__shadow {
+        border-radius: 0px 0px 0px 120px;
+    }
+    .title {
+        height: 120px;
+        font-size: 24px;
+        font-weight: bold;
+
+        .title-position {
+            position: absolute;
+            top: 40%;
+            left: 20%;
+        }
+        .icon-position {
+            position: absolute;
+            top: 40%;
+            right: 8%;
+        }
+    }
+}
 </style>

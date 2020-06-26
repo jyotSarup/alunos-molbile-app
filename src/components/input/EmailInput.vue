@@ -2,7 +2,7 @@
     <q-input
         type="email"
         v-model="emailInputText"
-        label="Email"
+        label="Enter your email address"
         lazy-rules
         :rules="[val => emailValidation(val) || 'Please enter a valid e-mail']"
     />

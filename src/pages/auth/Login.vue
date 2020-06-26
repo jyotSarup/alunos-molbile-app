@@ -1,36 +1,46 @@
 <template>
-    <q-page-container>
-        <q-page class="relative login-style">
-            <div class="text-h6 q-gutter-md q-pa-xl inline-block text-white">
-                SIGN IN
-            </div>
-
-            <q-form @submit="login" class="login-form ">
+    <q-page-container class="">
+        <q-page class="login-style">
+            <q-form @submit.prevent="login" class="login-form ">
                 <q-card class="card-style">
                     <q-card-section>
-                        <EmailInput v-model="email" class="q-mt-lg" />
-                        <q-input label="Password" class="q-mt-lg" />
-
-                        <q-checkbox
-                            class="q-mt-xl"
-                            v-model="customModel"
-                            color="primary"
-                            label="Remember me"
-                            true-value="yes"
-                            false-value="no"
-                        />
+                        <EmailInput v-model="email" class="q-mt-s q-mb-lg" />
                     </q-card-section>
                 </q-card>
-                <div class="text-subtitle1 text-grey-6 float-right q-mt-lg">
-                    Forget Password?
-                </div>
                 <q-btn
                     unelevated
                     rounded
-                    class="q-mt-lg q-pa-sm inline-block"
-                    color="accent"
+                    class="q-pa-sm inline-block"
+                    color="primary"
                     label="Login"
+                    type="submit"
                 />
+                <q-dialog v-model="dialog">
+                    <q-card style="width: 300px">
+                        <q-card-section>
+                            <div class="text-h6"></div>
+                        </q-card-section>
+
+                        <q-card-section class="q-pt-none">
+                            We have sent you an email with a link to login. If
+                            you didn't get an email, try again.
+                        </q-card-section>
+
+                        <q-card-actions
+                            align="right"
+                            class="bg-white text-teal"
+                        >
+                            <q-separator />
+                            <q-btn
+                                flat
+                                label="OK"
+                                v-close-popup
+                                text-color="primary"
+                                class="fullwidth"
+                            />
+                        </q-card-actions>
+                    </q-card>
+                </q-dialog>
                 <!-- <q-btn @click="login">Login</q-btn> -->
                 <code>{{ response }}</code>
             </q-form>
@@ -45,6 +55,7 @@ import EmailInput from "components/input/EmailInput";
 export default {
     name: "Login",
     data: () => ({
+        dialog: false,
         response: null,
         customModel: "no",
         email: ""
@@ -54,6 +65,7 @@ export default {
     },
     methods: {
         login() {
+            this.dialog = true;
             this.$apollo.mutate({
                 mutation: LoginByEmail,
                 variables: {
@@ -71,24 +83,22 @@ export default {
 
 <style lang="scss">
 .login-style {
-    background-image: url("../../statics/img/login-bg.jpg");
-    background-position: center;
-
     .inline-block {
         display: inline-block;
         width: 100%;
+        margin-top: 50px;
     }
 
     .login-form {
         display: inline-block;
         width: 85%;
         position: absolute;
-        top: 15%;
+        top: -78%;
         left: 50%;
         transform: translateX(-50%);
 
         .card-style {
-            background: rgba($color: white, $alpha: 0.8);
+            background: white;
             border-radius: 30px;
         }
     }
