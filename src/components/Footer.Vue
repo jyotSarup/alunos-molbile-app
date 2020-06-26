@@ -103,42 +103,25 @@ export default {
                     grid,
                     actions: [
                         {
-                            label: "Drive",
-                            img:
-                                "https://cdn.quasar.dev/img/logo_drive_128px.png",
-                            id: "drive",
-                        },
-                        {
-                            label: "Keep",
+                            label: "Add House Issue",
                             img:
                                 "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "keep"
+                            id: "addHouseIssue",
                         },
                         {
-                            label: "Google Hangouts",
+                            label: "Add Announcement",
                             img:
-                                "https://cdn.quasar.dev/img/logo_hangouts_128px.png",
-                            id: "calendar"
+                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
+                            id: "addAnnouncement"
                         },
                         {
-                            label: "Calendar",
+                            label: "Send Mail",
                             img:
-                                "https://cdn.quasar.dev/img/logo_calendar_128px.png",
-                            id: "calendar"
+                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
+                            id: "sendMail"
                         },
                         {},
-                        {
-                            label: "Share",
-                            icon: "share",
-                            id: "share"
-                        },
-                        {
-                            label: "Upload",
-                            icon: "cloud_upload",
-                            color: "primary",
-                            id: "upload"
-                        },
-                        {},
+                    
                         {
                             label: "close",
                             icon : "cancel",
@@ -148,7 +131,9 @@ export default {
                     ]
                 })
                 .onOk(action => {
-                    // console.log('Action chosen:', action.id)
+                    if(action.id == "addHouseIssue"){
+                        this.$router.push('/add-house-issue') 
+                    }
                 })
                 .onCancel(() => {
                     console.log('Dismissed')
