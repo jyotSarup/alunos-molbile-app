@@ -71,13 +71,15 @@ module.exports = function(/* ctx */) {
                 "QCard",
                 "QCardSection",
                 "QSeparator",
-                "QAvatar"
+                "QAvatar",
+                "QDialog",
+                "QSeparator"
             ],
 
-            directives: ["Ripple"],
+            directives: ["Ripple", "ClosePopup"],
 
             // Quasar plugins
-            plugins: []
+            plugins: ["Dialog"]
         },
 
         // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
