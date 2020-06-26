@@ -1,5 +1,5 @@
 <template>
-<div class="window-height window-width row justify-center items-center formWrapper" style="background : #f1f0f2">
+<div class="window-height window-width row justify-center items-center formWrapper">
     <q-form
         action="https://some-url.com"
         method="post"
