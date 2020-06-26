@@ -59,10 +59,23 @@ module.exports = function(/* ctx */) {
                 "QItem",
                 "QItemSection",
                 "QItemLabel",
-                "QInput",
                 "QCard",
                 "QCardSection",
                 "QCardActions",
+                "QInfiniteScroll",
+                "QSpinner",
+                "QSpinnerDots",
+                "QPullToRefresh",
+                "QImg",
+                "QSeparator",
+                "QFooter",
+                "QTab",
+                "QTabs",
+                "QFab",
+                "QInput",
+                "QSelect",
+                "QForm",
+                "QInput",
                 "QForm",
                 "QCheckbox",
                 "QSpace",
@@ -73,13 +86,14 @@ module.exports = function(/* ctx */) {
                 "QSeparator",
                 "QAvatar",
                 "QDialog",
-                "QSeparator"
+                "QSeparator",
+                "QAvatar"
             ],
 
             directives: ["Ripple", "ClosePopup"],
 
             // Quasar plugins
-            plugins: ["Dialog"]
+            plugins: ["Dialog", "BottomSheet"]
         },
 
         // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -134,9 +148,9 @@ module.exports = function(/* ctx */) {
             open: true // opens browser window automatically
         },
 
-        // animations: 'all', // --- includes all animations
+        // animations: "all", // --- includes all animations
         // https://quasar.dev/options/animations
-        animations: [],
+        animations: ["fadeInLeft", "fadeInRight"],
 
         // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
         ssr: {
