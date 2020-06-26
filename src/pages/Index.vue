@@ -25,18 +25,11 @@ export default {
                     ping {
                         pong
                     }
-<<<<<<< HEAD
                 }`
             }
         },
         components: {
         'feed' : require('./Feed.vue').default
-    }
-=======
-                }
-            `
-        }
->>>>>>> master
     }
 };
 </script>

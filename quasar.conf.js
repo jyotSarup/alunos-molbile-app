@@ -46,7 +46,6 @@ module.exports = function(/* ctx */) {
             all: false,
 
             components: [
-<<<<<<< HEAD
                 'QLayout',
                 'QHeader',
                 'QDrawer',
@@ -75,35 +74,14 @@ module.exports = function(/* ctx */) {
                 'QFab',
                 'QInput',
                 'QSelect',
-                'QForm'
-=======
-                "QLayout",
-                "QHeader",
-                "QDrawer",
-                "QPageContainer",
-                "QPage",
-                "QToolbar",
-                "QToolbarTitle",
-                "QBtn",
-                "QIcon",
-                "QList",
-                "QItem",
-                "QItemSection",
-                "QItemLabel",
+                'QForm',
                 "QInput",
-                "QCard",
-                "QCardSection",
-                "QCardActions",
                 "QForm",
                 "QCheckbox",
                 "QSpace",
                 "QImg",
                 "QExpansionItem",
-                "QCard",
-                "QCardSection",
-                "QSeparator",
                 "QAvatar"
->>>>>>> master
             ],
 
             directives: ["Ripple"],
