@@ -4,6 +4,7 @@
         <div v-else>
             pong
         </div>
+        <feed style="width : 90%"></feed>
     </q-page>
 </template>
 
@@ -24,9 +25,18 @@ export default {
                     ping {
                         pong
                     }
+<<<<<<< HEAD
+                }`
+            }
+        },
+        components: {
+        'feed' : require('./Feed.vue').default
+    }
+=======
                 }
             `
         }
+>>>>>>> master
     }
 };
 </script>

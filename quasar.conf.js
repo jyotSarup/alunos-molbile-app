@@ -46,6 +46,37 @@ module.exports = function(/* ctx */) {
             all: false,
 
             components: [
+<<<<<<< HEAD
+                'QLayout',
+                'QHeader',
+                'QDrawer',
+                'QPageContainer',
+                'QPage',
+                'QToolbar',
+                'QToolbarTitle',
+                'QBtn',
+                'QIcon',
+                'QList',
+                'QItem',
+                'QItemSection',
+                'QItemLabel',
+                'QCard',
+                'QCardSection',
+                'QCardActions',
+                'QInfiniteScroll',
+                'QSpinner',
+                'QSpinnerDots',
+                'QPullToRefresh',
+                'QImg',
+                'QSeparator',
+                'QFooter',
+                'QTab',
+                'QTabs',
+                'QFab',
+                'QInput',
+                'QSelect',
+                'QForm'
+=======
                 "QLayout",
                 "QHeader",
                 "QDrawer",
@@ -72,12 +103,15 @@ module.exports = function(/* ctx */) {
                 "QCardSection",
                 "QSeparator",
                 "QAvatar"
+>>>>>>> master
             ],
 
             directives: ["Ripple"],
 
             // Quasar plugins
-            plugins: []
+            plugins: [
+                'BottomSheet'
+            ]
         },
 
         // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
