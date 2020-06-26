@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md scroll" style=" padding: 0 ; padding-top: 16px; margin: auto ; margin-top:16px; border: 1px solid lightgrey; border-radius:20px">
+    <div class="q-pa-md scroll" style=" padding: 0 ; padding-top: 16px; margin: auto ; margin-top:16px;  border-radius:20px">
         <q-pull-to-refresh @refresh="refresh" style="width:100%">
             <q-infinite-scroll @load="onLoad" :offset="250">
                 <div

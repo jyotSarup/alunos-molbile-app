@@ -19,4 +19,8 @@ export default {
 </script>
 
 <style>
+.feedContainer
+{
+    width:100%;
+}
 </style>

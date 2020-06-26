@@ -1,5 +1,6 @@
 <template>
-    <q-layout view="hHh LpR fFf">
+    <q-layout view=" LpR fFf">
+    <q-page-container style=" padding-top:30%">
         <q-header elevated>
             <q-toolbar>
                 <q-toolbar-title class="title relative">
@@ -15,8 +16,14 @@
                 </q-toolbar-title>
             </q-toolbar>
         </q-header>
-        <q-page-container>
+        
             <router-view @updateTitle="updateTitle" />
+        <q-footer elevated>
+        <q-toolbar class="glossy">
+          <q-toolbar-title><Footer style=""></Footer></q-toolbar-title>
+        </q-toolbar>
+        
+        </q-footer>
         </q-page-container>
     </q-layout>
 </template>
@@ -24,6 +31,8 @@
 <script>
 export default {
     name: "MainLayout",
+    
+  components: { Footer :  require("../components/Footer.vue").default },
     data() {
         return {
             title: ""

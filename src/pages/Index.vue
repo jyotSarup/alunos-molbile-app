@@ -1,10 +1,7 @@
 <template>
-    <q-page class="flex flex-center">
-        <div v-if="ping">Pong<br />{{ ping.pong }}</div>
-        <div v-else>
-            pong
-        </div>
-        <feed style="width : 90%"></feed>
+    <q-page class="flex flex-center" >
+        
+        <feed style="width : 90% ; margin:auto"></feed>
     </q-page>
 </template>
 
