@@ -81,6 +81,7 @@ module.exports = function(/* ctx */) {
                 "QSpace",
                 "QImg",
                 "QExpansionItem",
+                "QAvatar",
                 "QCard",
                 "QCardSection",
                 "QSeparator",
