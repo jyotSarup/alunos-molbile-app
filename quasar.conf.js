@@ -46,28 +46,42 @@ module.exports = function(/* ctx */) {
             all: false,
 
             components: [
-                "QLayout",
-                "QHeader",
-                "QDrawer",
-                "QPageContainer",
-                "QPage",
-                "QToolbar",
-                "QToolbarTitle",
-                "QBtn",
-                "QIcon",
-                "QList",
-                "QItem",
-                "QItemSection",
-                "QItemLabel",
+                'QLayout',
+                'QHeader',
+                'QDrawer',
+                'QPageContainer',
+                'QPage',
+                'QToolbar',
+                'QToolbarTitle',
+                'QBtn',
+                'QIcon',
+                'QList',
+                'QItem',
+                'QItemSection',
+                'QItemLabel',
+                'QCard',
+                'QCardSection',
+                'QCardActions',
+                'QInfiniteScroll',
+                'QSpinner',
+                'QSpinnerDots',
+                'QPullToRefresh',
+                'QImg',
+                'QSeparator',
+                'QFooter',
+                'QTab',
+                'QTabs',
+                'QFab',
+                'QInput',
+                'QSelect',
+                'QForm',
                 "QInput",
-                "QCard",
-                "QCardSection",
-                "QCardActions",
                 "QForm",
                 "QCheckbox",
                 "QSpace",
                 "QImg",
                 "QExpansionItem",
+                "QAvatar",
                 "QCard",
                 "QCardSection",
                 "QSeparator",
@@ -79,7 +93,9 @@ module.exports = function(/* ctx */) {
             directives: ["Ripple", "ClosePopup"],
 
             // Quasar plugins
-            plugins: ["Dialog"]
+
+            plugins: ["Dialog",'BottomSheet']
+
         },
 
         // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -134,9 +150,9 @@ module.exports = function(/* ctx */) {
             open: true // opens browser window automatically
         },
 
-        // animations: 'all', // --- includes all animations
+        // animations: "all", // --- includes all animations
         // https://quasar.dev/options/animations
-        animations: [],
+        animations: ["fadeInLeft", "fadeInRight"],
 
         // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
         ssr: {
