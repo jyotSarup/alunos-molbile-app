@@ -1,36 +1,37 @@
 <template>
-    <div class="text-accent q-gutter-md" style="font-size: 2em">
-        <!-- <div class="q-pa-md row items-start q-gutter-md"> -->
-        <q-card class="my-card">
-            <q-img
-                :src="profileImg"
-                style="width: 150px"
-                :ratio="1"
-                basic
-                spinner-color="white"
-                class="img"
-            />
+    <q-card class="my-card cardstyle">
+        <q-img :src="profileImg" class="image" :ratio="1" basic />
+        <q-card-section class="cardsection">
+            <div class="name">Mariam Jackson</div>
+            <div class="tipQuote">Vancouver, BC</div>
+            <div class="tipQuote">Vancouver, BC</div>
+            <q-separator />
 
-            <q-card-section>
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
-            </q-card-section>
+            <q-btn-group>
+                <q-btn
+                    push
+                    label="Edit Profile"
+                    class="btntab"
+                    text-color="primary"
+                    style="border-radius: 0 0 0 20px;"
+                />
 
-            <q-card-section class="q-pt-none">
-                {{ lorem }}
-            </q-card-section>
-        </q-card>
-    </div>
+                <q-btn
+                    push
+                    label="Settings"
+                    class="btntab"
+                    text-color="primary"
+                    style="border-radius: 0 0 20px 0;  border-left: 2px solid #eeeeee;"
+                />
+            </q-btn-group>
+        </q-card-section>
+    </q-card>
 </template>
 <script>
 export default {
     name: "Profile",
     created() {
-        this.$emit(
-            "updateTitle",
-            "Profile",
-            "It's a good day to have a good day"
-        );
+        this.$emit("updateTitle", "Profile");
     },
     data() {
         return {
@@ -40,29 +41,38 @@ export default {
 };
 </script>
 <style lang="scss">
-.img {
-    border-radius: 50px;
-}
-
-.q-header {
-    border-radius: 0px 0px 0px 90px;
-    .q-layout__shadow {
-        border-radius: 0px 0px 0px 120px;
+.my-card {
+    width: 90%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: none !important;
+    .cardsection {
+        padding: 0 !important;
     }
-    .title {
-        height: 120px;
-        font-size: 24px;
-        font-weight: bold;
-
-        .title-position {
-            position: absolute;
-            top: 40%;
-            left: 20%;
-        }
-        .icon-position {
-            position: absolute;
-            top: 40%;
-            right: 8%;
+    .image {
+        width: 100px;
+        border-radius: 80px !important;
+        margin-top: -15%;
+    }
+    .name {
+        font-size: 12 !important;
+        font-weight: bold !important;
+    }
+    .tipQuote {
+        font-size: 9;
+        color: darkgrey;
+    }
+    .btntab {
+        text-decoration: none !important;
+        text-transform: none;
+        width: 50%;
+        box-shadow: none !important;
+        .q-btn__wrapper:before {
+            border-bottom: none !important;
+            box-shadow: none !important;
         }
     }
 }
