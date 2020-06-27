@@ -1,29 +1,33 @@
 <template>
     <q-layout view=" LpR fFf">
-    <q-page-container style=" padding-top:30%">
-        <q-header elevated>
-            <q-toolbar>
-                <q-toolbar-title class="title relative">
-                    <div class="text-white title-position">
-                        {{ title }}
-                    </div>
-                    <div class="text-white">
-                        <q-icon
-                            name="notifications_none"
-                            class="icon-position"
-                        />
-                    </div>
-                </q-toolbar-title>
-            </q-toolbar>
-        </q-header>
-        
-            <router-view @updateTitle="updateTitle" />
-        <q-footer elevated>
-        <q-toolbar class="glossy">
-          <q-toolbar-title><Footer style=""></Footer></q-toolbar-title>
-        </q-toolbar>
-        
-        </q-footer>
+        <q-page-container style=" padding-top:30%;">
+            <q-header elevated>
+                <q-toolbar>
+                    <q-toolbar-title class="title relative">
+                        <div class="text-white title-position">
+                            {{ title }}
+                            <div class="text-caption subtitle">
+                                {{ subtitle }}
+                            </div>
+                        </div>
+                        <div class="text-white">
+                            <q-icon
+                                name="notifications_none"
+                                class="icon-position"
+                            />
+                        </div>
+                    </q-toolbar-title>
+                </q-toolbar>
+            </q-header>
+
+            <router-view @updateTitle="updateTitle" style=" margin-top:30%;" />
+            <q-footer elevated>
+                <q-toolbar class="glossy">
+                    <q-toolbar-title
+                        ><Footer style=""></Footer
+                    ></q-toolbar-title>
+                </q-toolbar>
+            </q-footer>
         </q-page-container>
     </q-layout>
 </template>
@@ -31,16 +35,18 @@
 <script>
 export default {
     name: "MainLayout",
-    
-  components: { Footer :  require("../components/Footer.vue").default },
+
+    components: { Footer: require("../components/Footer.vue").default },
     data() {
         return {
-            title: ""
+            title: "",
+            subtitle: ""
         };
     },
     methods: {
-        updateTitle(value) {
-            this.title = value;
+        updateTitle(title, subtitle) {
+            this.title = title;
+            this.subtitle = subtitle;
         }
     }
 };
@@ -54,7 +60,7 @@ export default {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 38vh;
+        height: 25vh;
         font-size: 24px;
         font-weight: bold;
 
@@ -65,8 +71,13 @@ export default {
         }
         .icon-position {
             position: absolute;
-            top: 40%;
+            top: 30%;
             right: 8%;
+        }
+        .subtitle {
+            width: 100%;
+            word-wrap: break-word;
+            white-space: normal;
         }
     }
 }

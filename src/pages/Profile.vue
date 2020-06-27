@@ -26,7 +26,11 @@
 export default {
     name: "Profile",
     created() {
-        this.$emit("updateTitle", "Profile");
+        this.$emit(
+            "updateTitle",
+            "Profile",
+            "It's a good day to have a good day"
+        );
     },
     data() {
         return {
