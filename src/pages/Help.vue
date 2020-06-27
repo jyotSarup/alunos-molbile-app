@@ -21,6 +21,9 @@
 <script>
 export default {
     name: "Help",
+    created() {
+        this.$emit("updateTitle", "Help", "It's a good day to have a good day");
+    },
     data() {
         return {
             items: [
