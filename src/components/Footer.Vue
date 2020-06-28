@@ -20,14 +20,10 @@
                 direction="up"
                 @click="show()"
             -->
-            <q-btn
-                round
-                color="primary"
-                icon="add"
-                @click="show()"
-                class="btn"
-            ></q-btn>
-            <!--q-list bordered separator>
+
+            <q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn>
+                <!--q-list bordered separator>
+
                     <q-item clickable v-ripple>
                         <q-item-section>Single line item</q-item-section>
                     </q-item>
@@ -68,7 +64,8 @@
     transform: translateY(-50%) !important;
     border: 3px solid white !important;
 }
-.btn {
+
+.floatingButton {
     transform: translateY(-50%) !important;
     border: 3px solid white !important;
 }

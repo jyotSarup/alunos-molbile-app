@@ -20,7 +20,7 @@
                 </q-toolbar>
             </q-header>
 
-            <router-view @updateTitle="updateTitle" style=" margin-top:30%;" />
+            <router-view @updateTitle="updateTitle" style=" margin-top:5%;" />
             <q-footer elevated>
                 <q-toolbar class="glossy">
                     <q-toolbar-title
