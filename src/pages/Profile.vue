@@ -14,6 +14,7 @@
                     class="btntab"
                     text-color="primary"
                     style="border-radius: 0 0 0 20px;"
+                    :to="editPath"
                 />
 
                 <q-btn
@@ -22,6 +23,7 @@
                     class="btntab"
                     text-color="primary"
                     style="border-radius: 0 0 20px 0;  border-left: 2px solid #eeeeee;"
+                    :to="settingPath"
                 />
             </q-card-section>
         </q-card>
@@ -73,6 +75,8 @@ export default {
     },
     data() {
         return {
+            editPath: "/profile/edit",
+            settingPath: "/profile/setting",
             profileImg: "../statics/img/profile.jpg",
             lorem:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
@@ -122,7 +126,7 @@ export default {
     }
     .version {
         color: #017eff;
-        margin: 1.5rem;
+        margin: 1rem 0 2.5rem 0;
     }
 }
 </style>

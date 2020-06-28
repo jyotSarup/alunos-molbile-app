@@ -17,3 +17,11 @@ body {
 .q-toolbar {
     min-height: 25px !important;
 }
+
+.q-layout__shadow:after {
+    box-shadow: none !important;
+}
+
+.textPrimaryColor {
+    color: #017eff;
+}

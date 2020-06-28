@@ -29,6 +29,13 @@ const routes = [
         ]
     },
     {
+        path: "/profile/edit",
+        component: () => import("layouts/GeneralLayout.vue"),
+        children: [
+            { path: "", component: () => import("pages/EditProfile.vue") }
+        ]
+    },
+    {
         path: "/homestay",
         component: () => import("pages/Homestay.vue")
     },
