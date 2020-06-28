@@ -1,13 +1,13 @@
 <template>
-    <q-card class="my-card cardstyle">
-        <q-img :src="profileImg" class="image" :ratio="1" basic />
-        <q-card-section class="cardsection">
-            <div class="name">Mariam Jackson</div>
-            <div class="tipQuote">Vancouver, BC</div>
-            <div class="tipQuote">Vancouver, BC</div>
-            <q-separator />
+    <div class="my-card">
+        <q-card class="cardstyle">
+            <q-img :src="profileImg" class="image" :ratio="1" basic />
+            <q-card-section class="cardsection">
+                <div class="title">Mariam Jackson</div>
+                <div class="text">Vancouver, BC</div>
+                <div class="text">DOB - 19 July 1994</div>
+                <q-separator />
 
-            <q-btn-group>
                 <q-btn
                     push
                     label="Edit Profile"
@@ -23,9 +23,47 @@
                     text-color="primary"
                     style="border-radius: 0 0 20px 0;  border-left: 2px solid #eeeeee;"
                 />
-            </q-btn-group>
-        </q-card-section>
-    </q-card>
+            </q-card-section>
+        </q-card>
+        <q-card class="infoCard cardstyle">
+            <q-card-section class="cardsection">
+                <div class="title">About</div>
+                <div class="text">{{ lorem }}</div>
+
+                <div class="title">Social Links</div>
+                <q-toolbar>
+                    <div class="text">maria.jack18</div>
+                    <q-space />
+                    <div class="text">instagram</div>
+                </q-toolbar>
+                <div class="title">Likes</div>
+                <q-toolbar>
+                    <div class="text">Food</div>
+                    <q-space />
+                    <div class="text">Non-veg, Pizza</div>
+                </q-toolbar>
+                <q-toolbar>
+                    <div class="text">Best sites</div>
+                    <q-space />
+                    <div class="text">Beech, Mountains</div>
+                </q-toolbar>
+                <q-toolbar>
+                    <div class="text">Spare time</div>
+                    <q-space />
+                    <div class="text">Netflix</div>
+                </q-toolbar>
+            </q-card-section>
+        </q-card>
+        <q-btn
+            rounded
+            outline
+            color="grey"
+            size="lg"
+            label="Log out"
+            style="margin:2rem 0 0 0; padding: 0 2rem"
+        />
+        <div class="version">Version 1.0.0.1</div>
+    </div>
 </template>
 <script>
 export default {
@@ -35,7 +73,9 @@ export default {
     },
     data() {
         return {
-            profileImg: "../statics/img/profile.jpg"
+            profileImg: "../statics/img/profile.jpg",
+            lorem:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         };
     }
 };
@@ -45,7 +85,6 @@ export default {
     width: 90%;
     text-align: center;
     position: absolute;
-    top: 50%;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: none !important;
@@ -57,11 +96,12 @@ export default {
         border-radius: 80px !important;
         margin-top: -15%;
     }
-    .name {
+    .title {
         font-size: 12 !important;
         font-weight: bold !important;
+        margin-top: 1rem;
     }
-    .tipQuote {
+    .text {
         font-size: 9;
         color: darkgrey;
     }
@@ -74,6 +114,15 @@ export default {
             border-bottom: none !important;
             box-shadow: none !important;
         }
+    }
+    .infoCard {
+        margin-top: 5%;
+        text-align: left;
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
+    }
+    .version {
+        color: #017eff;
+        margin: 1.5rem;
     }
 }
 </style>
