@@ -1,13 +1,12 @@
 <template>
     <div v-if="houseIssueItems" class="q-pa-md expansionListContainer" style="width:90%">
-        <q-list class="expansionList" >
-            <template v-for="(houseIssueDetail, index) in houseIssueItems">
+                  
                 <HouseIssueItem
+                v-for="(houseIssueDetail, index) in houseIssueItems"
                     :key="index"
                     :houseIssueDetail="houseIssueDetail"
                 ></HouseIssueItem>
-            </template>
-        </q-list>
+            
     </div>
 </template>
 
@@ -17,6 +16,9 @@ export default {
         HouseIssueItem: require("../components/HouseIssueItem.vue").default
     },
     data() {},
+    created() {
+        this.$emit("updateTitle", "HouseIssues");
+    },
     computed: {
         houseIssueItems() {
             return [

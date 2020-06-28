@@ -4,7 +4,11 @@ const routes = [
         component: () => import("layouts/MainPageLayout.vue"),
         children: [
             { path: "", component: () => import("pages/Index.vue") },
-
+            {
+                name: "feed",
+                path: "/feed",
+                component: () => import("../pages/Feed.vue")
+            },
             {
                 name: "addHouseIssue",
                 path: "/add-house-issue",
@@ -23,6 +27,10 @@ const routes = [
              { 
                 path: "/help",
                 component: () => import("../pages/Help.vue")
+            },
+            {
+                path: "/homestay",
+                component: () => import("pages/Homestay.vue")
             }
         ]
     },
@@ -37,10 +45,6 @@ const routes = [
         children: [
             { path: "", component: () => import("pages/auth/Login.vue") }
         ]
-    },
-    {
-        path: "/homestay",
-        component: () => import("pages/Homestay.vue")
     },
     {
         path: "/homestay/myhomestay",
