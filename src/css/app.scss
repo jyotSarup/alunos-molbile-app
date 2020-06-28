@@ -6,3 +6,14 @@ body {
 .fullwidth {
     width: 100%;
 }
+
+.cardstyle {
+    background: white;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: none !important;
+}
+
+.q-toolbar {
+    min-height: 25px !important;
+}

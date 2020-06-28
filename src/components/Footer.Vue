@@ -20,8 +20,14 @@
                 direction="up"
                 @click="show()"
             -->
-            <q-btn  round color="primary" icon="add" @click="show()"></q-btn>
-                <!--q-list bordered separator>
+            <q-btn
+                round
+                color="primary"
+                icon="add"
+                @click="show()"
+                class="btn"
+            ></q-btn>
+            <!--q-list bordered separator>
                     <q-item clickable v-ripple>
                         <q-item-section>Single line item</q-item-section>
                     </q-item>
@@ -39,7 +45,6 @@
                     </q-item>
                 </q-list
                 </q-fab>-->
-            
 
             <q-tab name="help" icon="help_outline" label="Help" />
             <q-tab name="profile" icon="perm_identity" label="Profile" />
@@ -63,7 +68,7 @@
     transform: translateY(-50%) !important;
     border: 3px solid white !important;
 }
-.q-btn {
+.btn {
     transform: translateY(-50%) !important;
     border: 3px solid white !important;
 }
@@ -75,16 +80,13 @@
 div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-
 }
 .q-bottom-sheet__item {
     border-radius: 20px;
     box-shadow: 2px 3px 3px #eee;
     padding: 1em;
     margin: 1em;
-
 }
-
 </style>
 
 <script>
@@ -106,7 +108,7 @@ export default {
                             label: "Add House Issue",
                             img:
                                 "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "addHouseIssue",
+                            id: "addHouseIssue"
                         },
                         {
                             label: "Add Announcement",
@@ -121,22 +123,21 @@ export default {
                             id: "sendMail"
                         },
                         {},
-                    
+
                         {
                             label: "close",
-                            icon : "cancel",
+                            icon: "cancel",
                             color: "primary"
-                        },
-                        
+                        }
                     ]
                 })
                 .onOk(action => {
-                    if(action.id == "addHouseIssue"){
-                        this.$router.push('/add-house-issue') 
+                    if (action.id == "addHouseIssue") {
+                        this.$router.push("/add-house-issue");
                     }
                 })
                 .onCancel(() => {
-                    console.log('Dismissed')
+                    console.log("Dismissed");
                 })
                 .onDismiss(() => {
                     // console.log('I am triggered on both OK and Cancel')

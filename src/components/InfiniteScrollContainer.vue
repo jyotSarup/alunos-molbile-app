@@ -1,5 +1,8 @@
 <template>
-    <div class="q-pa-md scroll" style=" padding: 0 ; padding-top: 16px; margin: auto ; margin-top:16px;  border-radius:20px">
+    <div
+        class="q-pa-md scroll"
+        style=" padding: 0 ; padding-top: 16px; margin: auto ; margin-top:16px;  border-radius:20px"
+    >
         <q-pull-to-refresh @refresh="refresh" style="width:100%">
             <q-infinite-scroll @load="onLoad" :offset="250">
                 <div
@@ -7,7 +10,7 @@
                     :key="index"
                     class="caption"
                 >
-                    <FeedCard ></FeedCard>
+                    <FeedCard></FeedCard>
                 </div>
                 <template v-slot:loading>
                     <div class="row justify-center q-my-md">
@@ -34,7 +37,7 @@ export default {
     methods: {
         onLoad(index, done) {
             setTimeout(() => {
-                if (this.items.length<300) {
+                if (this.items.length < 300) {
                     this.items.push({}, {}, {}, {}, {}, {}, {});
                     done();
                 }
@@ -42,9 +45,9 @@ export default {
         },
         refresh(done) {
             setTimeout(() => {
-            if (this.items.length<300) {
-                this.items.push({}, {}, {}, {}, {}, {}, {});
-                done();
+                if (this.items.length < 300) {
+                    this.items.push({}, {}, {}, {}, {}, {}, {});
+                    done();
                 }
             }, 1000);
         }
@@ -53,7 +56,7 @@ export default {
 </script>
 
 <style>
-.q-gutter-x-md, .q-gutter-md :{
-    
+.q-gutter-x-md,
+.q-gutter-md {
 }
 </style>
