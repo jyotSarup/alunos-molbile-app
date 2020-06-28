@@ -17,16 +17,7 @@
             :rules="[val => (val && val.length > 0) || 'Please enter a title']"
         />
 
-        <q-select
-            v-model="issueSubject"
-            :options="issueTypes"
-            label="Subject"
-            lazy-rules
-            :rules="[
-                val => (val !== null && val !== '') || 'Please select a subject'
-            ]"
-        />
-
+       
         <q-input v-model="description" outlined label="Description" lazy-rules
             :rules="[
                 val => (val !== null && val !== '') || 'Please write a description'
@@ -42,7 +33,7 @@
         ></q-toggle-->
         </div>
         <div style="margin:0; margin-top:1em">
-            <q-btn label="Submit" type="submit" color="primary"  style="width: 70% ; border-radius:20px ; margin-left:0"></q-btn>
+            <q-btn label="ADD" type="submit" color="primary"  style="width: 70% ; border-radius:20px ; margin-left:0"></q-btn>
             <q-btn
                 label="Reset"
                 type="reset"
@@ -62,7 +53,6 @@ export default {
         return {
             name: null,
             age: null,
-            issueTypes: ["Food", "Plumbing", "Rules"],
             accept: false,
             description:"",
             issueSubject:"",

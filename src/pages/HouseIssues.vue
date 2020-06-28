@@ -1,80 +1,75 @@
 <template>
-    <div class="q-pa-md" style="max-width: 350px">
-        <q-list bordered>
-            <q-expansion-item
-                group="somegroup"
-                icon="explore"
-                label="First"
-                header-class="text-primary"
-            >
-                <q-card>
-                    <q-card-section>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Quidem, eius reprehenderit eos corrupti commodi
-                        magni quaerat ex numquam, dolorum officiis modi facere
-                        maiores architecto suscipit iste eveniet doloribus ullam
-                        aliquid.
-                    </q-card-section>
-                </q-card>
-            </q-expansion-item>
-
-            <q-separator />
-
-            <q-expansion-item
-                group="somegroup"
-                icon="perm_identity"
-                label="Second"
-                header-class="text-teal"
-            >
-                <q-card>
-                    <q-card-section>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Quidem, eius reprehenderit eos corrupti commodi
-                        magni quaerat ex numquam, dolorum officiis modi facere
-                        maiores architecto suscipit iste eveniet doloribus ullam
-                        aliquid.
-                    </q-card-section>
-                </q-card>
-            </q-expansion-item>
-
-            <q-separator />
-
-            <q-expansion-item
-                group="somegroup"
-                icon="shopping_cart"
-                label="Third"
-                header-class="text-purple"
-            >
-                <q-card>
-                    <q-card-section>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Quidem, eius reprehenderit eos corrupti commodi
-                        magni quaerat ex numquam, dolorum officiis modi facere
-                        maiores architecto suscipit iste eveniet doloribus ullam
-                        aliquid.
-                    </q-card-section>
-                </q-card>
-            </q-expansion-item>
-
-            <q-separator />
-
-            <q-expansion-item
-                group="somegroup"
-                icon="bluetooth"
-                label="Fourth"
-                header-class="bg-teal text-white"
-                expand-icon-class="text-white"
-            >
-                <q-card class="bg-teal-2">
-                    <q-card-section>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Quidem, eius reprehenderit eos corrupti commodi
-                        magni quaerat ex numquam, dolorum officiis modi facere
-                        maiores architecto suscipit iste eveniet doloribus ullam
-                        aliquid.
-                    </q-card-section>
-                </q-card>
-            </q-expansion-item>
+    <div v-if="houseIssueItems" class="q-pa-md expansionListContainer" style="width:90%">
+        <q-list class="expansionList" >
+            <template v-for="(houseIssueDetail, index) in houseIssueItems">
+                <HouseIssueItem
+                    :key="index"
+                    :houseIssueDetail="houseIssueDetail"
+                ></HouseIssueItem>
+            </template>
         </q-list>
     </div>
 </template>
+
+<script>
+export default {
+    components: {
+        HouseIssueItem: require("../components/HouseIssueItem.vue").default
+    },
+    data() {},
+    computed: {
+        houseIssueItems() {
+            return [
+                {
+                    title: "House Issue 1",
+                    dateCreated: "2days ago",
+                    subject: "subject 1",
+                    description: "description 1",
+                    imgUrl: ["https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+                    "https://homepages.cae.wisc.edu/~ece533/images/baboon.png"]
+                        
+                },
+                {
+                    title: "House Issue 2",
+                    dateCreated: "2days ago",
+                    subject: "subject 2",
+                    description: "description 2",
+                    imgUrl: ["https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+                    "https://homepages.cae.wisc.edu/~ece533/images/baboon.png"]
+                        
+                },
+                {
+                    title: "House Issue 3",
+                    dateCreated: "2days ago",
+                    subject: "subject 3",
+                    description: "description 3",
+                    imgUrl:["https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+                    "https://homepages.cae.wisc.edu/~ece533/images/baboon.png"]
+                },
+                {
+                    title: "House Issue 4",
+                    dateCreated: "2days ago",
+                    subject: "subject 4",
+                    description: "description 4",
+                    imgUrl:["https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+                    "https://homepages.cae.wisc.edu/~ece533/images/baboon.png"]
+                }
+            ];
+        }
+    }
+};
+</script>
+
+<style>
+    .expansionList {
+        width:100%;
+        margin:auto;
+        background:none;
+        box-shadow: none;
+    }
+   .expansionListContainer {
+    margin: auto;
+    width: 95%;
+    padding: 0;
+   }
+</style>
