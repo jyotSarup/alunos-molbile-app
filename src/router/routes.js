@@ -9,7 +9,16 @@ const routes = [
                 name: "addHouseIssue",
                 path: "/add-house-issue",
                 component: () => import("../pages/forms/AddHouseIssue.vue")
-            }
+            },
+            {
+                name: "addAnnouncement",
+                path: "/add-announcement",
+                component: () => import("../pages/forms/AddAnnouncement.vue")
+            },
+            {
+                path: "/homestay/houseissues",
+                component: () => import("../pages/HouseIssues.vue")
+            },
         ]
     },
     {
@@ -31,10 +40,6 @@ const routes = [
     {
         path: "/homestay/myhomestay",
         component: () => import("pages/MyHomestay.vue")
-    },
-    {
-        path: "/homestay/houseissues",
-        component: () => import("pages/HouseIssues.vue")
     },
     {
         path: "/homestay/rules",
