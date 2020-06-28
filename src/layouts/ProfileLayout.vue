@@ -20,7 +20,10 @@
                 </q-toolbar>
             </q-header>
 
-            <router-view @updateTitle="updateTitle" style=" margin-top:30%;" />
+            <router-view
+                @updateTitle="updateTitle"
+                style=" margin-top:5rem; text-align: center; position:relative"
+            />
             <q-footer elevated>
                 <q-toolbar class="glossy">
                     <q-toolbar-title
@@ -60,7 +63,7 @@ export default {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 25vh;
+        height: 16vh;
         font-size: 24px;
         font-weight: bold;
 
@@ -79,6 +82,9 @@ export default {
             word-wrap: break-word;
             white-space: normal;
         }
+    }
+    .q-layout__shadow:after {
+        box-shadow: none !important;
     }
 }
 </style>

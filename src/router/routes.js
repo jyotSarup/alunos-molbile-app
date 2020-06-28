@@ -11,6 +11,7 @@ const routes = [
                 component: () => import("../pages/forms/AddHouseIssue.vue")
             },
             {
+
                 name: "addAnnouncement",
                 path: "/add-announcement",
                 component: () => import("../pages/forms/AddAnnouncement.vue")
@@ -19,11 +20,15 @@ const routes = [
                 path: "/homestay/houseissues",
                 component: () => import("../pages/HouseIssues.vue")
             },
+             { 
+                path: "/help",
+                component: () => import("../pages/Help.vue")
+            }
         ]
     },
     {
         path: "/profile",
-        component: () => import("layouts/MainPageLayout.vue"),
+        component: () => import("layouts/ProfileLayout.vue"),
         children: [{ path: "", component: () => import("pages/Profile.vue") }]
     },
     {
@@ -45,10 +50,10 @@ const routes = [
         path: "/homestay/rules",
         component: () => import("pages/Rules.vue")
     },
-    {
-        path: "/help",
-        component: () => import("pages/Help.vue")
-    },
+    // {
+    //     path: "/help",
+    //     component: () => import("pages/Help.vue")
+    // },
     {
         name: "help.emergency.call",
         path: "/help/emergency-call",

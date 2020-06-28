@@ -1,25 +1,68 @@
 <template>
-    <div class="text-accent q-gutter-md" style="font-size: 2em">
-        <!-- <div class="q-pa-md row items-start q-gutter-md"> -->
-        <q-card class="my-card">
-            <q-img
-                :src="profileImg"
-                style="width: 150px"
-                :ratio="1"
-                basic
-                spinner-color="white"
-                class="img"
-            />
+    <div class="my-card">
+        <q-card class="cardstyle">
+            <q-img :src="profileImg" class="image" :ratio="1" basic />
+            <q-card-section class="cardsection">
+                <div class="title">Mariam Jackson</div>
+                <div class="text">Vancouver, BC</div>
+                <div class="text">DOB - 19 July 1994</div>
+                <q-separator />
 
-            <q-card-section>
-                <div class="text-h6">Our Changing Planet</div>
-                <div class="text-subtitle2">by John Doe</div>
-            </q-card-section>
+                <q-btn
+                    push
+                    label="Edit Profile"
+                    class="btntab"
+                    text-color="primary"
+                    style="border-radius: 0 0 0 20px;"
+                />
 
-            <q-card-section class="q-pt-none">
-                {{ lorem }}
+                <q-btn
+                    push
+                    label="Settings"
+                    class="btntab"
+                    text-color="primary"
+                    style="border-radius: 0 0 20px 0;  border-left: 2px solid #eeeeee;"
+                />
             </q-card-section>
         </q-card>
+        <q-card class="infoCard cardstyle">
+            <q-card-section class="cardsection">
+                <div class="title">About</div>
+                <div class="text">{{ lorem }}</div>
+
+                <div class="title">Social Links</div>
+                <q-toolbar>
+                    <div class="text">maria.jack18</div>
+                    <q-space />
+                    <div class="text">instagram</div>
+                </q-toolbar>
+                <div class="title">Likes</div>
+                <q-toolbar>
+                    <div class="text">Food</div>
+                    <q-space />
+                    <div class="text">Non-veg, Pizza</div>
+                </q-toolbar>
+                <q-toolbar>
+                    <div class="text">Best sites</div>
+                    <q-space />
+                    <div class="text">Beech, Mountains</div>
+                </q-toolbar>
+                <q-toolbar>
+                    <div class="text">Spare time</div>
+                    <q-space />
+                    <div class="text">Netflix</div>
+                </q-toolbar>
+            </q-card-section>
+        </q-card>
+        <q-btn
+            rounded
+            outline
+            color="grey"
+            size="lg"
+            label="Log out"
+            style="margin:2rem 0 0 0; padding: 0 2rem"
+        />
+        <div class="version">Version 1.0.0.1</div>
     </div>
 </template>
 <script>
@@ -30,36 +73,56 @@ export default {
     },
     data() {
         return {
-            profileImg: "../statics/img/profile.jpg"
+            profileImg: "../statics/img/profile.jpg",
+            lorem:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         };
     }
 };
 </script>
 <style lang="scss">
-.img {
-    border-radius: 50px;
-}
-
-.q-header {
-    border-radius: 0px 0px 0px 90px;
-    .q-layout__shadow {
-        border-radius: 0px 0px 0px 120px;
+.my-card {
+    width: 90%;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: none !important;
+    .cardsection {
+        padding: 0 !important;
+    }
+    .image {
+        width: 100px;
+        border-radius: 80px !important;
+        margin-top: -15%;
     }
     .title {
-        height: 120px;
-        font-size: 24px;
-        font-weight: bold;
-
-        .title-position {
-            position: absolute;
-            top: 40%;
-            left: 20%;
+        font-size: 12 !important;
+        font-weight: bold !important;
+        margin-top: 1rem;
+    }
+    .text {
+        font-size: 9;
+        color: darkgrey;
+    }
+    .btntab {
+        text-decoration: none !important;
+        text-transform: none;
+        width: 50%;
+        box-shadow: none !important;
+        .q-btn__wrapper:before {
+            border-bottom: none !important;
+            box-shadow: none !important;
         }
-        .icon-position {
-            position: absolute;
-            top: 40%;
-            right: 8%;
-        }
+    }
+    .infoCard {
+        margin-top: 5%;
+        text-align: left;
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
+    }
+    .version {
+        color: #017eff;
+        margin: 1.5rem;
     }
 }
 </style>
