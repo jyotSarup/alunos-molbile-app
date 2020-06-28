@@ -1,7 +1,6 @@
 <template>
     <q-expansion-item
         expand-icon-toggle
-        expand-separator
         icon="perm_identity"
         :label="houseIssueDetail.title"
         :caption="houseIssueDetail.dateCreated"

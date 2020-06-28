@@ -1,8 +1,8 @@
 <template>
-    <q-card class="my-card" style="background: white; border-radius:20px ; ">
+    <q-card class="my-card" style="background: white; border-radius:20px  ; ">
         <q-card-section>
             <div class="tipHeading">Tip of the day</div>
-            <span class="tipQuote">It is good day to have a good day</span>
+            <span class="tipQuote">Its always nice to say 'Thank You' after having dinner with your family.</span>
         </q-card-section>
     </q-card>
 </template>

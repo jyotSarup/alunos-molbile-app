@@ -1,7 +1,6 @@
 <template>
     <q-page class="flex flex-center" >
         
-        <feed style="width : 90% ; margin:auto"></feed>
     </q-page>
 </template>
 
@@ -24,9 +23,6 @@ export default {
                     }
                 }`
             }
-        },
-        components: {
-        'feed' : require('./Feed.vue').default
-    }
+        }
 };
 </script>

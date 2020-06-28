@@ -10,6 +10,9 @@
 <script>
 export default {
     name: "Tip",
+    created() {
+        this.$emit("updateTitle", "Hi Maria","It's a good day to have a good day");
+    },
     components: {
         dailyTip: require("../components/DailyTip.vue").default,
         infiniteScrollContainer: require("../components/InfiniteScrollContainer")
@@ -21,6 +24,7 @@ export default {
 <style>
 .feedContainer
 {
-    width:100%;
+    width:95%;
+    margin:auto;
 }
 </style>
