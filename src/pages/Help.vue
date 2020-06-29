@@ -1,29 +1,19 @@
 <template>
-    <div>
-        <div class="row q-pa-md q-gutter-md justify-center">
-            <q-btn
-                v-for="item of items"
-                :key="item.label"
-                :icon="item.icon"
-                :label="item.label"
-                :to="item.path"
-                stack
-                color="info"
-                class="cardButton"
-                rounded
-                no-caps
-                text-color="dark"
-            />
-        </div>
+    <div class="row q-pa-md q-gutter-md justify-center">
+        <template v-for="item of items">
+            <MenuCard :item="item" :key="item" />
+        </template>
     </div>
 </template>
 
 <script>
+import MenuCard from "../components/MenuCard";
 export default {
     name: "Help",
     created() {
-        this.$emit("updateTitle", "Help", "It's a good day to have a good day");
+        this.$emit("updateTitle", "Help", "You are not alone");
     },
+    components: { MenuCard },
     data() {
         return {
             items: [
@@ -53,10 +43,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.cardButton {
-    width: 42vw;
-    height: 42vw;
-    font-size: 16px;
-}
-</style>
+<style scoped></style>
