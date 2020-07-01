@@ -11,36 +11,33 @@
         >
             <q-tab name="feed" icon="calendar_today" label="Feed" />
             <q-tab name="homestay" icon="home" label="Homestay" />
-            <!--q-fab
+            <q-fab
                 v-model="fabCenter"
                 vertical-actions-align="center"
                 color="primary"
                 glossy
                 icon="add"
                 direction="up"
-                @click="show()"
-            -->
+                >
 
-            <q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn>
-                <!--q-list bordered separator>
+            <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
+                <q-list bordered separator>
 
-                    <q-item clickable v-ripple>
-                        <q-item-section>Single line item</q-item-section>
+                    <q-item clickable v-ripple class="bottom-list-item">
+                    <div style="justify-content: center; margin-right:10px"><q-icon name="house"/></div>
+                        <q-item-section style="font-size: 20px;"> Add House Issue</q-item-section>
                     </q-item>
 
-                    <q-item clickable v-ripple>
+                    <q-item clickable v-ripple class="bottom-list-item">
+                    <div style="justify-content: center; margin-right:10px"><q-icon name="las la-bullhorn"/></div>
                         <q-item-section>
-                            <q-item-label>Item with caption</q-item-label>
+                            <q-item-label>Add Announcement</q-item-label>
                         </q-item-section>
                     </q-item>
 
-                    <q-item clickable v-ripple>
-                        <q-item-section>
-                            <q-item-label>Item with caption</q-item-label>
-                        </q-item-section>
-                    </q-item>
-                </q-list
-                </q-fab>-->
+                    
+                </q-list>
+                </q-fab>
 
             <q-tab name="help" icon="help_outline" label="Help" />
             <q-tab name="profile" icon="perm_identity" label="Profile" />
@@ -55,10 +52,16 @@
 
 .q-list {
     color: white;
-    background: #1976d2;
+    background: linear-gradient(180deg, #017eff 40%, #01e8f8 95%);
     width: 500%;
     border-radius: 10px;
     box-shadow: 3px 3px 4px #efefef;
+}   
+
+.bottom-list-item {
+    
+    padding: 1em;
+
 }
 .q-fab {
     transform: translateY(-50%) !important;
