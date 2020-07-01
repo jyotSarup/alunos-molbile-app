@@ -1,0 +1,37 @@
+mutation ($token: String)  {
+    loginAsHouseholdMember(token: $token) {
+        token {
+            token_type
+            expires_in
+            access_token
+            refresh_token
+        }
+        member {
+            is_admin
+            is_permanent
+            household {
+                name
+                type
+                members {
+                    is_permanent
+                    is_admin
+                    user {
+                        id
+                        display_name
+                        email
+                        phone
+                    }
+                }
+                rules {
+                    description
+                }
+            }
+            user {
+                id
+                display_name
+                email
+                phone
+            }
+        }
+    }
+}

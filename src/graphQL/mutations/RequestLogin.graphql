@@ -1,0 +1,4 @@
+mutation ($email: String)  {
+#   requestLoginAsHouseholdMember(email: $email)
+    temporaryMobileLogin(email: $email)
+}

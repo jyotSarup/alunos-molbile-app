@@ -5,17 +5,83 @@ schema {
     mutation: Mutation
 }
 
-type Mutation {
-    loginByEmail(credentials: LoginByEmailInput): OAuth
-    signUp(email: String, name: String, password: String, phone: String): User
+type Activity {
+    description: String!
 }
 
-type OAuth {
+type ActivityPagination {
+    items: [Activity]
+    total: Int
+}
+
+type Admin {
+    tenant: Tenant
+    user: User
+}
+
+type AdminAccess {
+    admin: Admin
+    token: OAuthToken
+}
+
+type Announcement {
+    author: User
+    content: String!
+}
+
+type AnnouncementPagination {
+    items: [Announcement]
+    total: Int
+}
+
+type Household {
+    address: String!
+    created_at: String!
+    id: ID!
+    members: [Member]
+    name: String!
+    rooms: [Room]
+    rules: [Rule]
+    type: HouseholdType!
+    updated_at: String!
+}
+
+type Issue {
+    author: Member!
+    description: String!
+    solved_at: DateTimeTz
+}
+
+type IssuePagination {
+    items: [Issue]
+    total: Int
+}
+
+type Member {
+    household: Household
+    is_admin: Boolean
+    is_permanent: Boolean
+    user: User
+}
+
+type MemberAccess {
+    member: Member
+    token: OAuthToken
+}
+
+type Mutation {
+    loginAsAdmin(credentials: PasswordLoginInput): AdminAccess
+    loginAsHouseholdMember(token: String): MemberAccess
+    requestLoginAsHouseholdMember(email: String): Boolean
+    signUp(email: String, name: String, password: String, phone: String): User
+    temporaryMobileLogin(email: String): String
+}
+
+type OAuthToken {
     access_token: String
     expires_in: Int
     refresh_token: String
     token_type: String
-    user: User
 }
 
 "Pagination information about the corresponding list of items."
@@ -63,18 +129,90 @@ type Pong {
 }
 
 type Query {
+    "Get details about household"
+    household(
+        #Household unique identifier
+        household_id: ID
+    ): Household
+    "Get activities of household"
+    householdActivities(
+        #Household unique identifier
+        household_id: ID,
+        #Number of elements per page
+        limit: Int = 10,
+        #Page
+        page: Int = 1
+    ): ActivityPagination
+    "Get announcements of household"
+    householdAnnouncements(
+        #Household unique identifier
+        household_id: ID,
+        #Number of elements per page
+        limit: Int = 10,
+        #Page
+        page: Int = 1
+    ): AnnouncementPagination
+    "Get announcements of household"
+    householdIssues(
+        #Household unique identifier
+        household_id: ID,
+        #Number of elements per page
+        limit: Int = 10,
+        #Page
+        page: Int = 1
+    ): IssuePagination
     me: User
     ping: Pong
     privatePing: Pong
+    "Get details about tenant"
+    tenant(
+        #Tenant unique subdomain
+        subdomain: String!
+    ): Tenant
+}
+
+type Room {
+    name: String!
+}
+
+type Rule {
+    description: String!
+}
+
+type Tenant {
+    name: String!
 }
 
 type User {
+    avatar: String!
     created_at: String!
+    display_name: String!
     email: String!
+    first_name: String!
     id: ID!
-    name: String!
+    last_name: String!
     phone: String!
     updated_at: String!
+}
+
+enum ContactType {
+    #Email
+    EMAIL
+    #Facebook
+    FACEBOOK
+    #Instagram
+    INSTAGRAM
+    #Phone
+    PHONE
+    #Twitter
+    TWITTER
+}
+
+enum HouseholdType {
+    #Homestay
+    HOMESTAY
+    #Student
+    STUDENT
 }
 
 "The available directions for ordering a list of records."
@@ -95,11 +233,6 @@ enum Trashed {
     WITHOUT
 }
 
-input LoginByEmailInput {
-    email: String
-    password: String
-}
-
 "Allows ordering a list of records."
 input OrderByClause {
     "The column that is used for ordering."
@@ -108,12 +241,17 @@ input OrderByClause {
     order: SortOrder!
 }
 
+input PasswordLoginInput {
+    email: String
+    password: String
+}
+
+
+"A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sO`, e.g. `2020-04-20T13:53:12+02:00`."
+scalar DateTimeTz
 
 "A date string with format `Y-m-d`, e.g. `2011-05-23`."
 scalar Date
 
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime
-
-"A datetime and timezone string in ISO 8601 format `Y-m-dTH:i:sO`, e.g. `2020-04-20T13:53:12+02:00`."
-scalar DateTimeTz

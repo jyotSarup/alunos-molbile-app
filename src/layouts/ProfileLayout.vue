@@ -26,9 +26,9 @@
             />
             <q-footer elevated>
                 <q-toolbar class="glossy">
-                    <q-toolbar-title
-                        ><Footer style=""></Footer
-                    ></q-toolbar-title>
+                    <q-toolbar-title>
+                        <Footer style=""></Footer>
+                    </q-toolbar-title>
                 </q-toolbar>
             </q-footer>
         </q-page-container>
@@ -36,10 +36,11 @@
 </template>
 
 <script>
+import Footer from "../components/Footer.vue";
 export default {
     name: "MainLayout",
 
-    components: { Footer: require("../components/Footer.vue").default },
+    components: {Footer },
     data() {
         return {
             title: "",
