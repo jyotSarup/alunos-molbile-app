@@ -69,7 +69,9 @@ export default {
             titleText:""
         };
     },
-
+created() {
+        this.$emit("updateTitle", "Add House Issue");
+    },
     methods: {
         onSubmit() {
             if (this.accept !== true) {

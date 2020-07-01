@@ -59,7 +59,10 @@ export default {
             titleText:""
         };
     },
-
+    
+created() {
+        this.$emit("updateTitle", "Add Announcement");
+    },
     methods: {
         onSubmit() {
             if (this.accept !== true) {
