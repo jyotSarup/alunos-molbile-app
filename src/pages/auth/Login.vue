@@ -68,6 +68,7 @@ export default {
         async login() {
             try {
                 await this.$store.dispatch(REQUEST_LOGIN_ACTION, this.email);
+                await this.$router.push({ name: 'feed' });
             } catch (error) {
                 console.log(error);
             }
