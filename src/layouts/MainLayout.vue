@@ -12,13 +12,14 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <Footer></Footer>
+    <footer></footer>
   </q-layout>
 </template>
 
 <script>
+import Footer from "../components/Footer";
 export default {
   name: 'MainLayout',
-  components: { Footer :  require("../components/Footer.vue").default }
+    components: {Footer},
 }
 </script>

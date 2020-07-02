@@ -35,8 +35,6 @@
 <script>
 export default {
     name: "MainLayout",
-
-    components: { Footer: require("../components/Footer.vue").default },
     data() {
         return {
             title: "",

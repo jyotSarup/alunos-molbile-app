@@ -49,8 +49,9 @@
 </template>
 
 <script>
-import LoginByEmail from "../../graphQL/mutations/users/loginByEmail.graphql";
 import EmailInput from "components/input/EmailInput";
+import {REQUEST_LOGIN_ACTION} from "../../constants";
+import { Notify } from 'quasar'
 
 export default {
     name: "Login",
@@ -64,18 +65,13 @@ export default {
         EmailInput
     },
     methods: {
-        login() {
-            this.dialog = true;
-            this.$apollo.mutate({
-                mutation: LoginByEmail,
-                variables: {
-                    email: "walterbgneto@gmail.com",
-                    password: "123456"
-                },
-                update: (store, response) => {
-                    this.response = response.data.loginByEmail;
-                }
-            });
+        async login() {
+            try {
+                await this.$store.dispatch(REQUEST_LOGIN_ACTION, this.email);
+                await this.$router.push({ name: 'feed' });
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 };

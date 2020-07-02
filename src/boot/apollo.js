@@ -6,43 +6,57 @@ import VueApollo from 'vue-apollo';
 import {onError} from "apollo-link-error";
 import {ApolloLink, from} from "apollo-link";
 import {store} from '../store'
+import {LOGOUT_ACTION, TOKEN_LOCAL_STORAGE} from "src/constants";
+import {hasAuthError} from "src/utils/errorHandler";
 
 Vue.use(VueApollo);
 
 const httpLink = createHttpLink({
-    // uri: process.env.GRAPHQL_URI,
-    uri: 'http://alunos.ca/graphql-playground'
+    uri: 'http://api.alunos.ca/graphql', // @TODO use .env
 });
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
-        graphQLErrors.map(({ message, locations, path }) =>
-            console.log(
-                `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-            )
-        )
-    if (networkError) console.log(`[Network error]: ${networkError}`)
-})
+const authMiddleware = new ApolloLink((operation, forward) => {
+    let token = window.localStorage.getItem(TOKEN_LOCAL_STORAGE);
+    const headers = {};
 
-export const client = new ApolloClient({
-    link: httpLink,   
-    cache: new InMemoryCache(), 
-    connectToDevTools: true
-})
-// Access-Control-Allow-Origin
+    if (token) {
+        token = JSON.parse(token);
+        headers['Authorization'] = `Bearer ${token.access_token}`;
+    }
 
-export const apolloProvider = new VueApollo({
-    defaultClient: client
-})
+    operation.setContext({ headers });
 
-// export default ({app}) => {
-//     app.apolloProvider = new VueApollo({
-//         defaultClient: client,
-//         defaultOptions: {
-//             $query: {
-//                 loadingKey: 'loading',
-//                 fetchPolicy: 'no-cache',
-//             }
-//         },
-//     })
-// }
+    return forward(operation);
+});
+
+const logoutLink = onError(({graphQLErrors}) => {
+    if (hasAuthError(graphQLErrors)) {
+        store.dispatch(LOGOUT_ACTION);
+    }
+});
+
+const cache = new InMemoryCache({
+    addTypename: false,
+});
+
+export const apolloClient = new ApolloClient({
+    link: from([
+        authMiddleware,
+        logoutLink,
+        httpLink
+    ]),
+    cache,
+});
+
+export default ({app}) => {
+    app.apolloProvider = new VueApollo({
+        defaultClient: apolloClient,
+        defaultOptions: {
+            $query: {
+                loadingKey: 'loading',
+                fetchPolicy: 'no-cache',
+            }
+        },
+    })
+
+}
