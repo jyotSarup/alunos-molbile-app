@@ -49,34 +49,28 @@
 .q-tabs > div {
     overflow: visible !important;
 }
-
 .q-list {
     color: white;
     background: linear-gradient(180deg, #017eff 40%, #01e8f8 95%);
-    width: 600%;
+    width: 500%;
     border-radius: 10px;
     box-shadow: 3px 3px 4px #efefef;
 }   
-
 .bottom-list-item {
     
     padding: 1em;
-
 }
 .q-fab {
     transform: translateY(-50%) !important;
     border: 3px solid white !important;
 }
-
 .floatingButton {
     transform: translateY(-50%) !important;
     border: 3px solid white !important;
 }
-
 .q-tab__content {
     padding: 4px 0;
 }
-
 div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -123,7 +117,6 @@ export default {
                             id: "sendMail"
                         },
                         {},
-
                         {
                             label: "close",
                             icon: "cancel",
