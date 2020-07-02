@@ -30,6 +30,10 @@ const routes = [
             {
                 path: "/homestay",
                 component: () => import("pages/Homestay.vue")
+            },
+            {
+                path: "/member-list",
+                component:() => import("components/MemberList.vue")
             }
         ]
     },

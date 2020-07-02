@@ -53,7 +53,7 @@
 .q-list {
     color: white;
     background: linear-gradient(180deg, #017eff 40%, #01e8f8 95%);
-    width: 500%;
+    width: 600%;
     border-radius: 10px;
     box-shadow: 3px 3px 4px #efefef;
 }   
