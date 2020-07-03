@@ -1,6 +1,6 @@
 <template>
-    <div class="q-pa-md q-gutter-md">
-        <q-item clickable v-ripple>
+    <div >
+        <!-- <q-item clickable v-ripple>
             <q-item-section side>
                 <q-avatar round size="48px">
                     <img src="https://cdn.quasar.dev/img/avatar.png" />
@@ -41,12 +41,24 @@
             <q-item-section side>
                 3 min ago
             </q-item-section>
-        </q-item>
+        </q-item> -->
+        <HomestayDetails></HomestayDetails>
+        <MemberList></MemberList>
     </div>
 </template>
 
 <script>
+import HomestayDetails from '../components/HomestayDetails'
+import MemberList from '../components/MemberList'
 export default {
-    name: "MyHomestay"
+    name: "MyHomestay",
+    components :{HomestayDetails,MemberList},
+    created() {
+        this.$emit("updateTitle", "My Homestay");
+    }
 };
 </script>
+
+<style scoped>
+
+</style>
