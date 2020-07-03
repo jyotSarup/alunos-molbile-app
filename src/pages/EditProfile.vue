@@ -2,7 +2,10 @@
     <div class="my-card">
         <q-card class="cardstyle">
             <!-- <Camera /> -->
-            <q-img :src="profileImg" class="image" :ratio="1" basic />
+            <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
+            <q-avatar size="100px" class="image">
+                <img src="https://cdn.quasar.dev/img/avatar.png" />
+            </q-avatar>
             <q-card class="infoCard">
                 <q-card-section class="cardsection ">
                     <div class="title textPrimaryColor">First Name</div>
