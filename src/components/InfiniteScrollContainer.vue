@@ -56,7 +56,4 @@ export default {
 </script>
 
 <style>
-.q-gutter-x-md,
-.q-gutter-md {
-}
 </style>

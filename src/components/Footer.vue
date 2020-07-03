@@ -9,8 +9,8 @@
             dense
             align="justify"
         >
-            <q-tab name="feed" icon="calendar_today" label="Feed" />
-            <q-tab name="homestay" icon="home" label="Homestay" />
+            <q-tab name="feed" icon="calendar_today" label="Feed" @click="openFeed()"/>
+            <q-tab name="homestay" icon="home" label="Homestay" @click="openMyHomestay()" />
             <q-fab
                 v-model="fabCenter"
                 vertical-actions-align="center"
@@ -23,12 +23,12 @@
             <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
                 <q-list bordered separator>
 
-                    <q-item clickable v-ripple class="bottom-list-item">
+                    <q-item clickable v-ripple class="bottom-list-item" @click="addHouseIssue">
                     <div style="justify-content: center; margin-right:10px"><q-icon name="house"/></div>
                         <q-item-section style="font-size: 20px;"> Add House Issue</q-item-section>
                     </q-item>
 
-                    <q-item clickable v-ripple class="bottom-list-item">
+                    <q-item clickable v-ripple class="bottom-list-item" @click="addHouseAnnouncement">
                     <div style="justify-content: center; margin-right:10px"><q-icon name="las la-bullhorn"/></div>
                         <q-item-section>
                             <q-item-label>Add Announcement</q-item-label>
@@ -39,8 +39,8 @@
                 </q-list>
                 </q-fab>
 
-            <q-tab name="help" icon="help_outline" label="Help" />
-            <q-tab name="profile" icon="perm_identity" label="Profile" />
+            <q-tab name="help" icon="help_outline" label="Help" @click="openHelp"/>
+            <q-tab name="profile" icon="perm_identity" label="Profile" @click="openProfile"/>
         </q-tabs>
     </q-footer>
 </template>
@@ -84,6 +84,8 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
 </style>
 
 <script>
+import router from "../router"
+
 export default {
     name: "Footer",
     data() {
@@ -135,6 +137,24 @@ export default {
                 .onDismiss(() => {
                     // console.log('I am triggered on both OK and Cancel')
                 });
+        },
+        openFeed(){
+            this.$router.push('/feed');
+        },
+        openMyHomestay(){
+            this.$router.push({ name: 'myHomeStay' });
+        },
+        openHelp(){
+            this.$router.push({ name: 'help' });
+        },
+        openProfile(){
+            this.$router.push('/profile');
+        },
+        addHouseAnnouncement(){
+            this.$router.push('/add-announcement')
+        },
+        addHouseIssue(){
+            this.$router.push('/add-house-issue')
         }
     }
 };

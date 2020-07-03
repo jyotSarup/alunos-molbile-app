@@ -24,6 +24,7 @@ const routes = [
                 component: () => import("../pages/HouseIssues.vue")
             },
             {
+                name: "help",
                 path: "/help",
                 component: () => import("../pages/Help.vue")
             },
@@ -32,6 +33,7 @@ const routes = [
                 component: () => import("pages/Homestay.vue")
             },
             {
+                name: "myHomeStay",
                 path: "/homestay/myhomestay",
                 component: () => import("layouts/ProfileLayout.vue"),
                 component: () => import("pages/MyHomestay.vue")
@@ -40,6 +42,7 @@ const routes = [
     },
     {
         path: "/profile",
+        name: "profile",
         component: () => import("layouts/ProfileLayout.vue"),
         children: [{ path: "", component: () => import("pages/Profile.vue") }]
     },

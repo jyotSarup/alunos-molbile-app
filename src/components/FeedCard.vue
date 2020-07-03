@@ -1,6 +1,6 @@
 <template>
     <div class="q-pa-md row items-start q-gutter-md" style=" padding:0 ; margin-bottom : 16px ; border:none;  ">
-        <q-card class="my-card"   >
+        <q-card class="my-feed-card"   >
             <q-card-section horizontal>
             <q-card-section class="col-5 flex flex-center">
                     <q-img
@@ -35,12 +35,12 @@
     </div>
 </template>
 
-<style>
+<style scoped >
 .q-card--bordered {
     border: none !important;
 }
 
-.my-card.q-card {
+.my-feed-card {
     border-radius:20px;
 }
 </style>
