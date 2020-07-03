@@ -1,10 +1,12 @@
 <template>
+<div>
     <q-page class="feedContainer">
         <dailyTip> </dailyTip>
         <div >
             <infiniteScrollContainer></infiniteScrollContainer>
         </div>
     </q-page>
+    </div>
 </template>
 
 <script>

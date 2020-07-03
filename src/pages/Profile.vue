@@ -1,5 +1,5 @@
 <template>
-    <div class="my-card">
+    <div class="my-profile-card">
         <q-card class="cardstyle">
             <q-img :src="profileImg" class="image" :ratio="1" basic />
             <q-card-section class="cardsection">
@@ -84,8 +84,8 @@ export default {
     }
 };
 </script>
-<style lang="scss">
-.my-card {
+<style lang="scss" scoped>
+.my-profile-card {
     width: 90%;
     text-align: center;
     position: absolute;
