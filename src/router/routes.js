@@ -32,9 +32,10 @@ const routes = [
                 component: () => import("pages/Homestay.vue")
             },
             {
-                path: "/member-list",
-                component:() => import("components/MemberList.vue")
-            }
+                path: "/homestay/myhomestay",
+                component: () => import("layouts/ProfileLayout.vue"),
+                component: () => import("pages/MyHomestay.vue")
+            },
         ]
     },
     {
@@ -60,10 +61,7 @@ const routes = [
         path: "/homestay",
         component: () => import("pages/Homestay.vue")
     },
-    {
-        path: "/homestay/myhomestay",
-        component: () => import("pages/MyHomestay.vue")
-    },
+    
     {
         path: "/homestay/rules",
         component: () => import("pages/Rules.vue")

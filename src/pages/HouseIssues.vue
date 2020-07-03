@@ -11,9 +11,10 @@
 </template>
 
 <script>
+import HouseIssueItem from '../components/HouseIssueItem'
 export default {
     components: {
-        HouseIssueItem: require("../components/HouseIssueItem.vue").default
+        HouseIssueItem
     },
     data() {},
     created() {

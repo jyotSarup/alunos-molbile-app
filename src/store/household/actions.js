@@ -3,6 +3,7 @@ import {
     LOGOUT_ACTION,
     MUTATE_TOKEN,
     MUTATE_USER,
+    MUTATE_HOUSEHOLD,
     REQUEST_LOGIN_ACTION, TOKEN_LOCAL_STORAGE,
 } from "src/constants";
 import LOGIN from '../../graphQL/mutations/Login.graphql';
@@ -35,6 +36,7 @@ export default {
         window.localStorage.setItem(TOKEN_LOCAL_STORAGE, JSON.stringify(data.token));
         commit(MUTATE_TOKEN, data.token);
         commit(MUTATE_USER, data.member.user);
+        commit(MUTATE_HOUSEHOLD, data.member.household)
     },
     [LOGOUT_ACTION]: ({commit}) => {
         window.localStorage.removeItem(TOKEN_LOCAL_STORAGE);

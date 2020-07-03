@@ -20,7 +20,7 @@
                 </q-toolbar>
             </q-header>
 
-            <router-view @updateTitle="updateTitle" style=" margin-top:5%;" />
+            <router-view @updateTitle="updateTitle" style=" margin-top:10%;" />
             <q-footer elevated>
                 <q-toolbar class="glossy">
                     <q-toolbar-title
@@ -33,8 +33,10 @@
 </template>
 
 <script>
+import Footer from "../components/Footer";
 export default {
     name: "MainLayout",
+    components: {Footer},
     data() {
         return {
             title: "",

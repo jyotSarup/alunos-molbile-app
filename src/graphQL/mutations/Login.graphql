@@ -10,7 +10,12 @@ mutation ($token: String)  {
             is_admin
             is_permanent
             household {
+                id
                 name
+                address
+                rooms {
+                        name
+                    }
                 type
                 members {
                     is_permanent

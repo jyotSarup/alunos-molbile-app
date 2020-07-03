@@ -8,15 +8,16 @@
 </template>
 
 <script>
+import DailyTip from '../components/DailyTip'
+import InfiniteScrollContainer from '../components/InfiniteScrollContainer'
 export default {
     name: "Tip",
     created() {
         this.$emit("updateTitle", "Hi Maria","It's a good day to have a good day");
     },
     components: {
-        dailyTip: require("../components/DailyTip.vue").default,
-        infiniteScrollContainer: require("../components/InfiniteScrollContainer")
-            .default
+        DailyTip,
+        InfiniteScrollContainer
     }
 };
 </script>
