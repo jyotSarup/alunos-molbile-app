@@ -1,23 +1,26 @@
 <template>
     <div class="my-card">
         <q-card class="cardstyle">
+            <!-- <Camera /> -->
             <q-img :src="profileImg" class="image" :ratio="1" basic />
             <q-card class="infoCard">
                 <q-card-section class="cardsection ">
                     <div class="title textPrimaryColor">First Name</div>
-                    <q-input type="text" :label="firstName" />
+                    <q-input type="text" :value="userInfo.user.first_name" />
                     <div class="title textPrimaryColor">Last Name</div>
-                    <q-input type="text" :label="lastName" />
+                    <q-input type="text" :value="userInfo.user.last_name" />
                     <div class="title textPrimaryColor">Email</div>
-                    <q-input type="text" :label="email" />
+                    <q-input type="text" :value="userInfo.user.email" />
+                    <div class="title textPrimaryColor">Display Name</div>
+                    <q-input type="text" :value="userInfo.user.display_name" />
                     <div class="title textPrimaryColor">Date of Birth</div>
-                    <q-input type="text" :label="dateofBirth" />
+                    <q-input type="text" :value="dateofBirth" />
                 </q-card-section>
             </q-card>
         </q-card>
         <q-card class="infoCard cardstyle">
             <q-card-section class="cardsection">
-                <div class="title textPrimaryColor">First Name</div>
+                <div class="title textPrimaryColor">About</div>
                 <q-input
                     v-model="textareaModel"
                     type="textarea"
@@ -42,8 +45,11 @@
     </div>
 </template>
 <script>
+import { mapState } from "vuex";
+// import Camera from "../components/Camera";
 export default {
     name: "EditProfile",
+    // components: { Camera },
     created() {
         this.$emit("updateTitle", "Edit Profile", "", "/profile");
     },
@@ -57,6 +63,11 @@ export default {
             lorem:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         };
+    },
+    computed: {
+        ...mapState({
+            userInfo: state => state.auth
+        })
     }
 };
 </script>

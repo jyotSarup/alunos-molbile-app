@@ -1,4 +1,4 @@
-mutation ($token: String)  {
+mutation($token: String) {
     loginAsHouseholdMember(token: $token) {
         token {
             token_type
@@ -14,8 +14,8 @@ mutation ($token: String)  {
                 name
                 address
                 rooms {
-                        name
-                    }
+                    name
+                }
                 type
                 members {
                     is_permanent
@@ -36,6 +36,8 @@ mutation ($token: String)  {
                 display_name
                 email
                 phone
+                first_name
+                last_name
             }
         }
     }

@@ -3,8 +3,10 @@
         <q-card class="cardstyle">
             <q-img :src="profileImg" class="image" :ratio="1" basic />
             <q-card-section class="cardsection">
-                <div class="title">Mariam Jackson</div>
-                <div class="text">Vancouver, BC</div>
+                <div class="title">
+                    {{ userInfo.user.display_name }}
+                </div>
+                <div class="text">Rome, Italy</div>
                 <div class="text">DOB - 19 July 1994</div>
                 <q-separator />
 
@@ -68,6 +70,7 @@
     </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
     name: "Profile",
     created() {
@@ -81,6 +84,11 @@ export default {
             lorem:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         };
+    },
+    computed: {
+        ...mapState({
+            userInfo: state => state.auth
+        })
     }
 };
 </script>
