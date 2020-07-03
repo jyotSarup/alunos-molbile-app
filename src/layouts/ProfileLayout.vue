@@ -11,10 +11,7 @@
                             </div>
                         </div>
                         <div class="text-white">
-                            <q-icon
-                                name="notifications_none"
-                                class="icon-position"
-                            />
+                            <Notification class="icon-position" />
                         </div>
                     </q-toolbar-title>
                 </q-toolbar>
@@ -37,10 +34,11 @@
 
 <script>
 import Footer from "../components/Footer.vue";
+import Notification from "../components/Notification";
 export default {
     name: "ProfileLayout",
 
-    components: {Footer },
+    components: { Footer, Notification },
     data() {
         return {
             title: "",
