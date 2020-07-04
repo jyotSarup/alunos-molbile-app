@@ -54,6 +54,8 @@
                 <UpdateOptionDialog
                     :selectedPhoto="selectedPhoto"
                     :showdialog.sync="showdialog"
+                    :loadPhoto="loadPhoto"
+                    ref="uPhoto"
                 />
             </div>
         </q-card>
@@ -101,6 +103,7 @@ export default {
                 this.imageUrl = event.target.result;
             };
             reader.readAsDataURL(files[0]);
+            this.showdialog = false;
             this.$forceUpdate();
             console.log("parent photo", this.imageUrl);
         }

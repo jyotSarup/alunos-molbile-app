@@ -41,16 +41,15 @@
 <script>
 export default {
     name: "updateoptions",
-    props: ["selectedPhoto", "showdialog"],
+    props: ["selectedPhoto", "showdialog", "loadPhoto"],
     data() {
         return {};
     },
     methods: {
         onFileSelected(e) {
             console.log("Child load photo triggered!");
-            this.$emit("loadPhoto", e);
-            this.showdialog = false;
-            this.$forceUpdate();
+
+            this.loadPhoto(e);
         },
         onClosedialog() {
             this.showdialog = false;
