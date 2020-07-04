@@ -5,15 +5,6 @@ schema {
     mutation: Mutation
 }
 
-type Activity {
-    description: String!
-}
-
-type ActivityPagination {
-    items: [Activity]
-    total: Int
-}
-
 type Admin {
     tenant: Tenant
     user: User
@@ -24,32 +15,44 @@ type AdminAccess {
     token: OAuthToken
 }
 
-type Announcement {
-    author: User
-    content: String!
+type FeedEntries {
+    items: [FeedEntry]
+    total: Int
 }
 
-type AnnouncementPagination {
-    items: [Announcement]
-    total: Int
+type FeedEntry {
+    author: User
+    content: String!
+    title: String!
+}
+
+type Guideline {
+    description: String!
 }
 
 type Household {
     address: String!
     created_at: String!
+    guidelines: [Guideline]
     id: ID!
-    members: [Member]
     name: String!
+    residents: [Resident]
     rooms: [Room]
-    rules: [Rule]
     type: HouseholdType!
     updated_at: String!
 }
 
 type Issue {
-    author: Member!
+    "The author of the issue report"
+    author: Resident!
+    "Desscription of the issue"
     description: String!
+    "Unique identifier"
+    id: ID!
+    "Date the issue was resolved"
     solved_at: DateTimeTz
+    "Title of the issue"
+    title: String!
 }
 
 type IssuePagination {
@@ -57,23 +60,15 @@ type IssuePagination {
     total: Int
 }
 
-type Member {
-    household: Household
-    is_admin: Boolean
-    is_permanent: Boolean
-    user: User
-}
-
-type MemberAccess {
-    member: Member
-    token: OAuthToken
-}
-
 type Mutation {
+    createFeedEntry(input: FeedEntryInput): Issue
+    createIssue(input: IssueInput): Issue
     loginAsAdmin(credentials: PasswordLoginInput): AdminAccess
-    loginAsHouseholdMember(token: String): MemberAccess
-    requestLoginAsHouseholdMember(email: String): Boolean
+    loginAsResident(token: String): ResidentAccess
+    removeIssue(id: ID!): Issue
+    requestLoginAsResident(email: String): Boolean
     signUp(email: String, name: String, password: String, phone: String): User
+    solveIssue(id: ID!): Issue
     temporaryMobileLogin(email: String): String
 }
 
@@ -129,31 +124,22 @@ type Pong {
 }
 
 type Query {
+    "Get announcements of household"
+    feed(
+        #Household unique identifier
+        household_id: ID,
+        #Number of elements per page
+        limit: Int = 10,
+        #Page
+        page: Int = 1
+    ): FeedEntries
     "Get details about household"
     household(
         #Household unique identifier
-        household_id: ID
+        id: ID
     ): Household
-    "Get activities of household"
-    householdActivities(
-        #Household unique identifier
-        household_id: ID,
-        #Number of elements per page
-        limit: Int = 10,
-        #Page
-        page: Int = 1
-    ): ActivityPagination
     "Get announcements of household"
-    householdAnnouncements(
-        #Household unique identifier
-        household_id: ID,
-        #Number of elements per page
-        limit: Int = 10,
-        #Page
-        page: Int = 1
-    ): AnnouncementPagination
-    "Get announcements of household"
-    householdIssues(
+    issues(
         #Household unique identifier
         household_id: ID,
         #Number of elements per page
@@ -171,12 +157,26 @@ type Query {
     ): Tenant
 }
 
-type Room {
-    name: String!
+type Resident {
+    "The household"
+    household: Household
+    "Unique identifier"
+    id: ID!
+    "If the member have management capabilities"
+    is_admin: Boolean
+    "If the member is a permanent resident of the household"
+    is_permanent: Boolean
+    "The user"
+    user: User
 }
 
-type Rule {
-    description: String!
+type ResidentAccess {
+    member: Resident
+    token: OAuthToken
+}
+
+type Room {
+    name: String!
 }
 
 type Tenant {
@@ -231,6 +231,20 @@ enum Trashed {
     WITH
     #Only return non-trashed results.
     WITHOUT
+}
+
+input FeedEntryInput {
+    "Household unique identifier"
+    household_id: ID
+}
+
+input IssueInput {
+    "The identifier of the resident who reported the issue"
+    author_id: ID!
+    "Description of the issue"
+    description: String!
+    "Title of the issue"
+    title: String!
 }
 
 "Allows ordering a list of records."

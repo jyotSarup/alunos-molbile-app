@@ -1,5 +1,5 @@
 mutation($token: String) {
-    loginAsHouseholdMember(token: $token) {
+    loginAsResident(token: $token) {
         token {
             token_type
             expires_in
@@ -17,7 +17,7 @@ mutation($token: String) {
                     name
                 }
                 type
-                members {
+                residents {
                     is_permanent
                     is_admin
                     user {
@@ -27,7 +27,7 @@ mutation($token: String) {
                         phone
                     }
                 }
-                rules {
+                guidelines {
                     description
                 }
             }
@@ -38,11 +38,9 @@ mutation($token: String) {
                 display_name
                 id
                 email
-
                 phone
                 first_name
                 last_name
-
             }
         }
     }
