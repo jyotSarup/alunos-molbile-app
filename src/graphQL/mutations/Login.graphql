@@ -32,12 +32,17 @@ mutation($token: String) {
                 }
             }
             user {
-                id
+                first_name
+                last_name
+                phone
                 display_name
+                id
                 email
+
                 phone
                 first_name
                 last_name
+
             }
         }
     }

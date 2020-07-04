@@ -23,6 +23,11 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+import { GET_HOUSEHOLD_ACTIVITIES } from "../constants";
+import store from '../store';
+let household;
+
 export default {
     name: "InfiniteScrollContainer",
     components: {
@@ -31,25 +36,57 @@ export default {
     data() {
         return {
             items: [{}, {}, {}, {}, {}, {}, {}]
+            // items:[]
+            // items: this.$store.state.activities
         };
     },
-
+     beforeCreate() {
+        household = this.$store.state.household
+        try {
+            this.$store.dispatch(
+                GET_HOUSEHOLD_ACTIVITIES,
+                parseInt(household.household.id)
+            );
+        } catch (error) {
+            console.log(error);
+        }
+        // console.log(this.$store.state.activities)
+        // this.items= this.$store.state.activities
+        // console.log(household)
+    },
+    // created() {
+    //     // try {
+    //     //     this.$store.dispatch(
+    //     //         GET_HOUSEHOLD_ACTIVITIES,
+    //     //         parseInt(household.household.id)
+    //     //     );
+    //     // } catch (error) {
+    //     //     console.log(error);
+    //     // }
+    //     // console.log(this.$store.state.activities)
+    //     this.items= this.$store.state.activities
+    // },
+//     computed: {
+//     ...mapState({
+//         items : state => state.activities
+//     }),
+//   },
     methods: {
         onLoad(index, done) {
-            setTimeout(() => {
-                if (this.items.length < 300) {
-                    this.items.push({}, {}, {}, {}, {}, {}, {});
-                    done();
-                }
-            }, 2000);
+            // setTimeout(() => {
+            //     if (this.items.length < 300) {
+            //         this.items.push({}, {}, {}, {}, {}, {}, {});
+            //         done();
+            //     }
+            // }, 2000);
         },
         refresh(done) {
-            setTimeout(() => {
-                if (this.items.length < 300) {
-                    this.items.push({}, {}, {}, {}, {}, {}, {});
-                    done();
-                }
-            }, 1000);
+            // setTimeout(() => {
+            //     if (this.items.length < 300) {
+            //         this.items.push({}, {}, {}, {}, {}, {}, {});
+            //         done();
+            //     }
+            // }, 1000);
         }
     }
 };
