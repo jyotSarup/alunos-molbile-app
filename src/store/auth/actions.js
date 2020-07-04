@@ -35,10 +35,10 @@ export default {
         window.localStorage.setItem(TOKEN_LOCAL_STORAGE, JSON.stringify(data.token));
         commit(MUTATE_TOKEN, data.token);
         commit(MUTATE_USER, data.member.user);
-        commit(MUTATE_HOUSEHOLD, {
-            name: data.member.household.name,
-            type: data.member.household.type
-        });
+        // commit(MUTATE_HOUSEHOLD, {
+        //     name: data.member.household.name,
+        //     type: data.member.household.type
+        // });
         commit(MUTATE_MEMBERS, data.member.household.members);
     },
     [LOGOUT_ACTION]: ({commit}) => {

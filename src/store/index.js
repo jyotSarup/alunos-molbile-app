@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth';
 import household from './household';
+import activity from './activity';
 
 // import example from './module-example'
 
@@ -18,7 +19,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     modules: {
         auth,
-        household
+        household,
+        activity
     },
 
     // enable strict mode (adds overhead!)
