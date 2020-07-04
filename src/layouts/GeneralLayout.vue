@@ -20,10 +20,7 @@
                             </div>
                         </div>
                         <div>
-                            <q-icon
-                                name="notifications_none"
-                                class="icon-position"
-                            />
+                            <Notification class="icon-position" />
                         </div>
                     </q-toolbar-title>
                 </q-toolbar>
@@ -45,8 +42,10 @@
 </template>
 
 <script>
+import Notification from "../components/Notification";
 export default {
     name: "GeneralLayout",
+    components: { Notification },
     data() {
         return {
             title: "",

@@ -1,10 +1,15 @@
 <template>
     <div class="my-profile-card">
         <q-card class="cardstyle">
-            <q-img :src="profileImg" class="image" :ratio="1" basic />
+            <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
+            <q-avatar size="100px" class="image">
+                <img src="https://cdn.quasar.dev/img/avatar.png" />
+            </q-avatar>
             <q-card-section class="cardsection">
-                <div class="title">{{user.user.display_name}}</div>
-                <div class="text">Vancouver, BC</div>
+                <div class="title">
+                    {{ userInfo.user.display_name }}
+                </div>
+                <div class="text">Rome, Italy</div>
                 <div class="text">DOB - 19 July 1994</div>
                 <q-separator />
 
@@ -68,7 +73,7 @@
     </div>
 </template>
 <script>
-import {mapActions, mapState} from 'vuex';
+import { mapState } from "vuex";
 export default {
     name: "Profile",
     created() {
@@ -85,10 +90,9 @@ export default {
     },
     computed: {
         ...mapState({
-             userDetails: state => state.user,
-             
-             
-        }),}
+            userInfo: state => state.auth
+        })
+    }
 };
 </script>
 <style lang="scss" scoped>

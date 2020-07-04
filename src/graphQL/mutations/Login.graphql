@@ -38,6 +38,11 @@ mutation($token: String) {
                 display_name
                 id
                 email
+
+                phone
+                first_name
+                last_name
+
             }
         }
     }
