@@ -25,3 +25,7 @@ body {
 .textPrimaryColor {
     color: #017eff;
 }
+
+.q-btn__wrapper:before {
+    box-shadow: none !important;
+}
