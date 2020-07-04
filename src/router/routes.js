@@ -3,7 +3,7 @@ const routes = [
         path: "/",
         component: () => import("layouts/MainPageLayout.vue"),
         children: [
-            { path: "", redirect: { name: 'auth.login' } },
+            { path: "", redirect: { name: "auth.login" } },
             {
                 name: "feed",
                 path: "/feed",
@@ -37,7 +37,7 @@ const routes = [
                 path: "/homestay/myhomestay",
                 component: () => import("layouts/ProfileLayout.vue"),
                 component: () => import("pages/MyHomestay.vue")
-            },
+            }
         ]
     },
     {
@@ -50,7 +50,11 @@ const routes = [
         path: "/auth",
         component: () => import("layouts/AuthLayout.vue"),
         children: [
-            { path: "", component: () => import("pages/auth/Login.vue"), name: 'auth.login' }
+            {
+                path: "",
+                component: () => import("pages/auth/Login.vue"),
+                name: "auth.login"
+            }
         ]
     },
     {
@@ -64,7 +68,7 @@ const routes = [
         path: "/homestay",
         component: () => import("pages/Homestay.vue")
     },
-    
+
     {
         path: "/homestay/rules",
         component: () => import("pages/Rules.vue")

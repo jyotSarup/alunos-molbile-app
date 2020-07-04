@@ -80,6 +80,8 @@ module.exports = function(/* ctx */) {
                 "QAvatar",
                 "QSeparator",
                 "QDialog",
+                "QBadge",
+                "QUploader"
             ],
 
             directives: ["Ripple", "ClosePopup"],
