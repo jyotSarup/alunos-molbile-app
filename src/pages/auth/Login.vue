@@ -11,7 +11,7 @@
                     unelevated
                     rounded
                     class="q-pa-sm inline-block"
-                    color="primary"
+                    color="positive"
                     label="Login"
                     type="submit"
                 />
@@ -50,8 +50,8 @@
 
 <script>
 import EmailInput from "components/input/EmailInput";
-import {REQUEST_LOGIN_ACTION} from "../../constants";
-import { Notify } from 'quasar'
+import { REQUEST_LOGIN_ACTION } from "../../constants";
+import { Notify } from "quasar";
 
 export default {
     name: "Login",
@@ -68,7 +68,7 @@ export default {
         async login() {
             try {
                 await this.$store.dispatch(REQUEST_LOGIN_ACTION, this.email);
-                await this.$router.push({ name: 'feed' });
+                await this.$router.push({ name: "feed" });
             } catch (error) {
                 console.log(error);
             }

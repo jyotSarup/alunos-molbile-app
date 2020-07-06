@@ -1,16 +1,17 @@
 <template>
     <q-btn
+        stack
+        rounded
+        color="white"
+        class="cardButton"
+        text-color="black"
+        :to="item.path"
         :item="item"
         :key="item"
-        :icon="item.icon"
-        :label="item.label"
-        :to="item.path"
-        stack
-        class="cardButton"
-        rounded
-        no-caps
-        text-color="dark"
-    />
+    >
+        <q-icon center size="56px" :name="item.icon" />
+        <div class="buttonLabel">{{ item.label }}</div>
+    </q-btn>
 </template>
 
 <style scoped>
@@ -18,7 +19,11 @@
     width: 42vw;
     height: 42vw;
     font-size: 16px;
-    background-color: white;
+}
+.buttonLabel {
+    text-transform: capitalize;
+    font-size: 18px;
+    margin-top: 10px;
 }
 </style>
 

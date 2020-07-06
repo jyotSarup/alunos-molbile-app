@@ -28,7 +28,11 @@ export default {
 <style lang="scss">
 .q-header {
     z-index: -1;
-    background-color: "linear-gradient(to bottom, #017eff 30%, #01e8f8 90%)" !important;
+    background-color: linear-gradient(
+        to bottom,
+        #017eff 30%,
+        #01e8f8 90%
+    ) !important;
     border-radius: 0px 0px 0px 90px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;

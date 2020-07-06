@@ -11,24 +11,27 @@
                 </div>
                 <div class="text">Rome, Italy</div>
                 <div class="text">DOB - 19 July 1994</div>
+                <br />
                 <q-separator />
 
                 <q-btn
                     push
                     label="Edit Profile"
                     class="btntab"
-                    text-color="primary"
+                    text-color="positive"
                     style="border-radius: 0 0 0 20px;"
                     :to="editPath"
+                    flat
                 />
 
                 <q-btn
                     push
                     label="Settings"
                     class="btntab"
-                    text-color="primary"
+                    text-color="positive"
                     style="border-radius: 0 0 20px 0;  border-left: 2px solid #eeeeee;"
                     :to="settingPath"
+                    flat
                 />
             </q-card-section>
         </q-card>
@@ -64,7 +67,7 @@
         <q-btn
             rounded
             outline
-            color="grey"
+            color="#334856"
             size="lg"
             label="Log out"
             style="margin:2rem 0 0 0; padding: 0 2rem"

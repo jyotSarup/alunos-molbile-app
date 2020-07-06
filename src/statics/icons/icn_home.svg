@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.2" height="20" viewBox="0 0 18.2 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #c3cbce;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path id="icn_home" class="cls-1" d="M9.1,12.5a3.009,3.009,0,0,0-3,3V19H1V7.8L9.1,1l8.1,6.8V19H12.1l-.1-.2V15.5a2.865,2.865,0,0,0-2.9-3"/>
+</svg>

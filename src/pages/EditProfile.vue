@@ -126,6 +126,7 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     box-shadow: none !important;
+    border: none;
     .cardsection {
         padding: 0 !important;
     }
@@ -138,6 +139,7 @@ export default {
         font-size: 12 !important;
         font-weight: bold !important;
         margin-top: 1rem;
+        color: #01c0fb;
     }
     .text {
         font-size: 9;

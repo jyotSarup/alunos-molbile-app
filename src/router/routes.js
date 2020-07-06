@@ -1,100 +1,102 @@
 const routes = [
     {
-        path: "/",
-        component: () => import("layouts/MainPageLayout.vue"),
+        path: '/',
+        component: () => import('layouts/MainPageLayout.vue'),
         children: [
-            { path: "", redirect: { name: "auth.login" } },
+            { path: '', redirect: { name: 'auth.login' } },
             {
-                name: "feed",
-                path: "/feed",
-                component: () => import("../pages/Feed.vue")
+                name: 'feed',
+                path: '/feed',
+                component: () => import('../pages/Feed.vue')
             },
             {
-                name: "addHouseIssue",
-                path: "/add-house-issue",
-                component: () => import("../pages/forms/AddHouseIssue.vue")
+                name: 'addHouseIssue',
+                path: '/add-house-issue',
+                component: () => import('../pages/forms/AddHouseIssue.vue')
             },
             {
-                name: "addAnnouncement",
-                path: "/add-announcement",
-                component: () => import("../pages/forms/AddAnnouncement.vue")
+                name: 'addAnnouncement',
+                path: '/add-announcement',
+                component: () => import('../pages/forms/AddAnnouncement.vue')
             },
             {
-                path: "/homestay/houseissues",
-                component: () => import("../pages/HouseIssues.vue")
+                path: '/homestay/houseissues',
+                component: () => import('../pages/HouseIssues.vue')
             },
             {
-                name: "help",
-                path: "/help",
-                component: () => import("../pages/Help.vue")
+                name: 'help',
+                path: '/help',
+                component: () => import('../pages/Help.vue')
             },
             {
-                path: "/homestay",
-                component: () => import("pages/Homestay.vue")
-            },
-            {
-                name: "myHomeStay",
-                path: "/homestay/myhomestay",
-                component: () => import("layouts/ProfileLayout.vue"),
-                component: () => import("pages/MyHomestay.vue")
+                name: 'homestay',
+                path: '/homestay',
+                component: () => import('pages/Homestay.vue')
             }
         ]
     },
     {
-        path: "/profile",
-        name: "profile",
-        component: () => import("layouts/ProfileLayout.vue"),
-        children: [{ path: "", component: () => import("pages/Profile.vue") }]
-    },
-    {
-        path: "/auth",
-        component: () => import("layouts/AuthLayout.vue"),
+        path: '/',
+        component: () => import('layouts/GeneralLayout.vue'),
         children: [
             {
-                path: "",
-                component: () => import("pages/auth/Login.vue"),
-                name: "auth.login"
+                name: 'myHomeStay',
+                path: '/myhomestay',
+                component: () => import('pages/MyHomestay.vue')
             }
         ]
     },
     {
-        path: "/profile/edit",
-        component: () => import("layouts/GeneralLayout.vue"),
+        path: '/profile',
+        name: 'profile',
+        component: () => import('layouts/ProfileLayout.vue'),
+        children: [{ path: '', component: () => import('pages/Profile.vue') }]
+    },
+    {
+        path: '/auth',
+        component: () => import('layouts/AuthLayout.vue'),
         children: [
-            { path: "", component: () => import("pages/EditProfile.vue") }
+            {
+                path: '',
+                component: () => import('pages/auth/Login.vue'),
+                name: 'auth.login'
+            }
         ]
     },
     {
-        path: "/homestay",
-        component: () => import("pages/Homestay.vue")
+        path: '/profile/edit',
+        component: () => import('layouts/GeneralLayout.vue'),
+        children: [
+            { path: '', component: () => import('pages/EditProfile.vue') }
+        ]
     },
 
     {
-        path: "/homestay/rules",
-        component: () => import("pages/Rules.vue")
+        path: '/homestay/rules',
+        component: () => import('pages/Rules.vue')
     },
     {
-        name: "camera",
-        path: "/camera",
-        component: () => import("components/UpdatePhoto/Camera.vue")
+        name: 'camera',
+        path: '/camera',
+        component: () => import('components/UpdatePhoto/Camera.vue')
     },
     {
-        name: "help.emergency.call",
-        path: "/help/emergency-call",
-        component: () => import("pages/EmergencyCall.vue")
+        name: 'help.emergency.call',
+        path: '/help/emergency-call',
+        component: () => import('pages/EmergencyCall.vue')
     },
     {
-        name: "help.faqs",
-        path: "/help/faqs",
-        component: () => import("pages/Faqs.vue")
+        name: 'help.faqs',
+        path: '/help/faqs',
+        component: () => import('pages/Faqs.vue')
     }
 ];
 
 // Always leave this as last one
-if (process.env.MODE !== "ssr") {
+if (process.env.MODE !== 'ssr') {
     routes.push({
-        path: "*",
-        component: () => import("pages/Error404.vue")
+        path: '*',
+        component: () => import('pages/Error404.vue')
     });
 }
 

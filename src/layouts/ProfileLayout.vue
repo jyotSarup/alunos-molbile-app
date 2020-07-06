@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 .profileHeader {
     z-index: -1;
-    background-image: "linear-gradient(180deg, #017eff 30%, #01e8f8 90%)";
+    background-image: linear-gradient(180deg, #017eff 30%, #01e8f8 90%);
     border-radius: 0px 0px 0px 90px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;
