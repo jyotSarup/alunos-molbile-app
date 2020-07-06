@@ -2,45 +2,82 @@
     <q-footer bordered class="bg-white text-primary">
         <q-tabs
             no-caps
-            active-color="primary"
+            active-color="positive"
             indicator-color="transparent"
             class="text-grey"
             v-model="tab"
             dense
             align="justify"
         >
-            <q-tab name="feed" icon="calendar_today" label="Feed" @click="openFeed()"/>
-            <q-tab name="homestay" icon="home" label="Homestay" @click="openMyHomestay()" />
+            <q-tab
+                name="feed"
+                icon="calendar_today"
+                label="Feed"
+                @click="openFeed()"
+            />
+            <q-tab
+                name="homestay"
+                icon="img:../statics/icons/icn_home.svg"
+                label="Homestay"
+                @click="openMyHomestay()"
+                @select="current = 'homestay'"
+            />
+
             <q-fab
                 v-model="fabCenter"
                 vertical-actions-align="center"
-                color="primary"
+                class="floatButton"
                 glossy
-                icon="add"
                 direction="up"
-                >
-
-            <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
+            >
+                <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
                 <q-list bordered separator>
-
-                    <q-item clickable v-ripple class="bottom-list-item" @click="addHouseIssue">
-                    <div style="justify-content: center; margin-right:10px"><q-icon name="house"/></div>
-                        <q-item-section style="font-size: 20px;"> Add House Issue</q-item-section>
+                    <q-item
+                        clickable
+                        v-ripple
+                        class="bottom-list-item"
+                        @click="addHouseIssue"
+                    >
+                        <div style="justify-content: center; margin-right:10px">
+                            <q-icon
+                                name="img:../statics/icons/iconQuickHouseIssue.png"
+                            />
+                        </div>
+                        <q-item-section style="font-size: 20px;">
+                            Add House Issue</q-item-section
+                        >
                     </q-item>
 
-                    <q-item clickable v-ripple class="bottom-list-item" @click="addHouseAnnouncement">
-                    <div style="justify-content: center; margin-right:10px"><q-icon name="las la-bullhorn"/></div>
+                    <q-item
+                        clickable
+                        v-ripple
+                        class="bottom-list-item"
+                        @click="addHouseAnnouncement"
+                    >
+                        <div style="justify-content: center; margin-right:10px">
+                            <q-icon
+                                name="img:../statics/icons/iconQuickAnnouncement.png"
+                            />
+                        </div>
                         <q-item-section>
                             <q-item-label>Add Announcement</q-item-label>
                         </q-item-section>
                     </q-item>
-
-                    
                 </q-list>
-                </q-fab>
+            </q-fab>
 
-            <q-tab name="help" icon="help_outline" label="Help" @click="openHelp"/>
-            <q-tab name="profile" icon="perm_identity" label="Profile" @click="openProfile"/>
+            <q-tab
+                name="help"
+                icon="img:../statics/icons/iconFooterHelp.png"
+                label="Help"
+                @click="openHelp"
+            />
+            <q-tab
+                name="profile"
+                icon="perm_identity"
+                label="Profile"
+                @click="openProfile"
+            />
         </q-tabs>
     </q-footer>
 </template>
@@ -50,15 +87,14 @@
     overflow: visible !important;
 }
 .q-list {
-    color: white;
-    background: linear-gradient(180deg, #017eff 40%, #01e8f8 95%);
-    width: 600%;
+    color: black;
+    background-color: white;
+    width: fit-content;
     border-radius: 10px;
     box-shadow: 3px 3px 4px #efefef;
-}   
+}
 .bottom-list-item {
-    
-    padding: 1em;
+    padding: 1em 3em;
 }
 .q-fab {
     transform: translateY(-50%) !important;
@@ -81,10 +117,16 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     padding: 1em;
     margin: 1em;
 }
+.floatButton {
+    background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px #fff;
+}
 </style>
 
 <script>
-import router from "../router"
+import router from "../router";
 
 export default {
     name: "Footer",
@@ -138,23 +180,23 @@ export default {
                     // console.log('I am triggered on both OK and Cancel')
                 });
         },
-        openFeed(){
-            this.$router.push('/feed');
+        openFeed() {
+            this.$router.push("/feed");
         },
-        openMyHomestay(){
-            this.$router.push({ name: 'myHomeStay' });
+        openMyHomestay() {
+            this.$router.push({ name: "homestay" });
         },
-        openHelp(){
-            this.$router.push({ name: 'help' });
+        openHelp() {
+            this.$router.push({ name: "help" });
         },
-        openProfile(){
-            this.$router.push('/profile');
+        openProfile() {
+            this.$router.push("/profile");
         },
-        addHouseAnnouncement(){
-            this.$router.push('/add-announcement')
+        addHouseAnnouncement() {
+            this.$router.push("/add-announcement");
         },
-        addHouseIssue(){
-            this.$router.push('/add-house-issue')
+        addHouseIssue() {
+            this.$router.push("/add-house-issue");
         }
     }
 };

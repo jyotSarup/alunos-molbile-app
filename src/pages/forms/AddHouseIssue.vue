@@ -1,58 +1,84 @@
 <template>
-<div class=" window-width row justify-center formWrapper">
-    <q-form
-        action="https://some-url.com"
-        method="post"
-        @submit="onSubmit"
-        @reset="onReset"
-        class="q-gutter-md"
-    >
-    <div class="inputFields">
-        <q-input
-            autofocus
-            v-model="titleText"
-            label="Title"
-            hint="water tap does not work"
-            lazy-rules
-            :rules="[val => (val && val.length > 0) || 'Please enter a title']"
-        />
+    <div class=" window-width row justify-center formWrapper">
+        <q-form
+            action="https://some-url.com"
+            method="post"
+            @submit="onSubmit"
+            @reset="onReset"
+            class="q-gutter-md"
+        >
+            <div class="inputFields">
+                <q-input
+                    autofocus
+                    v-model="titleText"
+                    label="Title"
+                    label-color="positive"
+                    hint="water tap does not work"
+                    lazy-rules
+                    :rules="[
+                        val => (val && val.length > 0) || 'Please enter a title'
+                    ]"
+                />
 
-        <q-select
-            v-model="issueSubject"
-            :options="issueTypes"
-            label="Subject"
-            lazy-rules
-            :rules="[
-                val => (val !== null && val !== '') || 'Please select a subject'
-            ]"
-        />
+                <q-select
+                    v-model="issueSubject"
+                    :options="issueTypes"
+                    label="Subject"
+                    label-color="positive"
+                    lazy-rules
+                    :rules="[
+                        val =>
+                            (val !== null && val !== '') ||
+                            'Please select a subject'
+                    ]"
+                />
 
-        <q-input v-model="description" outlined label="Description" lazy-rules
-            :rules="[
-                val => (val !== null && val !== '') || 'Please write a description'
-            ]" type="textarea"></q-input>
+                <q-input
+                    v-model="description"
+                    outlined
+                    label="Description"
+                    lazy-rules
+                    label-color="positive"
+                    :rules="[
+                        val =>
+                            (val !== null && val !== '') ||
+                            'Please write a description'
+                    ]"
+                    type="textarea"
+                ></q-input>
 
+                <small style="display:block; margin:1em ; color:#01C0FB">
+                    Add Photo/Video
+                </small>
 
-        <small style="display:block; margin:1em "> Add Photo/Video </small>
-
-        <q-btn label="Add" type="submit" color="accent"  style="width: 30% ; border-radius:20px ; margin-left:0"></q-btn>
-        <!--q-toggle
+                <q-btn
+                    label="Add"
+                    type="submit"
+                    color="accent"
+                    style="width: 30% ; border-radius:20px ; margin-left:0"
+                ></q-btn>
+                <!--q-toggle
             v-model="accept"
             label="I accept the license and terms"
         ></q-toggle-->
-        </div>
-        <div style="margin:0; margin-top:1em">
-            <q-btn label="Submit" type="submit" color="primary"  style="width: 70% ; border-radius:20px ; margin-left:0"></q-btn>
-            <q-btn
-                label="Reset"
-                type="reset"
-                color="primary"
-                flat
-                class="q-ml-sm"
-                style="border:none !important"
-            ></q-btn>
-        </div>
-    </q-form>
+            </div>
+            <div style="margin:0; margin-top:1em">
+                <q-btn
+                    label="Generate Issue"
+                    type="submit"
+                    class="gradientButton"
+                    style="width: 100% ; border-radius:20px ; margin-left:0"
+                ></q-btn>
+                <!-- <q-btn
+                    label="Reset"
+                    type="reset"
+                    color="primary"
+                    flat
+                    class="q-ml-sm"
+                    style="border:none !important"
+                ></q-btn> -->
+            </div>
+        </q-form>
     </div>
 </template>
 
@@ -64,12 +90,12 @@ export default {
             age: null,
             issueTypes: ["Food", "Plumbing", "Rules"],
             accept: false,
-            description:"",
-            issueSubject:"",
-            titleText:""
+            description: "",
+            issueSubject: "",
+            titleText: ""
         };
     },
-created() {
+    created() {
         this.$emit("updateTitle", "Add House Issue");
     },
     methods: {
@@ -96,29 +122,29 @@ created() {
             this.age = null;
             this.accept = false;
         }
-
     }
 };
 </script>
 
 <style>
-
-.formWrapper : {
-    
+.formwrapper : {
 }
 .q-gutter-md {
     width: 100%;
-    margin:auto;
+    margin: auto;
     height: 70%;
     padding: 1em;
-    margin:auto;
+    margin: auto;
 }
 
 .inputFields {
-background: white;
-padding: 2em;
-margin:auto;
-border-radius:20px;
+    background: white;
+    padding: 2em;
+    margin: auto;
+    border-radius: 20px;
 }
-
+.gradientButton {
+    background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
+    color: white;
+}
 </style>

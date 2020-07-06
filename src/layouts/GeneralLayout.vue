@@ -42,10 +42,11 @@
 </template>
 
 <script>
+import Footer from "../components/Footer";
 import Notification from "../components/Notification";
 export default {
     name: "GeneralLayout",
-    components: { Notification },
+    components: { Footer, Notification },
     data() {
         return {
             title: "",
@@ -64,7 +65,7 @@ export default {
 </script>
 <style lang="scss">
 .q-header {
-    background-image: "linear-gradient(180deg, #017eff 30%, #01e8f8 90%)";
+    background-color: white;
     border-radius: 0px 0px 0px 50px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 30px;
