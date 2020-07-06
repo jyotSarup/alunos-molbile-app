@@ -73,10 +73,11 @@ const routes = [
         path: "/homestay/rules",
         component: () => import("pages/Rules.vue")
     },
-    // {
-    //     path: "/help",
-    //     component: () => import("pages/Help.vue")
-    // },
+    {
+        name: "camera",
+        path: "/camera",
+        component: () => import("components/UpdatePhoto/Camera.vue")
+    },
     {
         name: "help.emergency.call",
         path: "/help/emergency-call",

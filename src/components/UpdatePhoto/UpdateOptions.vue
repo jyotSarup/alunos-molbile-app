@@ -6,6 +6,7 @@
                     label="Take Photo"
                     text-color="primary"
                     class="fullwidth q-mb-sm"
+                    @click="openCamera"
                 />
                 <input
                     hidden
@@ -39,8 +40,10 @@
 </template>
 
 <script>
+import Camera from "./Camera";
 export default {
     name: "updateoptions",
+    // components: { Camera },
     props: ["selectedPhoto", "showdialog", "loadPhoto"],
     data() {
         return {};
@@ -55,6 +58,9 @@ export default {
             this.showdialog = false;
             this.$forceUpdate();
             console.log(this.showdialog);
+        },
+        async openCamera() {
+            await this.$router.push({ name: "camera" });
         }
     }
 };
