@@ -70,6 +70,7 @@ const routes = [
             { path: "", component: () => import("pages/EditProfile.vue") }
         ]
     },
+
     {
         path: "/homestay/rules",
         component: () => import("pages/Rules.vue")

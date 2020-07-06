@@ -4,7 +4,13 @@
             <!-- <Camera /> -->
             <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
             <q-avatar size="100px" class="image">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
+                <img :src="imageUrl" />
+                <q-btn
+                    class="editphotoStyle"
+                    @click.prevent="updatePhotoClicked"
+                >
+                    <q-icon name="edit" />
+                </q-btn>
             </q-avatar>
             <q-card class="infoCard">
                 <q-card-section class="cardsection ">
@@ -44,34 +50,72 @@
                 <div class="title textPrimaryColor">Social Links</div>
                 <q-input type="text" :label="firstName" />
             </q-card-section>
+            <div v-show="showdialog">
+                <UpdateOptionDialog
+                    :selectedPhoto="selectedPhoto"
+                    :showdialog.sync="showdialog"
+                    :loadPhoto="loadPhoto"
+                    ref="uPhoto"
+                />
+            </div>
         </q-card>
     </div>
 </template>
 <script>
 import { mapState } from "vuex";
-// import Camera from "../components/Camera";
+import UpdateOptionDialog from "../components/UpdatePhoto/UpdateOptions";
 export default {
     name: "EditProfile",
-    // components: { Camera },
+    components: { UpdateOptionDialog },
+    // props: ["selectedPhoto"],
     created() {
         this.$emit("updateTitle", "Edit Profile", "", "/profile");
     },
     data() {
         return {
+            showdialog: false,
+            // selectedPhoto: null,
             firstName: "Mariam",
             lastName: "Jackson",
             email: "mariamjackson@gmail.com",
             dateofBirth: "19 July 1994",
-            profileImg: "../statics/img/profile.jpg",
+            imageUrl: "../statics/img/profile.jpg",
             lorem:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         };
+    },
+    methods: {
+        updatePhotoClicked() {
+            this.showdialog = true;
+            this.$forceUpdate();
+        },
+        loadPhoto(event) {
+            console.log("parent load photo triggered!");
+            var reader,
+                files = event.target.files;
+
+            if (files.length === 0) {
+                console.log("peak a photo");
+            }
+
+            reader = new FileReader();
+            reader.onload = event => {
+                this.imageUrl = event.target.result;
+            };
+            reader.readAsDataURL(files[0]);
+            this.showdialog = false;
+            this.$forceUpdate();
+            console.log("parent photo", this.imageUrl);
+        }
     },
     computed: {
         ...mapState({
             userInfo: state => state.auth
         })
     }
+    // watch: {
+    //     showdialog
+    // }
 };
 </script>
 <style lang="scss">
@@ -107,5 +151,14 @@ export default {
         text-align: left;
         padding: 1rem 1.5rem 1.5rem 1.5rem;
     }
+}
+.editphotoStyle {
+    position: absolute;
+    top: 69px !important;
+    right: 11px !important;
+    background-color: white;
+    border-radius: 80px;
+    width: 2rem;
+    height: 2rem;
 }
 </style>
