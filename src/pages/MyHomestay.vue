@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <!-- <q-item clickable v-ripple>
             <q-item-section side>
                 <q-avatar round size="48px">
@@ -48,17 +48,15 @@
 </template>
 
 <script>
-import HomestayDetails from '../components/HomestayDetails'
-import MemberList from '../components/MemberList'
+import HomestayDetails from "../components/HomestayDetails";
+import MemberList from "../components/MemberList";
 export default {
     name: "MyHomestay",
-    components :{HomestayDetails,MemberList},
+    components: { HomestayDetails, MemberList },
     created() {
         this.$emit("updateTitle", "My Homestay");
     }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

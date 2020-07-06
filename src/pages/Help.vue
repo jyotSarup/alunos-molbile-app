@@ -19,22 +19,22 @@ export default {
             items: [
                 {
                     label: "Add Critical Issue",
-                    icon: "info",
+                    icon: "img:../statics/icons/iconCriticalIssue.png",
                     path: "/help/add-critical-issue"
                 },
                 {
                     label: "Contact Agency",
-                    icon: "feedback",
+                    icon: "img:../statics/icons/iconContactAgency.png",
                     path: "/help/contact-agency"
                 },
                 {
                     label: "Emergency Call",
-                    icon: "info",
-                    path: "/help/emergency-call"
+                    icon: "img:../statics/icons/iconEmergencyCall.png",
+                    path: ""
                 },
                 {
                     label: "FAQs",
-                    icon: "info",
+                    icon: "img:../statics/icons/iconFAQ.png",
                     path: "/help/faqs"
                 }
             ]

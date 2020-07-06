@@ -19,30 +19,26 @@ export default {
             items: [
                 {
                     label: "My Homestay",
-                    icon: "people",
-                    path: "/homestay/myhomestay"
+                    icon: "img:../statics/icons/iconMyHomestay.png",
+                    path: "/myhomestay"
                 },
                 {
                     label: "Rules",
-                    icon: "gavel",
+                    icon: "img:../statics/icons/iconRules.png",
                     path: "/homestay/rules"
                 },
                 {
-                    label: "Information",
-                    icon: "info"
-                },
-                {
                     label: "Feedback",
-                    icon: "feedback"
+                    icon: "img:../statics/icons/iconFeedback.png"
                 },
                 {
-                    label: "House Issue",
-                    icon: "build",
+                    label: "House Issues",
+                    icon: "img:../statics/icons/iconHouseIssues.png",
                     path: "/homestay/houseissues"
                 },
                 {
                     label: "Announcement",
-                    icon: "announcement"
+                    icon: "img:../statics/icons/iconAnnouncements.png"
                 }
             ]
         };

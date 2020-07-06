@@ -29,13 +29,19 @@ const routes = [
                 component: () => import("../pages/Help.vue")
             },
             {
+                name: "homestay",
                 path: "/homestay",
                 component: () => import("pages/Homestay.vue")
-            },
+            }
+        ]
+    },
+    {
+        path: "/",
+        component: () => import("layouts/GeneralLayout.vue"),
+        children: [
             {
                 name: "myHomeStay",
-                path: "/homestay/myhomestay",
-                component: () => import("layouts/ProfileLayout.vue"),
+                path: "/myhomestay",
                 component: () => import("pages/MyHomestay.vue")
             }
         ]
@@ -64,23 +70,10 @@ const routes = [
             { path: "", component: () => import("pages/EditProfile.vue") }
         ]
     },
-    {
-        path: "/homestay",
-        component: () => import("pages/Homestay.vue")
-    },
 
     {
         path: "/homestay/rules",
         component: () => import("pages/Rules.vue")
-    },
-    // {
-    //     path: "/help",
-    //     component: () => import("pages/Help.vue")
-    // },
-    {
-        name: "help.emergency.call",
-        path: "/help/emergency-call",
-        component: () => import("pages/EmergencyCall.vue")
     },
     {
         name: "help.faqs",
