@@ -1,7 +1,7 @@
 <template>
     <q-layout view=" LpR fFf">
         <q-page-container style=" padding-top:20%;">
-            <q-header elevated>
+            <q-header elevated class="mainHeader">
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
                         <div class="text-white title-position">
@@ -50,7 +50,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.q-header {
+.mainHeader {
     z-index: -1;
     background-image: linear-gradient(180deg, #017eff 30%, #01e8f8 90%);
     border-radius: 0px 0px 0px 90px;

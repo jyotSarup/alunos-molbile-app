@@ -30,13 +30,13 @@
                 @updateTitle="updateTitle"
                 style=" margin-top:2.6rem; text-align: center; position:relative"
             />
-            <!-- <q-footer elevated>
+            <q-footer elevated>
                 <q-toolbar class="glossy">
                     <q-toolbar-title
                         ><Footer style=""></Footer
                     ></q-toolbar-title>
                 </q-toolbar>
-            </q-footer> -->
+            </q-footer>
         </q-page-container>
     </q-layout>
 </template>
@@ -64,8 +64,10 @@ export default {
 };
 </script>
 <style lang="scss">
-.q-header {
-    background-color: white;
+.q-layout_generallayout {
+    background-color: white !important;
+    color: black !important;
+    background-image: unset;
     border-radius: 0px 0px 0px 50px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 30px;
@@ -98,9 +100,5 @@ export default {
     .q-layout__shadow:after {
         box-shadow: none !important;
     }
-}
-.q-layout_generallayout {
-    background-color: white !important;
-    color: black !important;
 }
 </style>

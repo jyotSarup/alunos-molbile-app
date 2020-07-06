@@ -1,7 +1,7 @@
 <template>
     <q-layout>
         <q-page-container>
-            <q-header>
+            <q-header class="authHeader">
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
                         <div class="text-white title-position">
@@ -26,13 +26,9 @@ export default {
 </script>
 
 <style lang="scss">
-.q-header {
+.authHeader {
     z-index: -1;
-    background-color: linear-gradient(
-        to bottom,
-        #017eff 30%,
-        #01e8f8 90%
-    ) !important;
+    background-image: linear-gradient(180deg, #017eff 30%, #01e8f8 90%);
     border-radius: 0px 0px 0px 90px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;
