@@ -12,10 +12,10 @@ module.exports = function(/* ctx */) {
         // app boot file (/src/boot)
         // --> boot files are part of "main.js"
         // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-        boot: ["i18n"],
+        boot: ['i18n'],
 
         // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-        css: ["app.scss"],
+        css: ['app.scss'],
 
         // https://github.com/quasarframework/quasar/tree/dev/extras
         extras: [
@@ -27,14 +27,14 @@ module.exports = function(/* ctx */) {
             // 'line-awesome',
             // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-            "roboto-font", // optional, you are not bound to it
-            "material-icons" // optional, you are not bound to it
+            'roboto-font', // optional, you are not bound to it
+            'material-icons' // optional, you are not bound to it
         ],
 
         // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
         framework: {
-            iconSet: "material-icons", // Quasar icon set
-            lang: "en-us", // Quasar language pack
+            iconSet: 'material-icons', // Quasar icon set
+            lang: 'en-us', // Quasar language pack
 
             // Possible values for "all":
             // * 'auto' - Auto-import needed Quasar components & directives
@@ -46,48 +46,48 @@ module.exports = function(/* ctx */) {
             all: false,
 
             components: [
-                "QLayout",
-                "QHeader",
-                "QDrawer",
-                "QPageContainer",
-                "QPage",
-                "QToolbar",
-                "QToolbarTitle",
-                "QBtn",
-                "QIcon",
-                "QList",
-                "QItem",
-                "QItemSection",
-                "QItemLabel",
-                "QCard",
-                "QCardSection",
-                "QCardActions",
-                "QInfiniteScroll",
-                "QSpinner",
-                "QSpinnerDots",
-                "QPullToRefresh",
-                "QFooter",
-                "QTab",
-                "QTabs",
-                "QFab",
-                "QInput",
-                "QSelect",
-                "QForm",
-                "QCheckbox",
-                "QSpace",
-                "QImg",
-                "QExpansionItem",
-                "QAvatar",
-                "QSeparator",
-                "QDialog",
-                "QBadge",
-                "QUploader"
+                'QLayout',
+                'QHeader',
+                'QDrawer',
+                'QPageContainer',
+                'QPage',
+                'QToolbar',
+                'QToolbarTitle',
+                'QBtn',
+                'QIcon',
+                'QList',
+                'QItem',
+                'QItemSection',
+                'QItemLabel',
+                'QCard',
+                'QCardSection',
+                'QCardActions',
+                'QInfiniteScroll',
+                'QSpinner',
+                'QSpinnerDots',
+                'QPullToRefresh',
+                'QFooter',
+                'QTab',
+                'QTabs',
+                'QFab',
+                'QInput',
+                'QSelect',
+                'QForm',
+                'QCheckbox',
+                'QSpace',
+                'QImg',
+                'QExpansionItem',
+                'QAvatar',
+                'QSeparator',
+                'QDialog',
+                'QBadge',
+                'QUploader'
             ],
 
-            directives: ["Ripple", "ClosePopup"],
+            directives: ['Ripple', 'ClosePopup'],
 
             // Quasar plugins
-            plugins: ["Dialog", "BottomSheet"]
+            plugins: ['Dialog', 'BottomSheet']
         },
 
         // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -101,7 +101,7 @@ module.exports = function(/* ctx */) {
 
         // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
         build: {
-            vueRouterMode: "hash", // available values: 'hash', 'history'
+            vueRouterMode: 'hash', // available values: 'hash', 'history'
 
             // modern: true, // https://quasar.dev/quasar-cli/modern-build
             // rtl: false, // https://quasar.dev/options/rtl-support
@@ -117,19 +117,19 @@ module.exports = function(/* ctx */) {
             extendWebpack(cfg) {
                 cfg.resolve.extensions = [
                     ...cfg.resolve.extensions,
-                    ".gql",
-                    ".graphql"
+                    '.gql',
+                    '.graphql'
                 ];
                 cfg.module.rules.push({
-                    enforce: "pre",
+                    enforce: 'pre',
                     test: /\.(js|vue)$/,
-                    loader: "eslint-loader",
+                    loader: 'eslint-loader',
                     exclude: /node_modules/
                 });
                 cfg.module.rules.push({
                     //enforce: 'pre',
                     test: /\.(graphql|gql)$/,
-                    loader: "graphql-tag/loader",
+                    loader: 'graphql-tag/loader',
                     exclude: /node_modules/
                 });
             }
@@ -144,7 +144,7 @@ module.exports = function(/* ctx */) {
 
         // animations: "all", // --- includes all animations
         // https://quasar.dev/options/animations
-        animations: ["fadeInLeft", "fadeInRight"],
+        animations: ['fadeInLeft', 'fadeInRight'],
 
         // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
         ssr: {
@@ -153,41 +153,41 @@ module.exports = function(/* ctx */) {
 
         // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
         pwa: {
-            workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
+            workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
             workboxOptions: {}, // only for GenerateSW
             manifest: {
-                name: "Alunos",
-                short_name: "Alunos",
-                description: "An app for homestay households",
-                display: "standalone",
-                orientation: "portrait",
-                background_color: "#ffffff",
-                theme_color: "#027be3",
+                name: 'Alunos',
+                short_name: 'Alunos',
+                description: 'An app for homestay households',
+                display: 'standalone',
+                orientation: 'portrait',
+                background_color: '#ffffff',
+                theme_color: '#027be3',
                 icons: [
                     {
-                        src: "statics/icons/icon-128x128.png",
-                        sizes: "128x128",
-                        type: "image/png"
+                        src: 'statics/icons/icon-128x128.png',
+                        sizes: '128x128',
+                        type: 'image/png'
                     },
                     {
-                        src: "statics/icons/icon-192x192.png",
-                        sizes: "192x192",
-                        type: "image/png"
+                        src: 'statics/icons/icon-192x192.png',
+                        sizes: '192x192',
+                        type: 'image/png'
                     },
                     {
-                        src: "statics/icons/icon-256x256.png",
-                        sizes: "256x256",
-                        type: "image/png"
+                        src: 'statics/icons/icon-256x256.png',
+                        sizes: '256x256',
+                        type: 'image/png'
                     },
                     {
-                        src: "statics/icons/icon-384x384.png",
-                        sizes: "384x384",
-                        type: "image/png"
+                        src: 'statics/icons/icon-384x384.png',
+                        sizes: '384x384',
+                        type: 'image/png'
                     },
                     {
-                        src: "statics/icons/icon-512x512.png",
-                        sizes: "512x512",
-                        type: "image/png"
+                        src: 'statics/icons/icon-512x512.png',
+                        sizes: '512x512',
+                        type: 'image/png'
                     }
                 ]
             }
@@ -196,7 +196,7 @@ module.exports = function(/* ctx */) {
         // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
         cordova: {
             // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
-            id: "org.alunos.app"
+            id: 'org.alunos.app'
         },
 
         // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
@@ -206,7 +206,7 @@ module.exports = function(/* ctx */) {
 
         // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
         electron: {
-            bundler: "packager", // 'packager' or 'builder'
+            bundler: 'packager', // 'packager' or 'builder'
 
             packager: {
                 // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
@@ -222,7 +222,7 @@ module.exports = function(/* ctx */) {
             builder: {
                 // https://www.electron.build/configuration/configuration
 
-                appId: "mobile"
+                appId: 'mobile'
             },
 
             // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
