@@ -36,21 +36,18 @@ const routes = [
         ]
     },
     {
-        path: "/",
-        component: () => import("layouts/GeneralLayout.vue"),
-        children: [
-            {
-                name: "myHomeStay",
-                path: "/myhomestay",
-                component: () => import("pages/MyHomestay.vue")
-            }
-        ]
-    },
-    {
         path: "/profile",
         name: "profile",
         component: () => import("layouts/ProfileLayout.vue"),
         children: [{ path: "", component: () => import("pages/Profile.vue") }]
+    },
+    {
+        path: "/myHomestay",
+        name: "myHomestay",
+        component: () => import("layouts/GeneralLayout.vue"),
+        children: [
+            { path: "", component: () => import("pages/MyHomestay.vue") }
+        ]
     },
     {
         path: "/auth",
