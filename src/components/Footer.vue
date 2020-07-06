@@ -20,14 +20,12 @@
                 icon="img:../statics/icons/icn_home.svg"
                 label="Homestay"
                 @click="openMyHomestay()"
-                @select="current = 'homestay'"
             />
 
             <q-fab
                 v-model="fabCenter"
                 vertical-actions-align="center"
                 class="floatButton"
-                glossy
                 direction="up"
             >
                 <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
@@ -181,10 +179,10 @@ export default {
                 });
         },
         openFeed() {
-            this.$router.push("/feed");
+            this.$router.replace("/feed");
         },
         openMyHomestay() {
-            this.$router.push({ name: "homestay" });
+            this.$router.replace("homestay");
         },
         openHelp() {
             this.$router.push({ name: "help" });
