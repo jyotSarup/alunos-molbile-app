@@ -38,6 +38,27 @@ mutation($token: String) {
                 display_name
                 id
                 email
+                profile {
+                    biography
+                    birthdate
+                    country {
+                        name
+                    }
+                    language {
+                        name
+                    }
+                    allergies {
+                        description
+                    }
+                    hobbies {
+                        description
+                    }
+                    food_preferences {
+                        food {
+                            name
+                        }
+                    }
+                }
             }
         }
     }

@@ -23,7 +23,10 @@
                     <div class="title textPrimaryColor">Display Name</div>
                     <q-input type="text" :value="userInfo.user.display_name" />
                     <div class="title textPrimaryColor">Date of Birth</div>
-                    <q-input type="text" :value="dateofBirth" />
+                    <q-input
+                        type="text"
+                        :value="userInfo.user.profile.birthdate"
+                    />
                 </q-card-section>
             </q-card>
         </q-card>
@@ -31,24 +34,46 @@
             <q-card-section class="cardsection">
                 <div class="title textPrimaryColor">About</div>
                 <q-input
-                    v-model="textareaModel"
+                    name="biography"
                     type="textarea"
+                    v-model="userInfo.user.profile.biography"
                     outlined
                     clearable
-                    :label="lorem"
+                    :defaultValue="userInfo.user.profile.biography"
                     :shadow-text="textareaShadowText"
                     @keydown="processTextareaFill"
                     @focus="processTextareaFill"
-                />
+                >
+                </q-input>
 
                 <div class="title textPrimaryColor">Food Preferences</div>
-                <q-input type="text" :label="firstName" />
-                <div class="title textPrimaryColor">Favorite Places</div>
-                <q-input type="text" :label="firstName" />
-                <div class="title textPrimaryColor">Spare Time Activities</div>
-                <q-input type="text" :label="firstName" />
-                <div class="title textPrimaryColor">Social Links</div>
-                <q-input type="text" :label="firstName" />
+                <div
+                    class="text"
+                    v-for="(food_preference, index) in userInfo.user.profile
+                        .food_preferences"
+                    :key="index"
+                >
+                    <q-input type="text" :value="food_preference.food.name" />
+                </div>
+
+                <div class="title textPrimaryColor">Hobbies</div>
+                <div
+                    class="text"
+                    v-for="(hobby, index) in userInfo.user.profile.hobbies"
+                    :key="index"
+                >
+                    <q-input type="text" :value="hobby.description" />
+                </div>
+                <div class="title textPrimaryColor">Allergies</div>
+                <div
+                    class="text"
+                    v-for="(allergy, index) in userInfo.user.profile.allergies"
+                    :key="index"
+                >
+                    <q-input type="text" :value="allergy.description" />
+                </div>
+                <div class="title textPrimaryColor">Language</div>
+                <q-input type="text" :label="userInfo.user.profile.language" />
             </q-card-section>
             <div v-show="showdialog">
                 <UpdateOptionDialog
@@ -62,26 +87,19 @@
     </div>
 </template>
 <script>
-import { mapState } from "vuex";
-import UpdateOptionDialog from "../components/UpdatePhoto/UpdateOptions";
+import { mapState } from 'vuex';
+import UpdateOptionDialog from '../components/UpdatePhoto/UpdateOptions';
 export default {
-    name: "EditProfile",
+    name: 'EditProfile',
     components: { UpdateOptionDialog },
     // props: ["selectedPhoto"],
     created() {
-        this.$emit("updateTitle", "Edit Profile", "", "/profile");
+        this.$emit('updateTitle', 'Edit Profile', '', '/profile');
     },
     data() {
         return {
             showdialog: false,
-            // selectedPhoto: null,
-            firstName: "Mariam",
-            lastName: "Jackson",
-            email: "mariamjackson@gmail.com",
-            dateofBirth: "19 July 1994",
-            imageUrl: "../statics/img/profile.jpg",
-            lorem:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+            imageUrl: '../statics/img/profile.jpg'
         };
     },
     methods: {
@@ -90,12 +108,12 @@ export default {
             this.$forceUpdate();
         },
         loadPhoto(event) {
-            console.log("parent load photo triggered!");
+            console.log('parent load photo triggered!');
             var reader,
                 files = event.target.files;
 
             if (files.length === 0) {
-                console.log("peak a photo");
+                console.log('peak a photo');
             }
 
             reader = new FileReader();
@@ -105,7 +123,7 @@ export default {
             reader.readAsDataURL(files[0]);
             this.showdialog = false;
             this.$forceUpdate();
-            console.log("parent photo", this.imageUrl);
+            console.log('parent photo', this.imageUrl);
         }
     },
     computed: {
