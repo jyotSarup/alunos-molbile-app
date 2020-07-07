@@ -1,8 +1,0 @@
-query($household_id: ID) {
-    householdActivities(household_id: $household_id) {
-        total
-        items {
-            description
-        }
-    }
-}

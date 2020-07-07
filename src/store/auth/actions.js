@@ -33,19 +33,17 @@ export default {
                 token: loginToken
             }
         });
-
         const data = response.data.loginAsResident;
+        console.log(data)
         window.localStorage.setItem(
             TOKEN_LOCAL_STORAGE,
             JSON.stringify(data.token)
         );
         commit(MUTATE_TOKEN, data.token);
-        commit(MUTATE_USER, data.member.user);
-        // commit(MUTATE_HOUSEHOLD, {
-        //     name: data.member.household.name,
-        //     type: data.member.household.type
-        // });
-        commit(MUTATE_MEMBERS, data.member.household.members);
+        commit(MUTATE_HOUSEHOLD, data.member.household)
+
+        
+        commit(MUTATE_MEMBERS, data.member.household.residents);
     },
     [LOGOUT_ACTION]: ({ commit }) => {
         window.localStorage.removeItem(TOKEN_LOCAL_STORAGE);
