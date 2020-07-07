@@ -7,11 +7,11 @@ import {
     MUTATE_USER,
     REQUEST_LOGIN_ACTION,
     TOKEN_LOCAL_STORAGE
-} from "src/constants";
-import LOGIN from "../../graphQL/mutations/Login.graphql";
-import REQUEST_LOGIN from "../../graphQL/mutations/RequestLogin.graphql";
-import { apolloClient } from "boot/apollo";
-import { router } from "src/router";
+} from 'src/constants';
+import LOGIN from '../../graphQL/mutations/Login.graphql';
+import REQUEST_LOGIN from '../../graphQL/mutations/RequestLogin.graphql';
+import { apolloClient } from 'boot/apollo';
+import { router } from 'src/router';
 
 export default {
     [REQUEST_LOGIN_ACTION]: async ({ commit, dispatch }, email) => {
@@ -34,21 +34,21 @@ export default {
             }
         });
         const data = response.data.loginAsResident;
-        console.log(data)
+        console.log(data);
         window.localStorage.setItem(
             TOKEN_LOCAL_STORAGE,
             JSON.stringify(data.token)
         );
         commit(MUTATE_TOKEN, data.token);
-        commit(MUTATE_HOUSEHOLD, data.member.household)
+        commit(MUTATE_HOUSEHOLD, data.member.household);
 
-        
+        commit(MUTATE_USER, data.member.user);
         commit(MUTATE_MEMBERS, data.member.household.residents);
     },
     [LOGOUT_ACTION]: ({ commit }) => {
         window.localStorage.removeItem(TOKEN_LOCAL_STORAGE);
         commit(MUTATE_TOKEN, null);
         commit(MUTATE_USER, null);
-        router.push({ name: "auth.login" });
+        router.push({ name: 'auth.login' });
     }
 };

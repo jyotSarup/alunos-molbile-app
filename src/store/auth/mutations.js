@@ -1,4 +1,4 @@
-import { MUTATE_TOKEN, MUTATE_USER } from "src/constants";
+import { MUTATE_TOKEN, MUTATE_USER } from 'src/constants';
 
 export default {
     [MUTATE_TOKEN]: (state, token) => {
