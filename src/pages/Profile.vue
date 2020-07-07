@@ -9,8 +9,10 @@
                 <div class="title">
                     {{ userInfo.user.display_name }}
                 </div>
-                <div class="text">Rome, Italy</div>
-                <div class="text">DOB - 19 July 1994</div>
+                <!-- <div class="text">{{ userInfo.user.profile.country.name }}</div> -->
+                <div class="text">
+                    DOB - {{ userInfo.user.profile.birthdate }}
+                </div>
                 <br />
                 <q-separator />
 
@@ -38,29 +40,46 @@
         <q-card class="infoCard cardstyle">
             <q-card-section class="cardsection">
                 <div class="title">About</div>
-                <div class="text">{{ lorem }}</div>
+                <div class="text">{{ userInfo.user.profile.biography }}</div>
 
-                <div class="title">Social Links</div>
+                <div class="title">Allergies</div>
                 <q-toolbar>
-                    <div class="text">maria.jack18</div>
-                    <q-space />
-                    <div class="text">instagram</div>
+                    <!-- <div class="text">
+                        {{ userInfo.user.profile.allergies.description }}
+                    </div> -->
+                    <!-- <q-space />
+                    <div class="text">instagram</div> -->
                 </q-toolbar>
                 <div class="title">Likes</div>
                 <q-toolbar>
                     <div class="text">Food</div>
                     <q-space />
-                    <div class="text">Non-veg, Pizza</div>
+                    <div
+                        class="text"
+                        v-for="(food_preference, index) in userInfo.user.profile
+                            .food_preferences"
+                        :key="index"
+                    >
+                        <div class="text">
+                            {{ food_preference.food.name }} ,
+                        </div>
+                    </div>
                 </q-toolbar>
-                <q-toolbar>
+                <!-- <q-toolbar>
                     <div class="text">Best sites</div>
                     <q-space />
                     <div class="text">Beech, Mountains</div>
-                </q-toolbar>
+                </q-toolbar> -->
                 <q-toolbar>
                     <div class="text">Spare time</div>
                     <q-space />
-                    <div class="text">Netflix</div>
+                    <!-- <div
+                        class="text"
+                        v-for="(hobby, index) in userInfo.user.profile.hobbies"
+                        :key="index"
+                    >
+                        {{ hobby.description }}
+                    </div> -->
                 </q-toolbar>
             </q-card-section>
         </q-card>
@@ -76,17 +95,17 @@
     </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 export default {
-    name: "Profile",
+    name: 'Profile',
     created() {
-        this.$emit("updateTitle", "Profile");
+        this.$emit('updateTitle', 'Profile');
     },
     data() {
         return {
-            editPath: "/profile/edit",
-            settingPath: "/profile/setting",
-            profileImg: "../statics/img/profile.jpg",
+            editPath: '/profile/edit',
+            settingPath: '/profile/setting',
+            profileImg: '../statics/img/profile.jpg',
             lorem:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         };
