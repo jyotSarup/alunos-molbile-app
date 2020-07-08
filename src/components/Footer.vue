@@ -124,13 +124,13 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
 </style>
 
 <script>
-import router from "../router";
+import router from '../router';
 
 export default {
-    name: "Footer",
+    name: 'Footer',
     data() {
         return {
-            tab: "images",
+            tab: 'images',
             fabCenter: false
         };
     },
@@ -141,60 +141,60 @@ export default {
                     grid,
                     actions: [
                         {
-                            label: "Add House Issue",
+                            label: 'Add House Issue',
                             img:
-                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "addHouseIssue"
+                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
+                            id: 'addHouseIssue'
                         },
                         {
-                            label: "Add Announcement",
+                            label: 'Add Announcement',
                             img:
-                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "addAnnouncement"
+                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
+                            id: 'addAnnouncement'
                         },
                         {
-                            label: "Send Mail",
+                            label: 'Send Mail',
                             img:
-                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "sendMail"
+                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
+                            id: 'sendMail'
                         },
                         {},
                         {
-                            label: "close",
-                            icon: "cancel",
-                            color: "primary"
+                            label: 'close',
+                            icon: 'cancel',
+                            color: 'primary'
                         }
                     ]
                 })
                 .onOk(action => {
-                    if (action.id == "addHouseIssue") {
-                        this.$router.push("/add-house-issue");
+                    if (action.id == 'addHouseIssue') {
+                        this.$router.push('/add-house-issue');
                     }
                 })
                 .onCancel(() => {
-                    console.log("Dismissed");
+                    console.log('Dismissed');
                 })
                 .onDismiss(() => {
                     // console.log('I am triggered on both OK and Cancel')
                 });
         },
         openFeed() {
-            this.$router.replace("/feed");
+            this.$router.replace('/feed');
         },
         openMyHomestay() {
-            this.$router.replace("homestay");
+            this.$router.push('homestay');
         },
         openHelp() {
-            this.$router.push({ name: "help" });
+            this.$router.push({ name: 'help' });
         },
         openProfile() {
-            this.$router.push("/profile");
+            this.$router.push('/profile');
         },
         addHouseAnnouncement() {
-            this.$router.push("/add-announcement");
+            this.$router.push('/add-announcement');
         },
         addHouseIssue() {
-            this.$router.push("/add-house-issue");
+            this.$router.push('/add-house-issue');
         }
     }
 };

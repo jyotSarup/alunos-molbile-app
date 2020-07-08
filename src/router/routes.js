@@ -20,7 +20,7 @@ const routes = [
                 component: () => import('../pages/forms/AddAnnouncement.vue')
             },
             {
-                path: '/homestay/houseissues',
+                path: '/houseissues',
                 component: () => import('../pages/HouseIssues.vue')
             },
             {
