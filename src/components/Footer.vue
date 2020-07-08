@@ -8,6 +8,7 @@
             v-model="tab"
             dense
             align="justify"
+            style="padding: 10px 0 5px 0;"
         >
             <q-tab
                 name="feed"
@@ -119,7 +120,8 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
     color: white;
     border-radius: 50%;
-    box-shadow: 0 0 0 8px #fff;
+    box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;
+    border: none !important;
 }
 </style>
 
@@ -179,10 +181,10 @@ export default {
                 });
         },
         openFeed() {
-            this.$router.replace('/feed');
+            this.$router.push({ name: 'feed' });
         },
         openMyHomestay() {
-            this.$router.push('homestay');
+            this.$router.push({ name: 'homestay' });
         },
         openHelp() {
             this.$router.push({ name: 'help' });

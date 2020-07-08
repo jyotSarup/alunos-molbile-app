@@ -103,7 +103,7 @@ export default {
     },
     data() {
         return {
-            editPath: '/profile/edit',
+            editPath: '/editProfile',
             settingPath: '/profile/setting',
             profileImg: '../statics/img/profile.jpg',
             lorem:

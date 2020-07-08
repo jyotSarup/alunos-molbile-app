@@ -19,6 +19,7 @@
     width: 42vw;
     height: 42vw;
     font-size: 16px;
+    box-shadow: 0 11px 10px lightgrey;
 }
 .buttonLabel {
     text-transform: capitalize;
@@ -29,7 +30,7 @@
 
 <script>
 export default {
-    name: "MenuCard",
+    name: 'MenuCard',
     props: {
         item: {
             type: Object,

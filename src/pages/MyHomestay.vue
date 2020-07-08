@@ -48,13 +48,13 @@
 </template>
 
 <script>
-import HomestayDetails from "../components/HomestayDetails";
-import MemberList from "../components/MemberList";
+import HomestayDetails from '../components/HomestayDetails';
+import MemberList from '../components/MemberList';
 export default {
-    name: "MyHomestay",
+    name: 'MyHomestay',
     components: { HomestayDetails, MemberList },
     created() {
-        this.$emit("updateTitle", "My Homestay");
+        this.$emit('updateTitle', 'My Homestay', '', '/homestay');
     }
 };
 </script>
