@@ -1,0 +1,22 @@
+mutation ($input: IssueInput){
+  createIssue(input: {author_id : 1 title:"chair broken" description:"Chair in the room broken."}){
+    id
+    title
+    description
+    author {
+      id
+      user {
+        id
+        first_name
+        last_name
+        display_name
+        email
+        
+      }
+      household {
+        id
+      }
+    }
+    solved_at
+  }
+}

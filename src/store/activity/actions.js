@@ -1,26 +1,26 @@
-import {
-    MUTATE_ACTIVITIES,
-    GET_HOUSEHOLD_ACTIVITIES
-} from "src/constants";
-import LOGIN from '../../graphQL/mutations/Login.graphql';
-import GET_HOUSEHOLD_ACTIVITIES_QUERY from '../../graphQL/queries/GetHouseholdActivities.graphql';
-import {apolloClient} from "boot/apollo";
-import {router} from "src/router";
-import { resolveFieldValueOrError } from "graphql/execution/execute";
+// import {
+//     MUTATE_ACTIVITIES,
+//     GET_HOUSEHOLD_ACTIVITIES
+// } from "src/constants";
+// import LOGIN from '../../graphQL/mutations/Login.graphql';
+// import GET_HOUSEHOLD_ACTIVITIES_QUERY from '../../graphQL/queries/GetHouseholdActivities.graphql';
+// import {apolloClient} from "boot/apollo";
+// import {router} from "src/router";
+// import { resolveFieldValueOrError } from "graphql/execution/execute";
 
-export default {
-    [GET_HOUSEHOLD_ACTIVITIES]: async ({commit}, householdid) => {
-        const response = await apolloClient.query({
-            query: GET_HOUSEHOLD_ACTIVITIES_QUERY,
-            variables: {
-                household_id : householdid
-            }
-        });
-        console.log(response.data.householdActivities.items)
-        commit(MUTATE_ACTIVITIES,response.data.householdActivities.items)
+// export default {
+//     [GET_HOUSEHOLD_ACTIVITIES]: async ({commit}, householdid) => {
+//         const response = await apolloClient.query({
+//             query: GET_HOUSEHOLD_ACTIVITIES_QUERY,
+//             variables: {
+//                 household_id : householdid
+//             }
+//         });
+//         console.log(response.data.householdActivities.items)
+//         commit(MUTATE_ACTIVITIES,response.data.householdActivities.items)
 
-    },
-};
+//     },
+// };
 
 
 // export default GET_HOUSEHOLD_ACTIVITIES = {

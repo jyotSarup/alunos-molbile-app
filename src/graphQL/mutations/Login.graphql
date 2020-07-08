@@ -22,6 +22,8 @@ mutation($token: String) {
                     is_admin
                     user {
                         id
+                        first_name
+                        last_name
                         display_name
                         email
                         phone

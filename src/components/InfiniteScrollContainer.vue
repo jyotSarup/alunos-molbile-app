@@ -40,20 +40,20 @@ export default {
             // items: this.$store.state.activities
         };
     },
-     beforeCreate() {
-        household = this.$store.state.household
-        try {
-            this.$store.dispatch(
-                GET_HOUSEHOLD_ACTIVITIES,
-                parseInt(household.household.id)
-            );
-        } catch (error) {
-            console.log(error);
-        }
-        // console.log(this.$store.state.activities)
-        // this.items= this.$store.state.activities
-        // console.log(household)
-    },
+    //  beforeCreate() {
+    //     household = this.$store.state.household
+    //     try {
+    //         this.$store.dispatch(
+    //             GET_HOUSEHOLD_ACTIVITIES,
+    //             parseInt(household.household.id)
+    //         );
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    //     // console.log(this.$store.state.activities)
+    //     // this.items= this.$store.state.activities
+    //     // console.log(household)
+    // },
     // created() {
     //     // try {
     //     //     this.$store.dispatch(
