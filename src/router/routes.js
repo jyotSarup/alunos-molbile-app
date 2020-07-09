@@ -61,8 +61,8 @@ const routes = [
         ]
     },
     {
-        path: '/editProfile',
-        component: () => import('layouts/GeneralLayout.vue'),
+        path: '/profile/edit',
+        component: () => import('layouts/SavePageLayout.vue'),
         children: [
             { path: '', component: () => import('pages/EditProfile.vue') }
         ]
