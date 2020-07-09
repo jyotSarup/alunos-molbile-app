@@ -1,7 +1,7 @@
 <template>
     <q-card
         flat
-        class="my-card"
+        class="my-card-tip"
         style="background: white; border-radius:20px  ; "
     >
         <q-card-section>
@@ -19,7 +19,7 @@ export default {};
 </script>
 
 <style>
-.my-card {
+.my-card-tip {
     width: 100%;
     border: 1px solid #01e8f8;
 }
