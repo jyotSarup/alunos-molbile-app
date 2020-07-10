@@ -40,6 +40,7 @@ export default {
             JSON.stringify(data.token)
         );
         commit(MUTATE_TOKEN, data.token);
+        commit(MUTATE_USER, data.member.user);
         commit(MUTATE_HOUSEHOLD, data.member.household)      
         commit(MUTATE_MEMBERS, data.member.household.residents);
     },
