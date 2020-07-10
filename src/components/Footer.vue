@@ -8,6 +8,7 @@
             v-model="tab"
             dense
             align="justify"
+            style="padding: 10px 0 5px 0;"
         >
             <q-tab
                 name="feed"
@@ -119,18 +120,19 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
     color: white;
     border-radius: 50%;
-    box-shadow: 0 0 0 8px #fff;
+    box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;
+    border: none !important;
 }
 </style>
 
 <script>
-import router from "../router";
+import router from '../router';
 
 export default {
-    name: "Footer",
+    name: 'Footer',
     data() {
         return {
-            tab: "images",
+            tab: 'images',
             fabCenter: false
         };
     },
@@ -141,60 +143,60 @@ export default {
                     grid,
                     actions: [
                         {
-                            label: "Add House Issue",
+                            label: 'Add House Issue',
                             img:
-                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "addHouseIssue"
+                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
+                            id: 'addHouseIssue'
                         },
                         {
-                            label: "Add Announcement",
+                            label: 'Add Announcement',
                             img:
-                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "addAnnouncement"
+                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
+                            id: 'addAnnouncement'
                         },
                         {
-                            label: "Send Mail",
+                            label: 'Send Mail',
                             img:
-                                "https://cdn.quasar.dev/img/logo_keep_128px.png",
-                            id: "sendMail"
+                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
+                            id: 'sendMail'
                         },
                         {},
                         {
-                            label: "close",
-                            icon: "cancel",
-                            color: "primary"
+                            label: 'close',
+                            icon: 'cancel',
+                            color: 'primary'
                         }
                     ]
                 })
                 .onOk(action => {
-                    if (action.id == "addHouseIssue") {
-                        this.$router.push("/add-house-issue");
+                    if (action.id == 'addHouseIssue') {
+                        this.$router.push('/add-house-issue');
                     }
                 })
                 .onCancel(() => {
-                    console.log("Dismissed");
+                    console.log('Dismissed');
                 })
                 .onDismiss(() => {
                     // console.log('I am triggered on both OK and Cancel')
                 });
         },
         openFeed() {
-            this.$router.replace("/feed");
+            this.$router.push({ name: 'feed' });
         },
         openMyHomestay() {
-            this.$router.replace("homestay");
+            this.$router.push({ name: 'homestay' });
         },
         openHelp() {
-            this.$router.push({ name: "help" });
+            this.$router.push({ name: 'help' });
         },
         openProfile() {
-            this.$router.push("/profile");
+            this.$router.push('/profile');
         },
         addHouseAnnouncement() {
-            this.$router.push("/add-announcement");
+            this.$router.push('/add-announcement');
         },
         addHouseIssue() {
-            this.$router.push("/add-house-issue");
+            this.$router.push('/add-house-issue');
         }
     }
 };

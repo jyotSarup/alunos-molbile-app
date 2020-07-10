@@ -1,7 +1,7 @@
 <template>
     <div
         class="q-pa-md scroll"
-        style=" padding: 0 ; padding-top: 16px; margin: auto ; margin-top:16px;  border-radius:20px"
+        style=" padding: 0 ; padding-top: 4px; margin: auto ; margin-top:16px;  border-radius:20px"
     >
         <q-pull-to-refresh @refresh="refresh" style="width:100%">
             <q-infinite-scroll @load="onLoad" :offset="250">
@@ -23,15 +23,16 @@
 </template>
 
 <script>
+
 import { mapActions, mapState } from "vuex";
 import { GET_FEED } from "../constants";
 import store from '../store';
 
 
 export default {
-    name: "InfiniteScrollContainer",
+    name: 'InfiniteScrollContainer',
     components: {
-        FeedCard: require("./FeedCard.vue").default
+        FeedCard: require('./FeedCard.vue').default
     },
     computed : {
         ...mapState({
@@ -39,9 +40,6 @@ export default {
             feeds: state=> state.feeds
         })
     },
-    // computed: mapState({
-    //     household: state => state.household
-    // }),
     data() {
         return {
             items: [{}, {}, {}, {}, {}, {}, {}]
@@ -73,6 +71,7 @@ export default {
     //     // this.items= this.$store.state.activities
     //     // console.log(household)
     // },
+
     // mounted(){
     //     console.log("after create")
     //     console.log(JSON.parse(JSON.stringify(this.household)))
@@ -101,11 +100,6 @@ export default {
         // console.log(this.$store.state.activities)
         // this.items= this.$store.state.activities
     },
-//     computed: {
-//     ...mapState({
-//         items : state => state.activities
-//     }),
-//   },
     methods: {
         onLoad(index, done) {
             // setTimeout(() => {
@@ -127,5 +121,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
