@@ -1,0 +1,17 @@
+query ($household_id : ID
+  	$limit : Int
+    $page : Int)
+{
+  feed(household_id : $household_id 
+  	limit : $limit
+    page : $page
+  ){
+    total
+    items{
+      content
+      author {
+        __typename
+      }
+    }
+  }
+}

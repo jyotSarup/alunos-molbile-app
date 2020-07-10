@@ -1,0 +1,8 @@
+mutation ($id : ID){
+  solveIssue(id: 1){
+    id
+    title
+    description
+    solved_at
+  }
+}
