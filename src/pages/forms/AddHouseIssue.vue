@@ -88,31 +88,31 @@ export default {
         return {
             name: null,
             age: null,
-            issueTypes: ["Food", "Plumbing", "Rules"],
+            issueTypes: ['Food', 'Plumbing', 'Rules'],
             accept: false,
-            description: "",
-            issueSubject: "",
-            titleText: ""
+            description: '',
+            issueSubject: '',
+            titleText: ''
         };
     },
     created() {
-        this.$emit("updateTitle", "Add House Issue");
+        this.$emit('updateTitle', 'Add House Issue');
     },
     methods: {
         onSubmit() {
             if (this.accept !== true) {
                 this.$q.notify({
-                    color: "red-5",
-                    textColor: "white",
-                    icon: "warning",
-                    message: "You need to accept the license and terms first"
+                    color: 'red-5',
+                    textColor: 'white',
+                    icon: 'warning',
+                    message: 'You need to accept the license and terms first'
                 });
             } else {
                 this.$q.notify({
-                    color: "green-4",
-                    textColor: "white",
-                    icon: "cloud_done",
-                    message: "Submitted"
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: 'Submitted'
                 });
             }
         },
@@ -127,7 +127,8 @@ export default {
 </script>
 
 <style>
-.formwrapper : {
+.formwrapper {
+    margin-top: 0 !important;
 }
 .q-gutter-md {
     width: 100%;

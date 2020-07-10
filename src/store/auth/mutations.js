@@ -1,4 +1,4 @@
-import { MUTATE_TOKEN, MUTATE_USER } from 'src/constants';
+import { MUTATE_TOKEN, MUTATE_USER, MUTATE_PROFILE } from 'src/constants';
 
 export default {
     [MUTATE_TOKEN]: (state, token) => {
@@ -6,5 +6,6 @@ export default {
     },
     [MUTATE_USER]: (state, user) => {
         state.user = user;
+        console.log(user);
     }
 };

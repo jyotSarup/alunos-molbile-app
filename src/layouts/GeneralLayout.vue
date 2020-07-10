@@ -28,7 +28,7 @@
 
             <router-view
                 @updateTitle="updateTitle"
-                style=" margin-top:2.6rem; text-align: center; position:relative"
+                style="text-align: center; position:relative"
             />
             <q-footer elevated>
                 <q-toolbar class="glossy">
@@ -42,16 +42,16 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
-import Notification from "../components/Notification";
+import Footer from '../components/Footer';
+import Notification from '../components/Notification';
 export default {
-    name: "GeneralLayout",
+    name: 'GeneralLayout',
     components: { Footer, Notification },
     data() {
         return {
-            title: "",
-            subtitle: "",
-            backTo: ""
+            title: '',
+            subtitle: '',
+            backTo: ''
         };
     },
     methods: {

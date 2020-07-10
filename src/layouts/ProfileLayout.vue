@@ -33,16 +33,16 @@
 </template>
 
 <script>
-import Footer from "../components/Footer.vue";
-import Notification from "../components/Notification";
+import Footer from '../components/Footer.vue';
+import Notification from '../components/Notification';
 export default {
-    name: "ProfileLayout",
+    name: 'ProfileLayout',
 
     components: { Footer, Notification },
     data() {
         return {
-            title: "",
-            subtitle: ""
+            title: '',
+            subtitle: ''
         };
     },
     methods: {

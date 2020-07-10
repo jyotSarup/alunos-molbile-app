@@ -15,15 +15,32 @@
             <q-card class="infoCard">
                 <q-card-section class="cardsection ">
                     <div class="title textPrimaryColor">First Name</div>
-                    <q-input type="text" :value="userInfo.user.first_name" />
+                    <q-input
+                        v-if="userInfo.user.profile"
+                        type="text"
+                        :value="userInfo.user.first_name"
+                    />
                     <div class="title textPrimaryColor">Last Name</div>
-                    <q-input type="text" :value="userInfo.user.last_name" />
+                    <q-input
+                        v-if="userInfo.user.profile"
+                        type="text"
+                        :value="userInfo.user.last_name"
+                    />
                     <div class="title textPrimaryColor">Email</div>
-                    <q-input type="text" :value="userInfo.user.email" />
+                    <q-input
+                        v-if="userInfo.user.profile"
+                        type="text"
+                        :value="userInfo.user.email"
+                    />
                     <div class="title textPrimaryColor">Display Name</div>
-                    <q-input type="text" :value="userInfo.user.display_name" />
+                    <q-input
+                        v-if="userInfo.user.profile"
+                        type="text"
+                        :value="userInfo.user.display_name"
+                    />
                     <div class="title textPrimaryColor">Date of Birth</div>
                     <q-input
+                        v-if="userInfo.user.profile"
                         type="text"
                         :value="userInfo.user.profile.birthdate"
                     />
@@ -33,47 +50,64 @@
         <q-card class="infoCard cardstyle">
             <q-card-section class="cardsection">
                 <div class="title textPrimaryColor">About</div>
-                <q-input
-                    name="biography"
-                    type="textarea"
-                    v-model="userInfo.user.profile.biography"
-                    outlined
-                    clearable
-                    :defaultValue="userInfo.user.profile.biography"
-                    :shadow-text="textareaShadowText"
-                    @keydown="processTextareaFill"
-                    @focus="processTextareaFill"
-                >
-                </q-input>
+                <div v-if="userInfo.user.profile">
+                    <q-input
+                        v-if="userInfo.user.profile"
+                        name="biography"
+                        type="textarea"
+                        v-model="userInfo.user.profile.biography"
+                        outlined
+                        clearable
+                        :defaultValue="userInfo.user.profile.biography"
+                        :shadow-text="textareaShadowText"
+                        @keydown="processTextareaFill"
+                        @focus="processTextareaFill"
+                    >
+                    </q-input>
+                </div>
 
                 <div class="title textPrimaryColor">Food Preferences</div>
-                <div
-                    class="text"
-                    v-for="(food_preference, index) in userInfo.user.profile
-                        .food_preferences"
-                    :key="index"
-                >
-                    <q-input type="text" :value="food_preference.food.name" />
+                <div v-if="userInfo.user.profile">
+                    <div
+                        class="text"
+                        v-for="(food_preference, index) in userInfo.user.profile
+                            .food_preferences"
+                        :key="index"
+                    >
+                        <q-input
+                            type="text"
+                            :value="food_preference.food.name"
+                        />
+                    </div>
                 </div>
 
                 <div class="title textPrimaryColor">Hobbies</div>
-                <div
-                    class="text"
-                    v-for="(hobby, index) in userInfo.user.profile.hobbies"
-                    :key="index"
-                >
-                    <q-input type="text" :value="hobby.description" />
+                <div v-if="userInfo.user.profile">
+                    <div
+                        class="text"
+                        v-for="(hobby, index) in userInfo.user.profile.hobbies"
+                        :key="index"
+                    >
+                        <q-input type="text" :value="hobby.description" />
+                    </div>
                 </div>
                 <div class="title textPrimaryColor">Allergies</div>
-                <div
-                    class="text"
-                    v-for="(allergy, index) in userInfo.user.profile.allergies"
-                    :key="index"
-                >
-                    <q-input type="text" :value="allergy.description" />
+                <div v-if="userInfo.user.profile">
+                    <div
+                        class="text"
+                        v-for="(allergy, index) in userInfo.user.profile
+                            .allergies"
+                        :key="index"
+                    >
+                        <q-input type="text" :value="allergy.description" />
+                    </div>
                 </div>
                 <div class="title textPrimaryColor">Language</div>
-                <q-input type="text" :label="userInfo.user.profile.language" />
+                <q-input
+                    v-if="userInfo.user.profile"
+                    type="text"
+                    :label="userInfo.user.profile.language"
+                />
             </q-card-section>
             <div v-show="showdialog">
                 <UpdateOptionDialog
