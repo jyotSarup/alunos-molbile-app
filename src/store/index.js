@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import auth from './auth';
 import household from './household';
 import activity from './activity';
+import feed from './feed'
 
 // import example from './module-example'
 
@@ -20,7 +21,8 @@ export const store = new Vuex.Store({
     modules: {
         auth,
         household,
-        activity
+        activity,
+        feed
     },
 
     // enable strict mode (adds overhead!)

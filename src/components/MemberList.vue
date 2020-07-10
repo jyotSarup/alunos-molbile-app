@@ -49,7 +49,7 @@ export default {
     },
     computed: {
         ...mapState({
-            members: state => state.household.members
+            members: state => state.members
         }),}
 };
 </script>

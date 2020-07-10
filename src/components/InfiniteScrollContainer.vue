@@ -23,15 +23,22 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
-import { GET_HOUSEHOLD_ACTIVITIES } from '../constants';
+
+import { mapActions, mapState } from "vuex";
+import { GET_FEED } from "../constants";
 import store from '../store';
-let household;
+
 
 export default {
     name: 'InfiniteScrollContainer',
     components: {
         FeedCard: require('./FeedCard.vue').default
+    },
+    computed : {
+        ...mapState({
+            household: state => state.household,
+            feeds: state=> state.feeds
+        })
     },
     data() {
         return {
@@ -40,37 +47,59 @@ export default {
             // items: this.$store.state.activities
         };
     },
-    //  beforeCreate() {
-    //     household = this.$store.state.household
-    //     try {
-    //         this.$store.dispatch(
-    //             GET_HOUSEHOLD_ACTIVITIES,
-    //             parseInt(household.household.id)
-    //         );
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    //     // console.log(this.$store.state.activities)
-    //     // this.items= this.$store.state.activities
-    //     // console.log(household)
+    // watch: {
+    // household(newValue, oldValue) {
+    //     console.log(oldValue)
+    //     console.log(newValue)
+    
+    // }
     // },
-    // created() {
+    
+    //  beforeCreate() {
+        
     //     // try {
     //     //     this.$store.dispatch(
-    //     //         GET_HOUSEHOLD_ACTIVITIES,
-    //     //         parseInt(household.household.id)
+    //     //         GET_FEED,
+    //     //         // parseInt(household.household.id)
+    //     //         {householdid: household.household.id, limit: 10, page: 1}
+
     //     //     );
     //     // } catch (error) {
     //     //     console.log(error);
     //     // }
     //     // console.log(this.$store.state.activities)
-    //     this.items= this.$store.state.activities
+    //     // this.items= this.$store.state.activities
+    //     // console.log(household)
     // },
-    //     computed: {
-    //     ...mapState({
-    //         items : state => state.activities
-    //     }),
-    //   },
+
+    // mounted(){
+    //     console.log("after create")
+    //     console.log(JSON.parse(JSON.stringify(this.household)))
+    // },
+    created() {
+        
+        this.$forceUpdate();
+
+        console.log("after create")
+        // console.log(JSON.parse(JSON.stringify(this.$store.state)))
+        console.log(this.household, this.household.household.id)
+        
+        
+        // try {
+        //     this.$store.dispatch(
+        //         GET_FEED,
+        //         {
+        //             householdid : parseInt(this.household.household.id),
+        //             limit: 10,
+        //             page: 1    
+        //         }
+        //     );
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        // console.log(this.$store.state.activities)
+        // this.items= this.$store.state.activities
+    },
     methods: {
         onLoad(index, done) {
             // setTimeout(() => {

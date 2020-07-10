@@ -34,15 +34,13 @@ export default {
             }
         });
         const data = response.data.loginAsResident;
-        console.log(data);
+
         window.localStorage.setItem(
             TOKEN_LOCAL_STORAGE,
             JSON.stringify(data.token)
         );
         commit(MUTATE_TOKEN, data.token);
-        commit(MUTATE_HOUSEHOLD, data.member.household);
-
-        commit(MUTATE_USER, data.member.user);
+        commit(MUTATE_HOUSEHOLD, data.member.household)      
         commit(MUTATE_MEMBERS, data.member.household.residents);
     },
     [LOGOUT_ACTION]: ({ commit }) => {
