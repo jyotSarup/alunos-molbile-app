@@ -6,11 +6,13 @@
                 <img src="https://cdn.quasar.dev/img/avatar.png" />
             </q-avatar>
             <q-card-section class="cardsection">
-                <div class="title">
+                <div class="title" v-if="userInfo.user.profile">
                     {{ userInfo.user.display_name }}
                 </div>
-                <!-- <div class="text">{{ userInfo.user.profile.country.name }}</div> -->
-                <div class="text">
+                <div class="text" v-if="userInfo.user.profile.country">
+                    {{ userInfo.user.profile.country.name }}
+                </div>
+                <div class="text" v-if="userInfo.user.profile">
                     DOB - {{ userInfo.user.profile.birthdate }}
                 </div>
                 <br />
@@ -40,13 +42,22 @@
         <q-card class="infoCard cardstyle">
             <q-card-section class="cardsection">
                 <div class="title">About</div>
-                <div class="text">{{ userInfo.user.profile.biography }}</div>
+                <div class="text" v-if="userInfo.user.profile">
+                    {{ userInfo.user.profile.biography }}
+                </div>
 
                 <div class="title">Allergies</div>
                 <q-toolbar>
-                    <!-- <div class="text">
-                        {{ userInfo.user.profile.allergies.description }}
-                    </div> -->
+                    <div class="text" v-if="userInfo.user.profile.allergies">
+                        <div
+                            class="text"
+                            v-for="(allergy, index) in userInfo.user.profile
+                                .allergies"
+                            :key="index"
+                        >
+                            {{ allergy.description }}
+                        </div>
+                    </div>
                     <!-- <q-space />
                     <div class="text">instagram</div> -->
                 </q-toolbar>
@@ -54,32 +65,41 @@
                 <q-toolbar>
                     <div class="text">Food</div>
                     <q-space />
-                    <div
-                        class="text"
-                        v-for="(food_preference, index) in userInfo.user.profile
-                            .food_preferences"
-                        :key="index"
-                    >
-                        <div class="text">
-                            {{ food_preference.food.name }} ,
+                    <div v-if="userInfo.user.profile.food_preferences">
+                        <div
+                            class="text inlinediv"
+                            v-for="(food_preference, index) in userInfo.user
+                                .profile.food_preferences"
+                            :key="index"
+                        >
+                            <div
+                                class="text inlinediv"
+                                v-if="userInfo.user.profile"
+                            >
+                                {{ food_preference.food.name }} |
+                            </div>
                         </div>
                     </div>
                 </q-toolbar>
-                <!-- <q-toolbar>
-                    <div class="text">Best sites</div>
-                    <q-space />
-                    <div class="text">Beech, Mountains</div>
-                </q-toolbar> -->
+
                 <q-toolbar>
                     <div class="text">Spare time</div>
                     <q-space />
-                    <!-- <div
-                        class="text"
-                        v-for="(hobby, index) in userInfo.user.profile.hobbies"
-                        :key="index"
-                    >
-                        {{ hobby.description }}
-                    </div> -->
+                    <div v-if="userInfo.user.profile">
+                        <div
+                            class="text"
+                            v-for="(hobby, index) in userInfo.user.profile
+                                .hobbies"
+                            :key="index"
+                        >
+                            {{ hobby.description }}
+                        </div>
+                    </div>
+                </q-toolbar>
+                <q-toolbar>
+                    <div class="text">Language</div>
+                    <q-space />
+                    <div class="text">{{ userInfo.user.profile.language }}</div>
                 </q-toolbar>
             </q-card-section>
         </q-card>
@@ -160,6 +180,9 @@ export default {
     .version {
         color: #017eff;
         margin: 1rem 0 2.5rem 0;
+    }
+    .inlinediv {
+        display: inline;
     }
 }
 </style>
