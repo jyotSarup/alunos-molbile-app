@@ -24,7 +24,7 @@ export default {
 
         const token = response.data.temporaryMobileLogin;
 
-        dispatch(LOGIN_ACTION, token);
+        await dispatch(LOGIN_ACTION, token);
     },
     [LOGIN_ACTION]: async ({ commit }, loginToken) => {
         const response = await apolloClient.mutate({
@@ -41,7 +41,7 @@ export default {
         );
         commit(MUTATE_TOKEN, data.token);
         commit(MUTATE_USER, data.member.user);
-        commit(MUTATE_HOUSEHOLD, data.member.household)      
+        commit(MUTATE_HOUSEHOLD, data.member.household)
         commit(MUTATE_MEMBERS, data.member.household.residents);
     },
     [LOGOUT_ACTION]: ({ commit }) => {
