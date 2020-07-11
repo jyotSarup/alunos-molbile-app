@@ -1,13 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 import auth from './auth';
 import household from './household';
 import activity from './activity';
-import feed from './feed'
+import feed from './feed';
+import issue from './issue';
 
 // import example from './module-example'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /*
  * If not building with SSR mode, you can
@@ -22,14 +23,15 @@ export const store = new Vuex.Store({
         auth,
         household,
         activity,
-        feed
+        feed,
+        issue
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV
-})
+});
 
-export default function (/* { ssrContext } */) {
-  return store
+export default function(/* { ssrContext } */) {
+    return store;
 }

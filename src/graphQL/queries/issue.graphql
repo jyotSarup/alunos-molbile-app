@@ -1,0 +1,22 @@
+query($household_id: ID, $limit: Int, $page: Int) {
+    issues(household_id: $household_id, limit: $limit, page: $page) {
+        total
+        items {
+            id
+            title
+            description
+            author {
+                id
+                user {
+                    display_name
+                }
+                household {
+                    name
+                }
+                is_permanent
+                is_admin
+            }
+            solved_at
+        }
+    }
+}
