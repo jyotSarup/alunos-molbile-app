@@ -25,6 +25,7 @@ import { mapState } from 'vuex';
 import { GET_ISSUES } from '../constants';
 import HouseIssueItem from '../components/HouseIssueItem';
 export default {
+    name:"houseissues",
     components: {
         HouseIssueItem
     },
@@ -55,7 +56,9 @@ export default {
             houseIssue: state => state.issue.issues
         })
     },
-    mounted() {}
+     beforeMount(){
+         this.init()
+     }
 };
 </script>
 

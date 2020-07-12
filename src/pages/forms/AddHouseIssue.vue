@@ -97,18 +97,47 @@
                     ref="uPhoto"
                 />
             </div>
+             <q-dialog v-model="dialog">
+                    <q-card style="width: 300px">
+                        <q-card-section>
+                            <div class="text-h6" align="center"><q-icon name="done" size="42px"/></div>
+                        </q-card-section>
+
+                        <q-card-section class="q-pt-none" align="center">
+                           Issue Generated Successfully
+                        </q-card-section>
+
+                        <q-card-actions
+                            align="right"
+                            class="bg-white text-teal"
+                        >
+                            <q-separator />
+                            <q-btn
+                                flat
+                                label="Close"
+                                @click="ToHouseIssue"
+                                text-color="primary"
+                                class="fullwidth"
+                            />
+                        </q-card-actions>
+                    </q-card>
+                </q-dialog>
         </q-form>
+           
     </div>
 </template>
 
 <script>
 import UpdateOptionDialog from '../../components/UpdatePhoto/UpdateOptions';
+import { MUTATE_CREATEISSUE } from '../../constants';
+import { GET_ISSUES } from '../../constants';
 import { mapState } from 'vuex';
 export default {
     name: 'AddHouseIssue',
     components: { UpdateOptionDialog },
     data() {
         return {
+            dialog: false,
             issueTypes: ['Food', 'Plumbing', 'Rules'],
             description: '',
             issueSubject: '',
@@ -118,15 +147,37 @@ export default {
         };
     },
     created() {
-        this.$emit('updateTitle', 'Add House Issue');
+        this.$emit('updateTitle', 'Add House Issue','', '/feed');
     },
     computed: {
         ...mapState({
-            userInfo: state => state.auth
+             household: state => state.household,
+            houseIssue: state => state.issue.issues
         })
     },
     methods: {
-        onSubmit() {},
+        async ToHouseIssue() {
+            const householdId = this.household.household.id;
+            await this.$store.dispatch(GET_ISSUES, householdId, 10, 1);
+            await this.$router.replace({ name: "houseissues" });
+        },
+        async onSubmit() {
+            const title = this.titleText
+            const description = this.description
+            
+             try {    
+                await this.$store.dispatch(
+                    MUTATE_CREATEISSUE,
+                    {title,
+                    description}
+                );
+                
+                this.dialog = true
+            } catch (error) {
+                console.log(error);
+            }
+            
+        },
 
         onReset() {
             this.titleText = null;
@@ -186,4 +237,5 @@ export default {
 .addmediadiv {
     text-align: left;
 }
+
 </style>
