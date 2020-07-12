@@ -10,6 +10,19 @@ import GETISSUE from '../../graphQL/queries/issue';
 import { apolloClient } from 'boot/apollo';
 
 export default {
+    [MUTATE_CREATEISSUE]: async ({ commit, dispatch }, { title, description }) => {
+        await apolloClient.mutate({
+            mutation: CREATEISSUE,
+            variables: {
+                "input": {
+                    "author_id": 1,
+                    "title": title,
+                    "description": description
+                }
+            }
+        });
+
+    },
     [GET_ISSUES]: async ({ commit }, household_id, limit, page) => {
         const response = await apolloClient.query({
             query: GETISSUE,
@@ -19,7 +32,6 @@ export default {
                 page
             }
         });
-
         const data = response.data.issues;
 
         commit(MUTATE_ISSUE, data.items);
