@@ -36,7 +36,7 @@
                 <span style="font-weight:500">{{
                     houseIssueDetail.title
                 }}
-                <div class="subtitle">By Lucy Lee</div>
+                <div class="subtitleIssue">By Lucy Lee</div>
                 </span>
                 <span>{{ houseIssueDetail.dateCreated }}</span>
             </q-item-section>
@@ -138,7 +138,7 @@ export default {
 .avatarGrad {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
 }
-.subtitle{
+.subtitleIssue{
     color: #757575;
     font-size: 12px;
 }
