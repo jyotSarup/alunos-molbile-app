@@ -46,17 +46,22 @@ export const apolloClient = new ApolloClient({
         httpLink
     ]),
     cache,
+    defaultOptions: {
+        watchQuery: {
+            fetchPolicy: 'network-only',
+        },
+        query: {
+            fetchPolicy: 'network-only',
+        },
+        $query: {
+            fetchPolicy: 'network-only',
+        }
+    },
 });
 
 export default ({app}) => {
     app.apolloProvider = new VueApollo({
         defaultClient: apolloClient,
-        defaultOptions: {
-            $query: {
-                loadingKey: 'loading',
-                fetchPolicy: 'no-cache',
-            }
-        },
     })
 
 }
