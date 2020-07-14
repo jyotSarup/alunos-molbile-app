@@ -19,8 +19,6 @@ export default {
     computed: {
         ...mapState({
              householdDetails: state => state.household,
-             
-             
         }),}
 };
 </script>
