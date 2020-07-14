@@ -17,9 +17,17 @@
                 @click="openFeed()"
             />
             <q-tab
+                v-if="!isAdmin"
                 name="homestay"
                 icon="img:../statics/icons/icn_home.svg"
                 label="Homestay"
+                @click="openMyHomestay()"
+            />
+            <q-tab
+                v-if="isAdmin"
+                name="manage"
+                icon="build"
+                label="Manage"
                 @click="openMyHomestay()"
             />
 
@@ -127,6 +135,7 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
 
 <script>
 import router from '../router';
+import { mapState } from 'vuex';
 
 export default {
     name: 'Footer',
@@ -198,6 +207,11 @@ export default {
         addHouseIssue() {
             this.$router.push('/add-house-issue');
         }
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>

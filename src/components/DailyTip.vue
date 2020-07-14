@@ -27,6 +27,7 @@ export default {};
 .tipHeading {
     font-size: 12 !important;
     font-weight: bold !important;
+    color: #f32887;
 }
 .tipQuote {
     font-size: 9;
