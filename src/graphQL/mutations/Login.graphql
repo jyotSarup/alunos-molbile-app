@@ -21,12 +21,33 @@ mutation($token: String) {
                     is_permanent
                     is_admin
                     user {
-                        id
                         first_name
                         last_name
-                        display_name
-                        email
                         phone
+                        display_name
+                        id
+                        email
+                        profile {
+                            biography
+                            birthdate
+                            country {
+                                name
+                            }
+                            language {
+                                name
+                            }
+                            allergies {
+                                description
+                            }
+                            hobbies {
+                                description
+                            }
+                            food_preferences {
+                                food {
+                                    name
+                                }
+                            }
+                        }
                     }
                 }
                 guidelines {
