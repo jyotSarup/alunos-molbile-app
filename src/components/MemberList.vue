@@ -22,7 +22,7 @@
                 <div>{{member.user.email}}</div>
             </q-card-section>
 
-            <q-card-section class="memberDetailsIcon">
+            <q-card-section class="memberDetailsIcon" @click="openMemberProfile(index)" >
                 <q-icon name="keyboard_arrow_right" />
             </q-card-section>
             <q-separator/>
@@ -37,20 +37,17 @@ import {mapActions, mapState} from 'vuex';
 export default {
     data() {
         return {
-            // members: [
-            //     { name: "jyot", dob: "21-sep-1993" },
-            //     { name: "jyot", dob: "22-sep-1993" },
-            //     { name: "jyot", dob: "23-sep-1993" },
-            //     { name: "jyot", dob: "24-sep-1993" },
-            //     { name: "jyot", dob: "25-sep-1993" },
-            //     { name: "jyot", dob: "26-sep-1993" }
-            // ]
         };
     },
     computed: {
         ...mapState({
             members: state => state.household.members
-        }),}
+        }),},
+    methods :{
+        openMemberProfile(index){
+            this.$router.push(`/memberProfile/${index}`);
+        }
+    }
 };
 </script>
 

@@ -48,20 +48,18 @@ export default {
             limit: 10,
             items: [],
             total: 0
-            // items:[]
-            // items: this.$store.state.activities
         };
     },
 
     async created() {
-        console.log('created called');
         try {
+            
             await this.$store.dispatch(GET_FEED, {
+                
                 householdid: parseInt(this.household.household.id),
                 limit: 10,
                 page: 1
             });
-
             await this.feeds.feed.items.forEach(item => {
                 this.items.push(item);
             });
@@ -72,11 +70,6 @@ export default {
     },
     methods: {
         async onLoad(index, done) {
-
-            console.log('on load');
-            console.log('items', this.items.length);
-            console.log('total', this.total);
-            console.log('page', this.page);
             
                 done(true)
                 // try {

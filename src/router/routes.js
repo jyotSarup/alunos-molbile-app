@@ -28,6 +28,11 @@ const routes = [
                 name: "houseissues",
                 path: '/houseissues',
                 component: () => import('../pages/HouseIssues.vue')
+            },
+            {
+                name: "memberProfile",
+                path: '/memberProfile/:memberIndex',
+                component: () => import('../pages/MemberProfile.vue')
             }
         ]
     },
