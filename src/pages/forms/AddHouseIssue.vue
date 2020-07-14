@@ -173,7 +173,6 @@ export default {
                 );
                 
                 this.dialog = true
-                await this.$store.dispatch(GET_ISSUES, this.household.household.id, 10, 1);
             } catch (error) {
                 console.log(error);
             }
