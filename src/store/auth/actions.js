@@ -6,7 +6,8 @@ import {
     MUTATE_TOKEN,
     MUTATE_USER,
     REQUEST_LOGIN_ACTION,
-    TOKEN_LOCAL_STORAGE
+    TOKEN_LOCAL_STORAGE,
+    MUTATE_IS_ADMIN
 } from 'src/constants';
 import LOGIN from '../../graphQL/mutations/Login.graphql';
 import REQUEST_LOGIN from '../../graphQL/mutations/RequestLogin.graphql';
@@ -45,7 +46,9 @@ export default {
         commit(MUTATE_USER, data.member.user);
         commit(MUTATE_HOUSEHOLD, data.member.household);
         commit(MUTATE_MEMBERS, data.member.household.residents);
-        console.log(data.member.household.residents)
+
+        console.log(data.member);
+        commit(MUTATE_IS_ADMIN, data.member.is_admin);
     },
     [LOGOUT_ACTION]: ({ commit }) => {
         window.localStorage.removeItem(TOKEN_LOCAL_STORAGE);
