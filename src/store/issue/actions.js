@@ -6,6 +6,7 @@ import {
     MUTATE_ISSUE
 } from 'src/constants';
 import CREATEISSUE from '../../graphQL/mutations/createHouseIssue';
+import SOLVEISSUE from '../../graphQL/mutations/solveHouseIssue';
 import GETISSUE from '../../graphQL/queries/issue';
 import { apolloClient } from 'boot/apollo';
 
@@ -35,5 +36,14 @@ export default {
         const data = response.data.issues;
 
         commit(MUTATE_ISSUE, data.items);
+    },
+    [MUTATE_SOLVEISSUE]: async ({ commit }, issueID) => {
+        await apolloClient.mutate({
+            mutation: SOLVEISSUE,
+            variables: {
+                "id": issueID
+            }
+        })
+        console.log("issue Resolved!")
     }
 };

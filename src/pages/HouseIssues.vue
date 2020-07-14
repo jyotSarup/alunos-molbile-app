@@ -57,7 +57,7 @@ export default {
         })
     },
      beforeMount(){
-         this.init()
+        //  this.init()
      }
 };
 </script>

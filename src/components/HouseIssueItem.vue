@@ -45,6 +45,7 @@
             <q-card-section>
                 <div class="text-subtitle2">{{ houseIssueDetail.subject }}</div>
                 {{ houseIssueDetail.description }}
+                 
             </q-card-section>
             <!-- <q-card-section v-if="houseIssueDetail.imgUrl">
                 <div>
@@ -67,11 +68,16 @@
                         <img :src="img" />
                     </q-avatar>
             </q-card-section>
-            <q-toolbar>
-                <div>STATUS: pending</div>
-                <q-space />
-                <q-btn outline rounded label="Resolve" />
-            </q-toolbar>
+            <div v-if="houseIssueDetail.solved_at">STATUS: Resolved   
+            </div>
+            <div v-else>
+                <q-toolbar>
+                    <div>STATUS: Pending</div>
+                    <q-space />
+                    <q-btn outline rounded label="Resolve" @click="resolveIssue"/>
+                </q-toolbar>
+            </div>
+          
         </q-card>
     </q-expansion-item>
 </template>
@@ -91,6 +97,21 @@ export default {
         houseIssueDetail: {
             type: Object,
             required: true
+        }
+    },
+    methods :{
+        async resolveIssue() {
+           const issueId =  houseIssueDetail.id 
+             try {    
+                await this.$store.dispatch(
+                    MUTATE_SOLVEISSUE,
+                    issueId
+                );
+                
+                // this.dialog = true
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 };
