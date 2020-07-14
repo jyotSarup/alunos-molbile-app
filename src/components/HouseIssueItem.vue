@@ -28,7 +28,8 @@
     <q-expansion-item>
         <template v-slot:header>
             <q-item-section avatar>
-                <q-avatar class="avatarGrad" text-color="white">J</q-avatar>
+                <q-avatar class="avatarGrad" text-color="white" v-if="houseIssueDetail.solved_at">R</q-avatar>
+                <q-avatar class="avatarGrad" text-color="white" v-else>P</q-avatar>
             </q-item-section>
 
             <q-item-section>
@@ -45,7 +46,7 @@
             <q-card-section>
                 <div class="text-subtitle2">{{ houseIssueDetail.subject }}</div>
                 {{ houseIssueDetail.description }}
-                 
+                
             </q-card-section>
             <!-- <q-card-section v-if="houseIssueDetail.imgUrl">
                 <div>
@@ -65,7 +66,7 @@
                         v-for="(img, index) in imageUrl"
                         :key="index"
                     >
-                        <img :src="img" />
+                        <img class="imgborder" :src="img" />
                     </q-avatar>
             </q-card-section>
             <div v-if="houseIssueDetail.solved_at">STATUS: Resolved   
@@ -83,6 +84,8 @@
 </template>
 
 <script>
+import { MUTATE_SOLVEISSUE,GET_ISSUES } from '../constants';
+import {mapActions, mapState} from 'vuex';
 export default {
     name: 'HouseIssueItem',
     data() {
@@ -101,18 +104,24 @@ export default {
     },
     methods :{
         async resolveIssue() {
-           const issueId =  houseIssueDetail.id 
+           const householdId = this.household.household.id
+        //    console.log(householdId)
+           const issueId =  this.houseIssueDetail.id 
              try {    
                 await this.$store.dispatch(
                     MUTATE_SOLVEISSUE,
                     issueId
                 );
-                
-                // this.dialog = true
+                await this.$store.dispatch(GET_ISSUES, this.household.household.id, 10, 1);
             } catch (error) {
                 console.log(error);
             }
         }
+    },
+    computed: {
+        ...mapState({
+            household: state => state.household
+        })
     }
 };
 </script>
@@ -132,5 +141,8 @@ export default {
 .subtitle{
     color: #757575;
     font-size: 12px;
+}
+.imgborder{
+    border: 1px solid #757575 !important;
 }
 </style>

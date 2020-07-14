@@ -45,6 +45,7 @@ export default {
         commit(MUTATE_USER, data.member.user);
         commit(MUTATE_HOUSEHOLD, data.member.household);
         commit(MUTATE_MEMBERS, data.member.household.residents);
+        console.log(data.member.household.residents)
     },
     [LOGOUT_ACTION]: ({ commit }) => {
         window.localStorage.removeItem(TOKEN_LOCAL_STORAGE);

@@ -78,16 +78,16 @@
                     label="Generate Issue"
                     type="submit"
                     class="gradientButton"
-                    style="width: 70% ; border-radius:20px ; margin-left:0"
+                    style="width: 100% ; border-radius:20px ; margin-left:0"
                 ></q-btn>
-                <q-btn
+                <!-- <q-btn
                     label="Reset"
                     type="reset"
                     color="primary"
                     flat
                     class="q-ml-sm"
                     style="border:none !important"
-                ></q-btn>
+                ></q-btn> -->
             </div>
             <div v-show="showdialog">
                 <UpdateOptionDialog
@@ -173,6 +173,7 @@ export default {
                 );
                 
                 this.dialog = true
+                await this.$store.dispatch(GET_ISSUES, this.household.household.id, 10, 1);
             } catch (error) {
                 console.log(error);
             }

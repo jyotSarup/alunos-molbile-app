@@ -22,7 +22,7 @@ export default {
                 }
             }
         });
-
+        await dispatch(GET_ISSUES, household_id, 10, 1);
     },
     [GET_ISSUES]: async ({ commit }, household_id, limit, page) => {
         const response = await apolloClient.query({
@@ -44,6 +44,6 @@ export default {
                 "id": issueID
             }
         })
-        console.log("issue Resolved!")
+
     }
 };
