@@ -1,7 +1,7 @@
 <template>
     <q-layout view=" LpR fFf">
         <q-page-container style=" padding-top:20%;">
-            <q-header elevated class="mainHeader">
+            <q-header elevated :class="isAdmin ? 'adminHeader' : 'mainHeader'">
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
                         <div class="text-white title-position">
@@ -30,15 +30,16 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
-import Notification from "../components/Notification";
+import { mapState } from 'vuex';
+import Footer from '../components/Footer';
+import Notification from '../components/Notification';
 export default {
-    name: "MainLayout",
+    name: 'MainLayout',
     components: { Footer, Notification },
     data() {
         return {
-            title: "",
-            subtitle: ""
+            title: '',
+            subtitle: ''
         };
     },
     methods: {
@@ -46,20 +47,25 @@ export default {
             this.title = title;
             this.subtitle = subtitle;
         }
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>
 <style lang="scss">
 .mainHeader {
     z-index: -1;
-    background-image: linear-gradient(180deg, #017eff 30%, #01e8f8 90%);
+    background-image: linear-gradient(180deg, #017eff, #01c0fb, #01e8f8);
     border-radius: 0px 0px 0px 90px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 25vh;
-        font-size: 24px;
+        height: 208px;
+        font-size: 30px;
         font-weight: bold;
 
         .title-position {
@@ -76,7 +82,12 @@ export default {
             width: 100%;
             word-wrap: break-word;
             white-space: normal;
+            font-size: 16px;
         }
     }
+}
+.adminHeader {
+    z-index: -1;
+    background-image: linear-gradient(180deg, #5887f9, #60c3ff);
 }
 </style>

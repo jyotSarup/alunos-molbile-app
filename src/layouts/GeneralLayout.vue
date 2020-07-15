@@ -73,8 +73,8 @@ export default {
         border-radius: 0px 0px 0px 30px;
     }
     .title {
-        height: 11vh;
-        font-size: 24px;
+        height: 116px;
+        font-size: 26px;
         font-weight: bold;
         .back-position {
             position: absolute;
@@ -85,6 +85,7 @@ export default {
             position: absolute;
             top: 30%;
             left: 30%;
+            font-size: 26px;
         }
         .icon-position {
             position: absolute;

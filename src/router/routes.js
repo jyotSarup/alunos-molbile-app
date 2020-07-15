@@ -33,6 +33,11 @@ const routes = [
                 name: "memberProfile",
                 path: '/memberProfile/:memberIndex',
                 component: () => import('../pages/MemberProfile.vue')
+            },
+            {
+                name: "feedback",
+                path: '/feedback',
+                component: () => import('../pages/Feedback.vue')
             }
         ]
     },
