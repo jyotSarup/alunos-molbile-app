@@ -21,21 +21,21 @@
 
 <script>
 export default {
-    name: "MainLayout"
+    name: 'MainLayout'
 };
 </script>
 
 <style lang="scss">
 .authHeader {
     z-index: -1;
-    background-image: linear-gradient(180deg, #017eff 30%, #01e8f8 90%);
+    background-image: linear-gradient(180deg, #017eff, #01c0fb, #01e8f8);
     border-radius: 0px 0px 0px 90px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 38vh;
-        font-size: 24px;
+        height: 273px;
+        font-size: 26px;
         font-weight: bold;
         .title-position {
             position: absolute;
@@ -46,6 +46,7 @@ export default {
                 width: 80%;
                 word-wrap: break-word;
                 white-space: normal;
+                font-size: 16px;
             }
         }
     }

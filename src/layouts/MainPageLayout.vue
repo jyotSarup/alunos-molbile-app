@@ -58,14 +58,14 @@ export default {
 <style lang="scss">
 .mainHeader {
     z-index: -1;
-    background-image: linear-gradient(180deg, #017eff 30%, #01e8f8 90%);
+    background-image: linear-gradient(180deg, #017eff, #01c0fb, #01e8f8);
     border-radius: 0px 0px 0px 90px;
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 25vh;
-        font-size: 24px;
+        height: 208px;
+        font-size: 30px;
         font-weight: bold;
 
         .title-position {
@@ -82,6 +82,7 @@ export default {
             width: 100%;
             word-wrap: break-word;
             white-space: normal;
+            font-size: 16px;
         }
     }
 }

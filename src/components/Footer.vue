@@ -4,7 +4,7 @@
             no-caps
             active-color="positive"
             indicator-color="transparent"
-            class="text-grey"
+            class="text-grey footerBar"
             v-model="tab"
             dense
             align="justify"
@@ -43,9 +43,25 @@
                         clickable
                         v-ripple
                         class="bottom-list-item"
+                        @click="addHouseAnnouncement"
+                    >
+                        <div style="justify-content: center; margin-right:20px">
+                            <q-icon
+                                name="img:../statics/icons/iconQuickAnnouncement.png"
+                            />
+                        </div>
+                        <q-item-section>
+                            <q-item-label>Add Post</q-item-label>
+                        </q-item-section>
+                    </q-item>
+
+                    <q-item
+                        clickable
+                        v-ripple
+                        class="bottom-list-item"
                         @click="addHouseIssue"
                     >
-                        <div style="justify-content: center; margin-right:10px">
+                        <div style="justify-content: center; margin-right:20px">
                             <q-icon
                                 name="img:../statics/icons/iconQuickHouseIssue.png"
                             />
@@ -54,25 +70,8 @@
                             Add House Issue</q-item-section
                         >
                     </q-item>
-
-                    <q-item
-                        clickable
-                        v-ripple
-                        class="bottom-list-item"
-                        @click="addHouseAnnouncement"
-                    >
-                        <div style="justify-content: center; margin-right:10px">
-                            <q-icon
-                                name="img:../statics/icons/iconQuickAnnouncement.png"
-                            />
-                        </div>
-                        <q-item-section>
-                            <q-item-label>Add Announcement</q-item-label>
-                        </q-item-section>
-                    </q-item>
                 </q-list>
             </q-fab>
-
             <q-tab
                 name="help"
                 icon="img:../statics/icons/iconFooterHelp.png"
@@ -98,7 +97,10 @@
     background-color: white;
     width: fit-content;
     border-radius: 10px;
-    box-shadow: 3px 3px 4px #efefef;
+    box-shadow: 100px -8px 90px 0px lightgray, -100px 6px 90px 0px lightgray,
+        100px -150px 120px 0px lightgray, -100px -150px 120px 0px lightgray,
+        100px -290px 150px 0px lightgray, -100px -290px 150px 0px lightgray;
+    margin-left: -20px;
 }
 .bottom-list-item {
     padding: 1em 3em;
@@ -125,11 +127,14 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     margin: 1em;
 }
 .floatButton {
-    background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
+    background-image: linear-gradient(180deg, #01c0fb, #01e8f8);
     color: white;
     border-radius: 50%;
     box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;
     border: none !important;
+}
+.footerBar {
+    box-shadow: 0 -1px 36px #dbdada;
 }
 </style>
 
@@ -158,7 +163,7 @@ export default {
                             id: 'addHouseIssue'
                         },
                         {
-                            label: 'Add Announcement',
+                            label: 'Add Post',
                             img:
                                 'https://cdn.quasar.dev/img/logo_keep_128px.png',
                             id: 'addAnnouncement'
