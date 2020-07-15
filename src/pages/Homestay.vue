@@ -23,6 +23,11 @@ export default {
                     path: '/myhomestay'
                 },
                 {
+                    label: 'House Issues',
+                    icon: 'img:../statics/icons/iconHouseIssues.png',
+                    path: '/houseissues'
+                },
+                {
                     label: 'Rules',
                     icon: 'img:../statics/icons/iconRules.png',
                     path: '/homestay/rules'
@@ -31,16 +36,12 @@ export default {
                     label: 'Feedback',
                     icon: 'img:../statics/icons/iconFeedback.png',
                     path: '/feedback'
-                },
-                {
-                    label: 'House Issues',
-                    icon: 'img:../statics/icons/iconHouseIssues.png',
-                    path: '/houseissues'
-                },
-                {
-                    label: 'Announcement',
-                    icon: 'img:../statics/icons/iconAnnouncements.png'
                 }
+
+                // {
+                //     label: 'Announcement',
+                //     icon: 'img:../statics/icons/iconAnnouncements.png'
+                // }
             ]
         };
     }
