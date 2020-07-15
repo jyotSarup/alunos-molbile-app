@@ -94,7 +94,7 @@ created() {
 
 <style>
 
-.formWrapper : {
+.formWrapper{
     
 }
 .q-gutter-md {

@@ -132,6 +132,7 @@ import UpdateOptionDialog from '../../components/UpdatePhoto/UpdateOptions';
 import { MUTATE_CREATEISSUE } from '../../constants';
 import { GET_ISSUES } from '../../constants';
 import { mapState } from 'vuex';
+import { stat } from 'fs';
 export default {
     name: 'AddHouseIssue',
     components: { UpdateOptionDialog },
@@ -151,24 +152,26 @@ export default {
     },
     computed: {
         ...mapState({
-             household: state => state.household,
-            houseIssue: state => state.issue.issues
+            household: state => state.household,
+            houseIssue: state => state.issue.issues,
         })
     },
     methods: {
         async ToHouseIssue() {
             const householdId = this.household.household.id;
-            await this.$store.dispatch(GET_ISSUES, householdId, 10, 1);
+            // await this.$store.dispatch(GET_ISSUES, householdId, 10, 1);
             await this.$router.replace({ name: "houseissues" });
         },
         async onSubmit() {
             const title = this.titleText
             const description = this.description
+            const authorId = this.household.memberId
             
              try {    
                 await this.$store.dispatch(
                     MUTATE_CREATEISSUE,
-                    {title,
+                    {authorId,
+                    title,
                     description}
                 );
                 

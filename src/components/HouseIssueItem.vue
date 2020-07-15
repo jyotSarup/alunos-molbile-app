@@ -36,7 +36,7 @@
                 <span style="font-weight:500">{{
                     houseIssueDetail.title
                 }}
-                <div class="subtitleIssue">By Lucy Lee</div>
+                <div class="subtitleIssue">By {{userInfo.user.first_name}} {{userInfo.user.last_name}}</div>
                 </span>
                 <span>{{ houseIssueDetail.dateCreated }}</span>
             </q-item-section>
@@ -120,7 +120,8 @@ export default {
     },
     computed: {
         ...mapState({
-            household: state => state.household
+            household: state => state.household,
+            userInfo: state => state.auth
         })
     }
 };

@@ -7,6 +7,7 @@ import {
     MUTATE_USER,
     REQUEST_LOGIN_ACTION,
     TOKEN_LOCAL_STORAGE,
+    MUTATE_MEMBER_ID,
     MUTATE_IS_ADMIN
 } from 'src/constants';
 import LOGIN from '../../graphQL/mutations/Login.graphql';
@@ -49,6 +50,7 @@ export default {
 
         console.log(data.member);
         commit(MUTATE_IS_ADMIN, data.member.is_admin);
+        commit(MUTATE_MEMBER_ID, data.member.id);
     },
     [LOGOUT_ACTION]: ({ commit }) => {
         window.localStorage.removeItem(TOKEN_LOCAL_STORAGE);

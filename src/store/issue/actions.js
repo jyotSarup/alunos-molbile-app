@@ -11,12 +11,12 @@ import GETISSUE from '../../graphQL/queries/issue';
 import { apolloClient } from 'boot/apollo';
 
 export default {
-    [MUTATE_CREATEISSUE]: async ({ commit, dispatch }, { title, description }) => {
+    [MUTATE_CREATEISSUE]: async ({ commit, dispatch }, { authorId, title, description }) => {
         await apolloClient.mutate({
             mutation: CREATEISSUE,
             variables: {
                 "input": {
-                    "author_id": 1,
+                    "author_id": authorId,
                     "title": title,
                     "description": description
                 }

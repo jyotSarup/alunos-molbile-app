@@ -1,5 +1,6 @@
 export default () => ({
     members: [],
     household: {},
-    isAdmin: false
+    isAdmin: false,
+    memberId: 1
 });
