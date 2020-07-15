@@ -29,7 +29,8 @@ export default {
                 },
                 {
                     label: 'Feedback',
-                    icon: 'img:../statics/icons/iconFeedback.png'
+                    icon: 'img:../statics/icons/iconFeedback.png',
+                    path: '/feedback'
                 },
                 {
                     label: 'House Issues',
