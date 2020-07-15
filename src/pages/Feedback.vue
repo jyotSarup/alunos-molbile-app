@@ -3,10 +3,14 @@
 		<q-card class="cardstyle">
 			<q-card-section class="cardsection">
 				<div class="title">
-					Test
+					Lorem Ipsum
 				</div>
-				<br />
-				<q-separator />
+				<div class="content">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa aspernatur veniam eaque laborum repellendus blanditiis temporibus quis unde, nihil distinctio totam dolor.
+					<br>
+					<br>
+					Click CONTINUE to proceed.
+				</div>
 			</q-card-section>
 		</q-card>
 	</div>
@@ -17,5 +21,20 @@
 		width: 95%;
 		margin: auto;
 		padding-top: 2em;
+	}
+
+	.cardsection {
+		padding: 2em;
+	}
+
+	.title {
+		font-weight: bold;
+		text-align: left;
+	}
+
+	.content {
+		text-align: left;
+		margin-top: 10px;
+		font-weight: 300;
 	}
 </style>
