@@ -1,7 +1,7 @@
 <template>
     <q-layout view=" LpR fFf">
         <q-page-container style=" padding-top:20%;">
-            <q-header elevated class="mainHeader">
+            <q-header elevated :class="isAdmin ? 'adminHeader' : 'mainHeader'">
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
                         <div class="text-white title-position">
@@ -30,15 +30,16 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
-import Notification from "../components/Notification";
+import { mapState } from 'vuex';
+import Footer from '../components/Footer';
+import Notification from '../components/Notification';
 export default {
-    name: "MainLayout",
+    name: 'MainLayout',
     components: { Footer, Notification },
     data() {
         return {
-            title: "",
-            subtitle: ""
+            title: '',
+            subtitle: ''
         };
     },
     methods: {
@@ -46,6 +47,11 @@ export default {
             this.title = title;
             this.subtitle = subtitle;
         }
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>
@@ -78,5 +84,9 @@ export default {
             white-space: normal;
         }
     }
+}
+.adminHeader {
+    z-index: -1;
+    background-image: linear-gradient(180deg, #5887f9, #60c3ff);
 }
 </style>
