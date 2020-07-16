@@ -3,12 +3,15 @@
         class="q-pa-md scroll"
         style=" padding: 0 ; padding-top: 4px; margin: auto ; margin-top:16px;  border-radius:20px"
     >
-        <q-pull-to-refresh @refresh="refresh" style="width:100%">
+        <q-pull-to-refresh  style="width:100%">
             <q-infinite-scroll
                 v-if="this.items"
-                @load="onLoad"
-                :offset="250"
+                @load ="onLoad"
+                :offset="100"
             >
+
+                <FeedStart/>
+
                 <div
                     v-for="(item, index) in this.items"
                     :key="index"
@@ -34,7 +37,9 @@ import store from '../store';
 export default {
     name: 'InfiniteScrollContainer',
     components: {
-        FeedCard: require('./FeedCard.vue').default
+        FeedCard: require('./FeedCard.vue').default,
+        FeedStart: require('./FeedStart.vue').default
+
     },
     computed: {
         ...mapState({
@@ -47,7 +52,8 @@ export default {
             page: 2,
             limit: 10,
             items: [],
-            total: 0
+            total: 0,
+            persistent:false
         };
     },
 
@@ -63,40 +69,78 @@ export default {
             await this.feeds.feed.items.forEach(item => {
                 this.items.push(item);
             });
-            this.total = this.feeds.feed.total;
+            
+            this.total = await this.feeds.feed.total;
+            console.log("total in created", this.total);
+            this.refresher(this.total);
         } catch (error) {
             console.log(error);
         }
     },
+
+    // async mounted(){
+    //     console.log("mounted");
+    //     console.log("total", await this.total);
+    //             try {
+    //                 await this.$store.dispatch(GET_FEED, {
+    //                     householdid: parseInt(this.household.household.id),
+    //                     limit: this.total,
+    //                     page: 1
+    //                 });
+                        
+    //                 console.log('onload feed', this.feeds.feed);
+    //                 if (this.feeds.feed.items) {
+
+    //                     this.items = this.feeds.feed.items;
+    //                     this.total = this.feeds.feed.total;
+    //                     this.page++;
+                        
+    //                 }else{
+    //                 }
+    //             } catch (error) {
+    //                 console.log(error);
+    //             }
+            
+    // },
     methods: {
         async onLoad(index, done) {
-            
-                done(true)
-                // try {
-                //     await this.$store.dispatch(GET_FEED, {
-                //         householdid: parseInt(this.household.household.id),
-                //         limit: 10,
-                //         page: this.page
-                //     });
-                //     console.log('onload feed', this.feeds.feed);
-                //     if (this.feeds.feed.items) {
-
-                //         this.feeds.feed.items.forEach(item => {
-                //             this.items.push(item);
-                //         });
-                //         this.total = this.feeds.feed.total;
-                //         this.page++;
-                //     }else{
-                //         done(true)
-                //     }
-                // } catch (error) {
-                //     console.log(error);
-                // }
-            
-                
+                  
+                done();
             
            
         },
+         async refresher (total,done) {
+          
+          console.log("total in refresher", total);
+                try {
+                      await this.$store.dispatch(GET_FEED, {
+                        householdid: parseInt(this.household.household.id),
+                        limit: total,
+                        page: 1
+                    });
+                        
+                    console.log('refresher feed', this.feeds.feed);
+                    if (this.feeds.feed.items) {
+
+                        this.items = this.feeds.feed.items;
+                        this.total = this.feeds.feed.total;
+                        
+                        
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+
+
+        // let items = []
+        // for (let i = 0; i < 7; i++) {
+        //   items.push({})
+        // }
+        // this.items = this.items.concat(items)
+        // done()
+     
+    },
+
         refresh(done) {
             // setTimeout(() => {
             //     if (this.items.length < 300) {
@@ -109,4 +153,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>
