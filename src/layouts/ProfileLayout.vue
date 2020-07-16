@@ -1,7 +1,10 @@
 <template>
     <q-layout view=" LpR fFf">
         <q-page-container style=" padding-top:36%;">
-            <q-header class="profileHeader" elevated>
+            <q-header
+                :class="isAdmin ? 'adminHeader' : 'profileHeader'"
+                elevated
+            >
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
                         <div class="text-white title-position">
@@ -33,6 +36,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Footer from '../components/Footer.vue';
 import Notification from '../components/Notification';
 export default {
@@ -50,6 +54,11 @@ export default {
             this.title = title;
             this.subtitle = subtitle;
         }
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>

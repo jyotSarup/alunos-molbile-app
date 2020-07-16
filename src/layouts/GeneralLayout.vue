@@ -13,7 +13,10 @@
                             />
                         </div>
 
-                        <div class="title-position">
+                        <div
+                            class="title-position"
+                            :style="isAdmin ? 'color:#5887F9' : 'color:black'"
+                        >
                             {{ title }}
                             <div class="text-caption subtitle">
                                 {{ subtitle }}
@@ -76,20 +79,23 @@ export default {
         height: 116px;
         font-size: 26px;
         font-weight: bold;
+        text-align: center;
         .back-position {
             position: absolute;
-            top: 30%;
+            top: 35%;
             left: 5%;
         }
         .title-position {
             position: absolute;
-            top: 30%;
+            top: 35%;
             left: 20%;
             font-size: 26px;
+            width: 60%;
+            font-weight: bold;
         }
         .icon-position {
             position: absolute;
-            top: 40%;
+            top: 45%;
             right: 8%;
         }
         .subtitle {

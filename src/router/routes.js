@@ -25,17 +25,12 @@ const routes = [
                 component: () => import('../pages/forms/AddAnnouncement.vue')
             },
             {
-                name: "houseissues",
-                path: '/houseissues',
-                component: () => import('../pages/HouseIssues.vue')
-            },
-            {
-                name: "memberProfile",
+                name: 'memberProfile',
                 path: '/memberProfile/:memberIndex',
                 component: () => import('../pages/MemberProfile.vue')
             },
             {
-                name: "feedback",
+                name: 'feedback',
                 path: '/feedback',
                 component: () => import('../pages/Feedback.vue')
             }
@@ -48,11 +43,19 @@ const routes = [
         children: [{ path: '', component: () => import('pages/Profile.vue') }]
     },
     {
-        path: '/myHomestay',
-        name: 'myHomestay',
+        path: '/',
         component: () => import('layouts/GeneralLayout.vue'),
         children: [
-            { path: '', component: () => import('pages/MyHomestay.vue') },
+            {
+                name: 'myhomestay',
+                path: '/myHomestay',
+                component: () => import('pages/MyHomestay.vue')
+            },
+            {
+                name: 'houseissues',
+                path: '/houseissues',
+                component: () => import('../pages/HouseIssues.vue')
+            },
             {
                 name: 'addHouseIssue',
                 path: '/add-house-issue',
