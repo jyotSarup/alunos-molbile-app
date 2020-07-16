@@ -76,7 +76,7 @@ export default {
         border-radius: 0px 0px 0px 30px;
     }
     .title {
-        height: 116px;
+        height: 25vw;
         font-size: 26px;
         font-weight: bold;
         text-align: center;
@@ -89,7 +89,7 @@ export default {
             position: absolute;
             top: 35%;
             left: 20%;
-            font-size: 26px;
+            font-size: 6.3vw;
             width: 60%;
             font-weight: bold;
         }

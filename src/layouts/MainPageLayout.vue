@@ -68,14 +68,14 @@ export default {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 208px;
-        font-size: 30px;
+        height: 44.8vw;
         font-weight: bold;
 
         .title-position {
             position: absolute;
             top: 22%;
             left: 10%;
+            font-size: 7.1vw;
         }
         .icon-position {
             position: absolute;
@@ -98,14 +98,14 @@ export default {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 131px;
-        font-size: 30px;
+        height: 28.2vw;
         font-weight: bold;
 
         .title-position {
             position: absolute;
             top: 22%;
             left: 10%;
+            font-size: 7.1vw;
         }
         .icon-position {
             position: absolute;
