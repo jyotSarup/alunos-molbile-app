@@ -15,7 +15,7 @@
 
                         <div
                             class="title-position"
-                            :style="isAdmin ? 'color:#5887F9' : 'color:black'"
+                            :style="isAdmin ? 'color:#5887F9' : 'color:#01c0fb'"
                         >
                             {{ title }}
                             <div class="text-caption subtitle">
