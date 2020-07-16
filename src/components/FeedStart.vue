@@ -6,7 +6,7 @@
                     <q-icon
                         name="new_releases"
                         class="text-accent"
-                        style="font-size: 32px; margin:auto"
+                        style="font-size: 32px; margin:0 auto"
                     />
                 </q-card-section>
                 <q-card-section class="col-10 flex ">
@@ -40,7 +40,9 @@
                             flat
                             label="See More"
                             style="transform:translateX(-16px)"
-                            color="primary"
+                            :style="
+                                isAdmin ? 'color: #5887F9' : 'color: #01c0fb'
+                            "
                             align="left"
                             @click="persistent = true"
                             no-caps
@@ -93,11 +95,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     data() {
         return {
             persistent: false
         };
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>

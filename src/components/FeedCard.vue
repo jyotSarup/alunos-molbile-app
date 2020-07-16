@@ -7,7 +7,7 @@
                     <q-icon
                         name="report_problem"
                         class="text-accent"
-                        style="font-size: 32px; margin:auto"
+                        style="font-size: 32px; margin:0 auto"
                         v-if="feedItem.author.__typename == 'Issue'"
                     />
                     <q-icon
@@ -50,8 +50,10 @@
                         <q-btn
                             flat
                             label="See More"
-                            style="transform:translateX(-16px)"
-                            color="primary"
+                            style="transform:translateX(-16px);"
+                            :style="
+                                isAdmin ? 'color: #5887F9' : 'color: #01c0fb'
+                            "
                             align="left"
                             @click="persistent = true"
                             no-caps
@@ -132,6 +134,7 @@
 </style>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'FeedCard',
     data() {
@@ -144,6 +147,11 @@ export default {
             type: Object,
             required: true
         }
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>
