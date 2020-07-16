@@ -1,6 +1,6 @@
 <template>
     <q-layout view=" LpR fFf">
-        <q-page-container style=" padding-top:20%;">
+        <q-page-container style=" padding-top:17%;">
             <q-header elevated :class="isAdmin ? 'adminHeader' : 'mainHeader'">
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
@@ -70,7 +70,7 @@ export default {
 
         .title-position {
             position: absolute;
-            top: 30%;
+            top: 22%;
             left: 10%;
         }
         .icon-position {

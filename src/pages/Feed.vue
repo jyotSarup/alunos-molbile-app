@@ -10,20 +10,21 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-import DailyTip from "../components/DailyTip";
-import InfiniteScrollContainer from "../components/InfiniteScrollContainer";
-import { GET_HOUSEHOLD_ACTIVITIES } from "../constants";
+import { mapActions, mapState } from 'vuex';
+import DailyTip from '../components/DailyTip';
+import InfiniteScrollContainer from '../components/InfiniteScrollContainer';
+import { GET_HOUSEHOLD_ACTIVITIES } from '../constants';
 import store from '../store';
 let household;
 export default {
-    name: "Tip",
+    name: 'Tip',
     beforeCreate() {
         // household = this.$store.state.household
         // console.log(household)
     },
     created() {
         this.$emit(
+
             "updateTitle",
             `Hi ${this.userInfo.user.display_name}`,
             "It's a good day to have a good day"
@@ -44,7 +45,7 @@ export default {
 
 <style>
 .feedContainer {
-    width: 95%;
+    width: 94%;
     margin: auto;
     padding-top: 2em;
 }
