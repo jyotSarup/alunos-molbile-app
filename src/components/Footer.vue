@@ -34,7 +34,7 @@
             <q-fab
                 v-model="fabCenter"
                 vertical-actions-align="center"
-                class="floatButton"
+                :class="isAdmin ? 'floatButtonAdmin' : 'floatButton'"
                 direction="up"
             >
                 <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
@@ -128,6 +128,13 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
 }
 .floatButton {
     background-image: linear-gradient(180deg, #01c0fb, #01e8f8);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;
+    border: none !important;
+}
+.floatButtonAdmin {
+    background-image: linear-gradient(180deg, #5887f9, #60c3ff);
     color: white;
     border-radius: 50%;
     box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;

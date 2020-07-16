@@ -1,7 +1,7 @@
 <template>
     <div>
         <q-page class="feedContainer">
-            <dailyTip> </dailyTip>
+            <dailyTip v-if="is_Admin"> </dailyTip>
             <div>
                 <infiniteScrollContainer></infiniteScrollContainer>
             </div>
@@ -24,12 +24,10 @@ export default {
     },
     created() {
         this.$emit(
-
-            "updateTitle",
+            'updateTitle',
             `Hi ${this.userInfo.user.display_name}`,
             "It's a good day to have a good day"
         );
-        
     },
     components: {
         DailyTip,
@@ -37,7 +35,8 @@ export default {
     },
     computed: {
         ...mapState({
-            userInfo: state => state.auth
+            userInfo: state => state.auth,
+            isAdmin: state => state.household.isAdmin
         })
     }
 };
