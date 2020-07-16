@@ -7,10 +7,26 @@ query ($household_id : ID
     page : $page
   ){
     total
-    items{
+    
+    items {
       content
+      
       author {
         __typename
+        ... on Issue {
+          title
+          author {
+            id
+            user {
+              display_name
+            }
+          }
+        }
+        ... on Resident {
+          user {
+            display_name
+          }
+        }
       }
     }
   }

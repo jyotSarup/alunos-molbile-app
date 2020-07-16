@@ -11,6 +11,7 @@ export default {
     [GET_FEED ]: async ({commit}, payload) => {
         const response = await apolloClient.query({
             query: GET_FEED_QUERY,
+            fetchPolicy: 'no-cache',
             variables: {
                 household_id : payload.householdid,
                 limit : payload.limit,
