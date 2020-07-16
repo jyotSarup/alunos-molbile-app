@@ -1,6 +1,6 @@
 <template>
     <q-layout view=" LpR fFf">
-        <q-page-container style=" padding-top:30%;">
+        <q-page-container style=" padding-top:36%;">
             <q-header class="profileHeader" elevated>
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
@@ -73,7 +73,7 @@ export default {
         }
         .icon-position {
             position: absolute;
-            top: 30%;
+            top: 36%;
             right: 8%;
         }
         .subtitle {

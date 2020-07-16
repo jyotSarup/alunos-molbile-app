@@ -147,6 +147,7 @@ export default {
     box-shadow: none !important;
     .cardsection {
         padding: 0 !important;
+        border-bottom: none;
     }
     .image {
         width: 100px;
