@@ -1,7 +1,7 @@
 <template>
-    <q-page-container class="">
+    <q-page-container style="padding-top: 0">
         <q-page class="login-style">
-            <q-form @submit.prevent="login" class="login-form ">
+            <q-form @submit.prevent="login" class="login-form">
                 <q-card class="card-style">
                     <q-card-section>
                         <EmailInput v-model="email" class="q-mt-s q-mb-lg" />
@@ -22,8 +22,7 @@
                         </q-card-section>
 
                         <q-card-section class="q-pt-none">
-                            We have sent you an email with a link to login. If
-                            you didn't get an email, try again.
+                            If you can't login, please click here.
                         </q-card-section>
 
                         <q-card-actions
@@ -92,7 +91,6 @@ export default {
         display: inline-block;
         width: 85%;
         position: absolute;
-        top: -78%;
         left: 50%;
         transform: translateX(-50%);
 

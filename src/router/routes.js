@@ -24,17 +24,22 @@ const routes = [
                 path: '/add-announcement',
                 component: () => import('../pages/forms/AddAnnouncement.vue')
             },
-            {
-                name: 'memberProfile',
-                path: '/memberProfile/:memberIndex',
-                component: () => import('../pages/MemberProfile.vue')
-            },
+            // {
+            //     name: 'memberProfile',
+            //     path: '/memberProfile/:memberIndex',
+            //     component: () => import('../pages/MemberProfile.vue')
+            // },
             {
                 name: 'feedback',
                 path: '/feedback',
                 component: () => import('../pages/Feedback.vue')
             }
         ]
+    },
+    {
+        name: 'memberProfile',
+        path: '/memberProfile/:memberIndex',
+        component: () => import('../pages/MemberProfile.vue')
     },
     {
         path: '/profile',

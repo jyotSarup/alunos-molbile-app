@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Footer from '../components/Footer';
 import Notification from '../components/Notification';
 export default {
@@ -63,6 +64,11 @@ export default {
             this.subtitle = subtitle;
             this.backTo = backto;
         }
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
     }
 };
 </script>
