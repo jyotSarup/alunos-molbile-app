@@ -1,7 +1,7 @@
 <template>
     <div>
         <q-page class="feedContainer">
-            <dailyTip v-if="!is_Admin"> </dailyTip>
+            <dailyTip v-if="!isAdmin"> </dailyTip>
             <div>
                 <infiniteScrollContainer></infiniteScrollContainer>
             </div>
