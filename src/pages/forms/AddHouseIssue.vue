@@ -133,6 +133,8 @@ import { MUTATE_CREATEISSUE } from '../../constants';
 import { GET_ISSUES } from '../../constants';
 import { mapState } from 'vuex';
 import { stat } from 'fs';
+import { EventBus } from "../../services/event-bus";
+  import cordovaCamera from "../../services/cordova-camera";
 export default {
     name: 'AddHouseIssue',
     components: { UpdateOptionDialog },
@@ -149,6 +151,10 @@ export default {
     },
     created() {
         this.$emit('updateTitle', 'Add House Issue','', '/feed');
+    },
+     mounted() {
+      EventBus.$off("takePicture");
+      EventBus.$on("takePicture", this.uploadImageFromCamera);
     },
     computed: {
         ...mapState({
@@ -210,6 +216,10 @@ export default {
             this.showdialog = false;
             this.$forceUpdate();
             console.log('parent photo', this.imageUrl);
+        },
+        async uploadImageFromCamera() {
+            let base64 = await cordovaCamera.getBase64FromCamera();
+            console.log("base64", base64)
         }
     }
 };
