@@ -6,7 +6,7 @@
                     label="Take Photo"
                     text-color="primary"
                     class="fullwidth q-mb-sm"
-                    @click="openCamera"
+                    @click="takePicture"
                 />
                 <input
                     hidden
@@ -41,6 +41,7 @@
 
 <script>
 import Camera from "./Camera";
+import { EventBus } from "../../services/event-bus.js";
 export default {
     name: "updateoptions",
     // components: { Camera },
@@ -59,9 +60,9 @@ export default {
             this.$forceUpdate();
             console.log(this.showdialog);
         },
-        async openCamera() {
-            await this.$router.push({ name: "camera" });
-        }
+        takePicture() {
+        EventBus.$emit('takePicture')
+      }
     }
 };
 </script>

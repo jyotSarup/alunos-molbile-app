@@ -28,7 +28,7 @@
     <q-expansion-item>
         <template v-slot:header>
             <q-item-section avatar>
-                <q-avatar class="avatarGrad" text-color="white" v-if="houseIssueDetail.solved_at">R</q-avatar>
+                <q-avatar class="avatarGreenGrad" text-color="white" v-if="houseIssueDetail.solved_at">R</q-avatar>
                 <q-avatar class="avatarGrad" text-color="white" v-else>P</q-avatar>
             </q-item-section>
 
@@ -138,6 +138,9 @@ export default {
 }
 .avatarGrad {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
+}
+.avatarGreenGrad {
+    background-image: linear-gradient(180deg, #01fb54 30%, #01fb546d 90%);
 }
 .subtitleIssue{
     color: #757575;
