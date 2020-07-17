@@ -1,41 +1,85 @@
 <template>
     <div class="my-profile-card" v-if="members">
-        <q-card class="cardstyle">
+        <div class="memberImg">
+            <q-btn
+                flat
+                icon="keyboard_backspace"
+                class="back-position"
+                style="color: #ffffff"
+                to="/myHomestay"
+            />
+        </div>
+        <div class="memberContainer">
             <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
-            <q-avatar size="100px" class="image">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-            </q-avatar>
-            <q-card-section class="cardsection" v-if="members[$route.params.memberIndex].user">
-                <div class="title" v-if="members[$route.params.memberIndex].user.profile">
+
+            <div
+                class="basicInfo"
+                v-if="members[$route.params.memberIndex].user"
+            >
+                <div
+                    class="memberName"
+                    v-if="members[$route.params.memberIndex].user.profile"
+                >
                     {{ members[$route.params.memberIndex].user.display_name }}
                 </div>
-                <div class="text" v-if="members[$route.params.memberIndex].user.profile.country">
-                    {{ members[$route.params.memberIndex].user.profile.country.name }}
+                <div
+                    class="text"
+                    v-if="
+                        members[$route.params.memberIndex].user.profile.country
+                    "
+                >
+                    {{
+                        members[$route.params.memberIndex].user.profile.country
+                            .name
+                    }}
                 </div>
-                <div class="text" v-if="members[$route.params.memberIndex].user.profile">
-                    DOB - {{ members[$route.params.memberIndex].user.profile.birthdate }}
+                <div
+                    class="text"
+                    v-if="members[$route.params.memberIndex].user.profile"
+                >
+                    DOB -
+                    {{
+                        members[$route.params.memberIndex].user.profile
+                            .birthdate
+                    }}
                 </div>
                 <br />
-                <q-separator />
-            </q-card-section>
-        </q-card>
+            </div>
+            <div class="messageMember">
+                <q-btn
+                    label="MESSAGE"
+                    color="accent"
+                    style=" border-radius:20px ; margin-right:45px; font-size: 12px; font-weight: bold; padding:5px;"
+                ></q-btn>
+            </div>
+        </div>
         <q-card class="infoCard cardstyle">
             <q-card-section class="cardsection">
                 <div class="title">About</div>
-                <div class="text" v-if="members[$route.params.memberIndex].user.profile">
-                    {{ members[$route.params.memberIndex].user.profile.biography }}
+                <div
+                    class="text"
+                    v-if="members[$route.params.memberIndex].user.profile"
+                >
+                    {{
+                        members[$route.params.memberIndex].user.profile
+                            .biography
+                    }}
                 </div>
 
                 <div class="title">Allergies</div>
                 <q-toolbar>
                     <div
                         class="text"
-                        v-if="members[$route.params.memberIndex].user.profile.allergies"
+                        v-if="
+                            members[$route.params.memberIndex].user.profile
+                                .allergies
+                        "
                     >
                         <div
                             class="text"
-                            v-for="(allergy, index) in members[$route.params.memberIndex].user
-                                .profile.allergies"
+                            v-for="(allergy, index) in members[
+                                $route.params.memberIndex
+                            ].user.profile.allergies"
                             :key="index"
                         >
                             {{ allergy.description }}
@@ -44,20 +88,33 @@
                     <!-- <q-space />
                     <div class="text">instagram</div> -->
                 </q-toolbar>
+            </q-card-section>
+        </q-card>
+        <q-card class="infoCard cardstyle">
+            <q-card-section class="cardsection">
                 <div class="title">Likes</div>
                 <q-toolbar>
                     <div class="text">Food</div>
                     <q-space />
-                    <div v-if="members[$route.params.memberIndex].user.profile.food_preferences">
+                    <div
+                        v-if="
+                            members[$route.params.memberIndex].user.profile
+                                .food_preferences
+                        "
+                    >
                         <div
                             class="text inlinediv"
-                            v-for="(food_preference, index) in members[$route.params.memberIndex]
-                                .user.profile.food_preferences"
+                            v-for="(food_preference, index) in members[
+                                $route.params.memberIndex
+                            ].user.profile.food_preferences"
                             :key="index"
                         >
                             <div
                                 class="text inlinediv"
-                                v-if="members[$route.params.memberIndex].user.profile"
+                                v-if="
+                                    members[$route.params.memberIndex].user
+                                        .profile
+                                "
                             >
                                 {{ food_preference.food.name }} |
                             </div>
@@ -71,8 +128,9 @@
                     <div v-if="members[$route.params.memberIndex].user.profile">
                         <div
                             class="text"
-                            v-for="(hobby, index) in members[$route.params.memberIndex].user
-                                .profile.hobbies"
+                            v-for="(hobby, index) in members[
+                                $route.params.memberIndex
+                            ].user.profile.hobbies"
                             :key="index"
                         >
                             {{ hobby.description }}
@@ -83,21 +141,23 @@
                     <div class="text">Language</div>
                     <q-space />
                     <div class="text">
-                        {{ members[$route.params.memberIndex].user.profile.language }}
+                        {{
+                            members[$route.params.memberIndex].user.profile
+                                .language
+                        }}
                     </div>
                 </q-toolbar>
             </q-card-section>
         </q-card>
-        <div class="version">Version 1.0.0.1</div>
     </div>
 </template>
 <script>
 import { mapState } from 'vuex';
 export default {
     name: 'Profile',
-    async created() {
-        this.$emit('updateTitle', `${this.members[this.$route.params.memberIndex].user.display_name}'s Profile`);
-    },
+    // async created() {
+    //     this.$emit('updateTitle', '', '', '/myHomestay');
+    // },
     computed: {
         ...mapState({
             members: state => state.household.members
@@ -107,9 +167,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .my-profile-card {
-    width: 90%;
-    padding-top: 2em;
-    text-align: center;
+    width: 100%;
+    text-align: left !important;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -117,15 +176,18 @@ export default {
     .cardsection {
         padding: 0 !important;
     }
+    .cardstyle {
+        border-radius: 40px;
+        margin-bottom: 10px;
+    }
     .image {
         width: 100px;
-        border-radius: 80px !important;
         margin-top: -15%;
     }
     .title {
         font-size: 12 !important;
         font-weight: bold !important;
-        margin-top: 1rem;
+        padding-top: 1.5rem;
     }
     .text {
         font-size: 9;
@@ -142,16 +204,35 @@ export default {
         }
     }
     .infoCard {
-        margin-top: 5%;
         text-align: left;
         padding: 1rem 1.5rem 1.5rem 1.5rem;
-    }
-    .version {
-        color: #017eff;
-        margin: 1rem 0 2.5rem 0;
+        margin: 0 1rem 10px 1rem;
     }
     .inlinediv {
         display: inline;
     }
+}
+
+.memberImg {
+    background-image: url('../assets/photo.png');
+    height: 45vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.memberContainer {
+    margin-top: -70px;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 80px 0px 0px;
+    background-color: #f1f0f2;
+    justify-content: space-between;
+}
+.basicInfo {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+}
+.memberName {
+    font-size: 7vw;
+    font-weight: bold;
 }
 </style>
