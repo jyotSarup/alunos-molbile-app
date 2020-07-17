@@ -28,7 +28,11 @@
             <q-icon
                 center
                 size="56px"
-                name="img:../statics/icons/iconHouseIssues.png"
+                :name="
+                    isAdmin
+                        ? 'img:../statics/icons/homestayIcon.png'
+                        : 'img:../statics/icons/iconHouseIssues.png'
+                "
             />
             <div class="buttonLabel">House Issues</div>
         </q-btn>
@@ -76,7 +80,7 @@
             <q-icon
                 center
                 size="56px"
-                name="img:../statics/icons/iconRules.png"
+                name="img:../statics/icons/homestayIcon.png"
             />
             <div class="buttonLabel">Rooms</div>
         </q-btn>
@@ -92,7 +96,7 @@
             <q-icon
                 center
                 size="56px"
-                name="img:../statics/icons/iconRules.png"
+                name="img:../statics/icons/homestayIcon.png"
             />
             <div class="buttonLabel">Rooms</div>
         </q-btn>
@@ -108,7 +112,7 @@
             <q-icon
                 center
                 size="56px"
-                name="img:../statics/icons/iconRules.png"
+                name="img:../statics/icons/homestayIcon.png"
             />
             <div class="buttonLabel">Rooms</div>
         </q-btn>
@@ -124,7 +128,7 @@
             <q-icon
                 center
                 size="56px"
-                name="img:../statics/icons/iconRules.png"
+                name="img:../statics/icons/homestayIcon.png"
             />
             <div class="buttonLabel">Rooms</div>
         </q-btn>
@@ -140,7 +144,7 @@
             <q-icon
                 center
                 size="56px"
-                name="img:../statics/icons/iconRules.png"
+                name="img:../statics/icons/homestayIcon.png"
             />
             <div class="buttonLabel">Tasks</div>
         </q-btn>
