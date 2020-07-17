@@ -7,8 +7,7 @@
                         <div class="text-white title-position">
                             Sign In
                             <div class="text-caption subtitle">
-                                We will send you a link through your email to
-                                sign in
+                                If you can't login, please click here.
                             </div>
                         </div>
                     </q-toolbar-title>
@@ -38,8 +37,8 @@ export default {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 273px;
-        font-size: 26px;
+        height: 66vw;
+        font-size: 6.7vw;
         font-weight: bold;
 
         .title-position {
@@ -48,7 +47,7 @@ export default {
             left: 10%;
         }
         .subtitle {
-            width: 80%;
+            width: 100%;
             word-wrap: break-word;
             white-space: normal;
             font-size: 16px;
