@@ -25,13 +25,13 @@ import { mapState } from 'vuex';
 import { GET_ISSUES } from '../constants';
 import HouseIssueItem from '../components/HouseIssueItem';
 export default {
-    name:"houseissues",
+    name: 'houseissues',
     components: {
         HouseIssueItem
     },
     data() {},
     created() {
-        this.$emit('updateTitle', 'HouseIssues');
+        this.$emit('updateTitle', 'House Issues');
         this.init();
     },
     methods: {
@@ -56,9 +56,9 @@ export default {
             houseIssue: state => state.issue.issues
         })
     },
-     beforeMount(){
+    beforeMount() {
         //  this.init()
-     }
+    }
 };
 </script>
 

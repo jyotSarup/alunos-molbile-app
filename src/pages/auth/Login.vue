@@ -10,7 +10,7 @@
                 <q-btn
                     unelevated
                     rounded
-                    class="q-pa-sm inline-block"
+                    class="q-pa-sm inline-block loginBtn"
                     color="positive"
                     label="Login"
                     type="submit"
@@ -49,17 +49,17 @@
 </template>
 
 <script>
-import EmailInput from "components/input/EmailInput";
-import { REQUEST_LOGIN_ACTION } from "../../constants";
-import { Notify } from "quasar";
+import EmailInput from 'components/input/EmailInput';
+import { REQUEST_LOGIN_ACTION } from '../../constants';
+import { Notify } from 'quasar';
 
 export default {
-    name: "Login",
+    name: 'Login',
     data: () => ({
         dialog: false,
         response: null,
-        customModel: "no",
-        email: ""
+        customModel: 'no',
+        email: ''
     }),
     components: {
         EmailInput
@@ -68,7 +68,7 @@ export default {
         async login() {
             try {
                 await this.$store.dispatch(REQUEST_LOGIN_ACTION, this.email);
-                await this.$router.replace({ name: "feed" });
+                await this.$router.replace({ name: 'feed' });
             } catch (error) {
                 console.log(error);
             }
@@ -82,7 +82,10 @@ export default {
     .inline-block {
         display: inline-block;
         width: 100%;
-        margin-top: 50px;
+        // margin-top: 50px;
+    }
+    .loginBtn {
+        margin-top: 40px;
     }
 
     .login-form {

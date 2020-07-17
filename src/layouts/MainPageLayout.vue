@@ -1,7 +1,10 @@
 <template>
     <q-layout view=" LpR fFf">
-        <q-page-container style=" padding-top:20%;">
-            <q-header elevated :class="isAdmin ? 'adminHeader' : 'mainHeader'">
+        <q-page-container style=" padding-top:18%;">
+            <q-header
+                elevated
+                :class="isAdmin ? 'mainHeaderAdmin' : 'mainHeader'"
+            >
                 <q-toolbar>
                     <q-toolbar-title class="title relative">
                         <div class="text-white title-position">
@@ -60,18 +63,19 @@ export default {
     z-index: -1;
     background-image: linear-gradient(180deg, #017eff, #01c0fb, #01e8f8);
     border-radius: 0px 0px 0px 90px;
+
     .q-layout__shadow {
         border-radius: 0px 0px 0px 120px;
     }
     .title {
-        height: 208px;
-        font-size: 30px;
+        height: 44.8vw;
         font-weight: bold;
 
         .title-position {
             position: absolute;
-            top: 30%;
+            top: 22%;
             left: 10%;
+            font-size: 7.1vw;
         }
         .icon-position {
             position: absolute;
@@ -86,8 +90,34 @@ export default {
         }
     }
 }
-.adminHeader {
+.mainHeaderAdmin {
     z-index: -1;
     background-image: linear-gradient(180deg, #5887f9, #60c3ff);
+
+    .q-layout__shadow {
+        border-radius: 0px 0px 0px 120px;
+    }
+    .title {
+        height: 28.2vw;
+        font-weight: bold;
+
+        .title-position {
+            position: absolute;
+            top: 22%;
+            left: 10%;
+            font-size: 7.1vw;
+        }
+        .icon-position {
+            position: absolute;
+            top: 30%;
+            right: 8%;
+        }
+        .subtitle {
+            width: 100%;
+            word-wrap: break-word;
+            white-space: normal;
+            font-size: 16px;
+        }
+    }
 }
 </style>

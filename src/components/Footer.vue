@@ -15,6 +15,7 @@
                 icon="calendar_today"
                 label="Feed"
                 @click="openFeed()"
+                class="footerIcon"
             />
             <q-tab
                 v-if="!isAdmin"
@@ -22,6 +23,7 @@
                 icon="img:../statics/icons/icn_home.svg"
                 label="Homestay"
                 @click="openMyHomestay()"
+                class="footerIcon"
             />
             <q-tab
                 v-if="isAdmin"
@@ -29,12 +31,14 @@
                 icon="build"
                 label="Manage"
                 @click="openMyHomestay()"
+                class="footerIcon"
             />
+            <q-tab name="space" class="footerIcon" />
 
             <q-fab
                 v-model="fabCenter"
                 vertical-actions-align="center"
-                class="floatButton"
+                :class="isAdmin ? 'floatButtonAdmin' : 'floatButton'"
                 direction="up"
             >
                 <!--q-btn class="floatingButton" round color="primary" icon="add" @click="show()"></q-btn-->
@@ -47,7 +51,11 @@
                     >
                         <div style="justify-content: center; margin-right:20px">
                             <q-icon
-                                name="img:../statics/icons/iconQuickAnnouncement.png"
+                                :name="
+                                    isAdmin
+                                        ? 'img:../statics/icons/iconQuickAnnouncementAdmin.png'
+                                        : 'img:../statics/icons/iconQuickAnnouncement.png'
+                                "
                             />
                         </div>
                         <q-item-section>
@@ -63,7 +71,11 @@
                     >
                         <div style="justify-content: center; margin-right:20px">
                             <q-icon
-                                name="img:../statics/icons/iconQuickHouseIssue.png"
+                                :name="
+                                    isAdmin
+                                        ? 'img:../statics/icons/iconQuickHouseIssueAdmin.png'
+                                        : 'img:../statics/icons/iconQuickHouseIssue.png'
+                                "
                             />
                         </div>
                         <q-item-section style="font-size: 20px;">
@@ -77,12 +89,14 @@
                 icon="img:../statics/icons/iconFooterHelp.png"
                 label="Help"
                 @click="openHelp"
+                class="footerIcon"
             />
             <q-tab
                 name="profile"
                 icon="perm_identity"
                 label="Profile"
                 @click="openProfile"
+                class="footerIcon"
             />
         </q-tabs>
     </q-footer>
@@ -100,7 +114,6 @@
     box-shadow: 100px -8px 90px 0px lightgray, -100px 6px 90px 0px lightgray,
         100px -150px 120px 0px lightgray, -100px -150px 120px 0px lightgray,
         100px -290px 150px 0px lightgray, -100px -290px 150px 0px lightgray;
-    margin-left: -20px;
 }
 .bottom-list-item {
     padding: 1em 3em;
@@ -132,9 +145,24 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     border-radius: 50%;
     box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;
     border: none !important;
+    position: absolute;
+    left: calc(50% - 28px);
+}
+.floatButtonAdmin {
+    background-image: linear-gradient(180deg, #5887f9, #60c3ff);
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 11px 10px lightgrey, 0 0px 0 12px #fff;
+    border: none !important;
+    position: absolute;
+    left: calc(50% - 28px);
 }
 .footerBar {
     box-shadow: 0 -1px 36px #dbdada;
+}
+.footerIcon {
+    width: 20%;
+    padding: 0;
 }
 </style>
 

@@ -1,20 +1,12 @@
 <template>
     <div class="q-pa-md q-gutter-sm" style="padding: 0;">
-        >
         <q-card class="my-feed-card">
             <q-card-section horizontal>
                 <q-card-section class="col-2 flex ">
                     <q-icon
-                        name="report_problem"
+                        name="new_releases"
                         class="text-accent"
                         style="font-size: 32px; margin:0 auto"
-                        v-if="feedItem.author.__typename == 'Issue'"
-                    />
-                    <q-icon
-                        name="record_voice_over"
-                        class="text-accent"
-                        style="font-size: 32px; "
-                        v-if="feedItem.author.__typename == 'Resident'"
                     />
                 </q-card-section>
                 <q-card-section class="col-10 flex ">
@@ -22,20 +14,11 @@
                         class="full-width row no-wrap justify-between items-center content-center"
                         style="width=100%"
                     >
-                        <span
-                            v-if="feedItem.author.__typename == 'Issue'"
-                            class="feedTitle"
-                            >{{ feedItem.author.title }}</span
-                        >
-                        <span
-                            v-if="feedItem.author.__typename == 'Resident'"
-                            class="feedTitle"
-                            >Post</span
-                        >
+                        <span class="feedTitle">Covid-19 Guidelines</span>
                         <small
                             class="q-mt-sm q-mb-xs text-grey"
                             style=" float:right"
-                            >1 minute ago</small
+                            >2 months ago</small
                         >
                     </div>
 
@@ -43,14 +26,20 @@
                         class="text-caption text-grey full-width"
                         style="line-height:1em; height:2em; overflow:hidden; margin-top:1em; padding-right:1em; "
                     >
-                        {{ feedItem.content }}
+                        All the family members are requested to follow these
+                        guidelines to stay safe and healthy. 1. sanitize the
+                        space you use in common room 2. Wash your hands when you
+                        enter home 3. Wear masks when you leave home 4. Dispose
+                        masks and gloves after you finish using them. 5. Clean
+                        your own utensils on time Let us take care of each other
+                        and stay safe.
                     </div>
                     <span class="full-width">...</span>
                     <div>
                         <q-btn
                             flat
                             label="See More"
-                            style="transform:translateX(-16px);"
+                            style="transform:translateX(-16px)"
                             :style="
                                 isAdmin ? 'color: #5887F9' : 'color: #01c0fb'
                             "
@@ -68,32 +57,22 @@
                         <q-card class="bg-white text-grey" style="width: 300px">
                             <q-card-section align="center">
                                 <q-icon
-                                    name="report_problem"
+                                    name="new_releases"
                                     class="text-accent"
                                     style="font-size: 32px; margin:auto"
-                                    v-if="feedItem.author.__typename == 'Issue'"
-                                />
-                                <q-icon
-                                    name="record_voice_over"
-                                    class="text-accent"
-                                    style="font-size: 32px;"
-                                    v-if="
-                                        feedItem.author.__typename == 'Resident'
-                                    "
                                 />
                             </q-card-section>
 
                             <q-card-section class="q-pt-none">
-                                <div class="full-width">
-                                    {{ feedItem.content }}
-                                </div>
-                                <div
-                                    v-if="feedItem.author.__typename == 'Issue'"
-                                >
-                                    -{{
-                                        feedItem.author.author.user.display_name
-                                    }}
-                                </div>
+                                All the family members are requested to follow
+                                these guidelines to stay safe and healthy.<br />
+                                1. sanitize the space you use in common room<br />
+                                2. Wash your hands when you enter home<br />
+                                3. Wear masks when you leave home<br />
+                                4. Dispose masks and gloves after you finish
+                                using them.<br />
+                                5. Clean your own utensils on time<br />
+                                Let us take care of each other and stay safe.
                             </q-card-section>
 
                             <q-card-actions
@@ -115,6 +94,22 @@
     </div>
 </template>
 
+<script>
+import { mapState } from 'vuex';
+export default {
+    data() {
+        return {
+            persistent: false
+        };
+    },
+    computed: {
+        ...mapState({
+            isAdmin: state => state.household.isAdmin
+        })
+    }
+};
+</script>
+
 <style scoped>
 .q-card--bordered {
     border: none !important;
@@ -132,26 +127,3 @@
     font-size: 14px;
 }
 </style>
-
-<script>
-import { mapState } from 'vuex';
-export default {
-    name: 'FeedCard',
-    data() {
-        return {
-            persistent: false
-        };
-    },
-    props: {
-        feedItem: {
-            type: Object,
-            required: true
-        }
-    },
-    computed: {
-        ...mapState({
-            isAdmin: state => state.household.isAdmin
-        })
-    }
-};
-</script>

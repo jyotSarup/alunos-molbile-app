@@ -110,6 +110,7 @@
             size="lg"
             label="Log out"
             style="margin:2rem 0 0 0; padding: 0 2rem"
+            to="/auth"
         />
         <div class="version">Version 1.0.0.1</div>
     </div>
@@ -119,7 +120,7 @@ import { mapState } from 'vuex';
 export default {
     name: 'Profile',
     created() {
-        this.$emit('updateTitle', 'Profile');
+        this.$emit('updateTitle', 'Profile', 'Say more about you!');
     },
     data() {
         return {
@@ -147,6 +148,7 @@ export default {
     box-shadow: none !important;
     .cardsection {
         padding: 0 !important;
+        border-bottom: none;
     }
     .image {
         width: 100px;

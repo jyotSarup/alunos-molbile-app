@@ -1,6 +1,6 @@
 <template>
     <q-layout view=" LpR fFf">
-        <q-page-container style=" padding-top:30%;">
+        <q-page-container style=" padding-top:30%; padding-bottom: 120px">
             <q-header class="q-layout_generallayout">
                 <q-toolbar class="title relative">
                     <q-toolbar-title>
@@ -13,7 +13,10 @@
                             />
                         </div>
 
-                        <div class="title-position">
+                        <div
+                            class="title-position"
+                            :style="isAdmin ? 'color:#5887F9' : 'color:#01c0fb'"
+                        >
                             {{ title }}
                             <div class="text-caption subtitle">
                                 {{ subtitle }}
@@ -73,23 +76,26 @@ export default {
         border-radius: 0px 0px 0px 30px;
     }
     .title {
-        height: 116px;
+        height: 25vw;
         font-size: 26px;
         font-weight: bold;
+        text-align: center;
         .back-position {
             position: absolute;
-            top: 30%;
+            top: 35%;
             left: 5%;
         }
         .title-position {
             position: absolute;
-            top: 30%;
-            left: 30%;
-            font-size: 26px;
+            top: 35%;
+            left: 20%;
+            font-size: 6.3vw;
+            width: 60%;
+            font-weight: bold;
         }
         .icon-position {
             position: absolute;
-            top: 30%;
+            top: 45%;
             right: 8%;
         }
         .subtitle {
