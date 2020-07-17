@@ -54,8 +54,8 @@
                     <q-btn
                         label="Add"
                         @click.prevent="updatePhotoClicked"
-                        color="accent"
-                        style="width: 30% ; border-radius:20px ; margin-left:0"
+                      
+                        style="width: 30% ; border-radius:20px ; margin-left:0; border: 1px solid black"
                     ></q-btn>
 
                     <q-avatar
@@ -72,23 +72,24 @@
             v-model="accept"
             label="I accept the license and terms"
         ></q-toggle-->
-            </div>
-            <div style="margin:0; margin-top:1em">
+          <div style="margin:0; margin-top:1em">
                 <q-btn
                     label="Generate Issue"
                     type="submit"
                     class="gradientButton"
-                    style="width: 100% ; border-radius:20px ; margin-left:0"
+                    style="width: 70% ; border-radius:20px ; margin-left:0"
                 ></q-btn>
-                <!-- <q-btn
+                <q-btn
                     label="Reset"
                     type="reset"
                     color="primary"
                     flat
                     class="q-ml-sm"
-                    style="border:none !important"
-                ></q-btn> -->
+                    style="border:none !important; margin-top: 20px"
+                ></q-btn>
             </div>
+            </div>
+          
             <div v-show="showdialog">
                 <UpdateOptionDialog
                     :selectedPhoto="selectedPhoto"
@@ -219,6 +220,8 @@ export default {
         },
         async uploadImageFromCamera() {
             let base64 = await cordovaCamera.getBase64FromCamera();
+            const imageData = this.removeBase64Prefix(base64);
+            this.imageUrl.push(imageData);
             console.log("base64", base64)
         }
     }
@@ -246,6 +249,8 @@ export default {
 .gradientButton {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
     color: white;
+    height: 50px;
+    margin-top: 20px;
 }
 .addmediadiv {
     text-align: left;
