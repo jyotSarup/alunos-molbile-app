@@ -2,8 +2,6 @@
     <q-footer bordered class="bg-white text-primary">
         <q-tabs
             no-caps
-            active-color="positive"
-            indicator-color="transparent"
             class="text-grey footerBar"
             v-model="tab"
             dense
@@ -15,15 +13,14 @@
                 icon="calendar_today"
                 label="Feed"
                 @click="openFeed()"
-                class="footerIcon"
+                :class="feedIconClass"
             />
             <q-tab
                 v-if="!isAdmin"
-                name="homestay"
-                icon="img:../statics/icons/icn_home.svg"
+                icon="ti-home"
                 label="Homestay"
                 @click="openMyHomestay()"
-                class="footerIcon"
+                :class="homestayIconClass"
             />
             <q-tab
                 v-if="isAdmin"
@@ -31,7 +28,7 @@
                 icon="build"
                 label="Manage"
                 @click="openMyHomestay()"
-                class="footerIcon"
+                :class="homestayIconClass"
             />
             <q-tab name="space" class="footerIcon" />
 
@@ -86,17 +83,17 @@
             </q-fab>
             <q-tab
                 name="help"
-                icon="img:../statics/icons/iconFooterHelp.png"
+                icon="help_outline"
                 label="Help"
                 @click="openHelp"
-                class="footerIcon"
+                :class="helpIconClass"
             />
             <q-tab
                 name="profile"
                 icon="perm_identity"
                 label="Profile"
                 @click="openProfile"
-                class="footerIcon"
+                :class="profileIconClass"
             />
         </q-tabs>
     </q-footer>
@@ -164,6 +161,7 @@ div.q-bottom-sheet.q-bottom-sheet--list.q-card {
     width: 20%;
     padding: 0;
 }
+
 </style>
 
 <script>
@@ -175,63 +173,49 @@ export default {
     data() {
         return {
             tab: 'images',
-            fabCenter: false
+            fabCenter: false,
+            homestayIconClass: "footerIcon",
+            feedIconClass: "footerIcon",
+            helpIconClass: "footerIcon",
+            profileIconClass: "footerIcon",
         };
     },
+    created() {
+        console.log("created tab state", this.activeTab)
+        switch(this.activeTab){
+            case "feed":
+                this.feedIconClass += " text-accent"
+                break
+            case "myHomestay":
+                this.homestayIconClass += " text-accent"
+                break
+            case "help":
+                this.helpIconClass += " text-accent"
+                break
+            case "profile":
+                this.profileIconClass += " text-accent"
+                break
+        }
+    },
     methods: {
-        show(grid) {
-            this.$q
-                .bottomSheet({
-                    grid,
-                    actions: [
-                        {
-                            label: 'Add House Issue',
-                            img:
-                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
-                            id: 'addHouseIssue'
-                        },
-                        {
-                            label: 'Add Post',
-                            img:
-                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
-                            id: 'addAnnouncement'
-                        },
-                        {
-                            label: 'Send Mail',
-                            img:
-                                'https://cdn.quasar.dev/img/logo_keep_128px.png',
-                            id: 'sendMail'
-                        },
-                        {},
-                        {
-                            label: 'close',
-                            icon: 'cancel',
-                            color: 'primary'
-                        }
-                    ]
-                })
-                .onOk(action => {
-                    if (action.id == 'addHouseIssue') {
-                        this.$router.push('/add-house-issue');
-                    }
-                })
-                .onCancel(() => {
-                    console.log('Dismissed');
-                })
-                .onDismiss(() => {
-                    // console.log('I am triggered on both OK and Cancel')
-                });
-        },
-        openFeed() {
+        async openFeed() {
+            await this.$store.dispatch('changeActiveTab', "feed").then(()=>{
+            })
             this.$router.push({ name: 'feed' });
         },
-        openMyHomestay() {
+        async openMyHomestay() {
+            await this.$store.dispatch('changeActiveTab', "myHomestay").then(()=>{
+            })
             this.$router.push({ name: 'homestay' });
         },
-        openHelp() {
+        async openHelp() {
+            await this.$store.dispatch('changeActiveTab', "help").then(()=>{
+            })
             this.$router.push({ name: 'help' });
         },
-        openProfile() {
+        async openProfile() {
+            await this.$store.dispatch('changeActiveTab', "profile").then(()=>{
+            })
             this.$router.push('/profile');
         },
         addHouseAnnouncement() {
@@ -243,7 +227,8 @@ export default {
     },
     computed: {
         ...mapState({
-            isAdmin: state => state.household.isAdmin
+            isAdmin: state => state.household.isAdmin,
+            activeTab: state => state.activeTab.activeTab
         })
     }
 };

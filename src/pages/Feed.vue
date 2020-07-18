@@ -1,7 +1,7 @@
 <template>
     <div>
         <q-page class="feedContainer">
-            <dailyTip v-if="!is_Admin"> </dailyTip>
+            <dailyTip v-if="!isAdmin"> </dailyTip>
             <div>
                 <infiniteScrollContainer></infiniteScrollContainer>
             </div>
@@ -19,8 +19,6 @@ let household;
 export default {
     name: 'Tip',
     beforeCreate() {
-        // household = this.$store.state.household
-        // console.log(household)
     },
     created() {
         this.$emit(
