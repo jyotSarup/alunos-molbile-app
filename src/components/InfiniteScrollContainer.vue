@@ -47,7 +47,8 @@ export default {
             limit: 10,
             items: [],
             total: 0,
-            persistent: false
+            persistent: false,
+            shortFeedContent: []
         };
     },
 

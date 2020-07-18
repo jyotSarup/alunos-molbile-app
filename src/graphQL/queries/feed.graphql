@@ -10,11 +10,12 @@ query ($household_id : ID
     
     items {
       content
-      
+      created_at
       author {
         __typename
         ... on Issue {
           title
+          description
           author {
             id
             user {

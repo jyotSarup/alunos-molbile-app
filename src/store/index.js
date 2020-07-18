@@ -5,7 +5,7 @@ import household from './household';
 import activity from './activity';
 import feed from './feed';
 import issue from './issue';
-
+import activeTab from './activeTab';
 // import example from './module-example'
 
 Vue.use(Vuex);
@@ -24,7 +24,8 @@ export const store = new Vuex.Store({
         household,
         activity,
         feed,
-        issue
+        issue,
+        activeTab
     },
 
     // enable strict mode (adds overhead!)

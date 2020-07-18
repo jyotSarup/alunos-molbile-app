@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md q-gutter-sm" style="padding: 0;">
+    <div class="q-pa-md q-gutter-sm" style="padding: 0;" >
         <q-card class="my-feed-card">
             <q-card-section horizontal>
                 <q-card-section class="col-2 flex ">
@@ -24,18 +24,10 @@
 
                     <div
                         class="text-caption text-grey full-width"
-                        style="line-height:1em; height:2em; overflow:hidden; margin-top:1em; padding-right:1em; "
+                        style="margin-top:1em; padding-right:1em; "
                     >
                         All the family members are requested to follow these
-                        guidelines to stay safe and healthy. 1. sanitize the
-                        space you use in common room 2. Wash your hands when you
-                        enter home 3. Wear masks when you leave home 4. Dispose
-                        masks and gloves after you finish using them. 5. Clean
-                        your own utensils on time Let us take care of each other
-                        and stay safe.
-                    </div>
-                    <span class="full-width">...</span>
-                    <div>
+                        guidelines ...
                         <q-btn
                             flat
                             label="See More"
@@ -97,11 +89,18 @@
 <script>
 import { mapState } from 'vuex';
 export default {
+
     data() {
         return {
             persistent: false
         };
     },
+    beforeCreate(){
+        setTimeout(()=>{
+
+        },2000)
+    }
+    ,
     computed: {
         ...mapState({
             isAdmin: state => state.household.isAdmin
