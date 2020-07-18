@@ -24,6 +24,6 @@ export const router = new VueRouter({
     base: process.env.VUE_ROUTER_BASE
 });
 
-export default function(/* { store, ssrContext } */) {
+export default function (/* { store, ssrContext } */) {
     return router;
 }
