@@ -35,18 +35,16 @@
                         <small
                             class="q-mt-sm q-mb-xs text-grey"
                             style=" float:right"
-                            >1 minute ago</small
+                            >{{feedItem.created_at.substring(0,10)}}</small
                         >
                     </div>
 
                     <div
                         class="text-caption text-grey full-width"
-                        style="line-height:1em; height:2em; overflow:hidden; margin-top:1em; padding-right:1em; "
+                        style=" margin-top:1em; padding-right:1em; "
+                        v-if="feedItem.content.length > 40"
                     >
-                        {{ feedItem.content }}
-                    </div>
-                    <span class="full-width">...</span>
-                    <div>
+                        <span>{{ feedItem.content.substring(0,40) }}... </span>
                         <q-btn
                             flat
                             label="See More"
@@ -58,6 +56,19 @@
                             @click="persistent = true"
                             no-caps
                         ></q-btn>
+
+                    </div>
+                    <div
+                        class="text-caption text-grey full-width"
+                        style=" margin-top:1em; padding-right:1em; "
+                        v-else
+                    >
+                        <span>{{ feedItem.content }} </span>
+                        
+
+                    </div>
+                    <div>
+                        
                     </div>
                     <q-dialog
                         v-model="persistent"
@@ -86,6 +97,9 @@
                             <q-card-section class="q-pt-none">
                                 <div class="full-width">
                                     {{ feedItem.content }}
+                                </div>
+                                <div v-if="feedItem.author.description"> 
+                                    {{feedItem.author.description  }}
                                 </div>
                                 <div
                                     v-if="feedItem.author.__typename == 'Issue'"

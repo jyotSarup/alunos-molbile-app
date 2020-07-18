@@ -19,8 +19,6 @@ let household;
 export default {
     name: 'Tip',
     beforeCreate() {
-        // household = this.$store.state.household
-        // console.log(household)
     },
     created() {
         this.$emit(
