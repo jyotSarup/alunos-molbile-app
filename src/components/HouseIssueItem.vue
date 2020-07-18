@@ -33,7 +33,7 @@
             </q-item-section>
 
             <q-item-section>
-                <span style="font-weight:500">{{
+                <span style="font-weight:500" align="left">{{
                     houseIssueDetail.title
                 }}
                 <div class="subtitleIssue">By {{userInfo.user.first_name}} {{userInfo.user.last_name}}</div>
@@ -43,8 +43,8 @@
         </template>
 
         <q-card>
-            <q-card-section>
-                <div class="text-subtitle2">{{ houseIssueDetail.subject }}</div>
+            <q-card-section align="left">
+                <div class="text-subtitle2" align="left">{{ houseIssueDetail.subject }}</div>
                 {{ houseIssueDetail.description }}
                 
             </q-card-section>
@@ -69,13 +69,13 @@
                         <img class="imgborder" :src="img" />
                     </q-avatar>
             </q-card-section>
-            <div v-if="houseIssueDetail.solved_at">STATUS: Resolved   
+            <div v-if="houseIssueDetail.solved_at" align="left">STATUS: <span style="color:#757575">Resolved </span>  
             </div>
             <div v-else>
                 <q-toolbar>
-                    <div>STATUS: Pending</div>
+                    <div align="left">STATUS:<span style="color:#757575"> Pending</span></div>
                     <q-space />
-                    <q-btn outline rounded label="Resolve" @click="resolveIssue"/>
+                    <q-btn rounded label="Resolved" style="background-color: #f32887; color: white" @click="resolveIssue"/>
                 </q-toolbar>
             </div>
           
@@ -135,6 +135,7 @@ export default {
     padding: 1em;
     border-radius: 20px;
     box-shadow: 3px 3px 7px grey;
+    
 }
 .avatarGrad {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);

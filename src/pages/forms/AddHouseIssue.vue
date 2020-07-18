@@ -12,8 +12,7 @@
                     autofocus
                     v-model="titleText"
                     label="Title"
-                    label-color="positive"
-                    hint="water tap does not work"
+                    label-color=#01C0FB
                     lazy-rules
                     :rules="[
                         val => (val && val.length > 0) || 'Please enter a title'
@@ -32,11 +31,11 @@
                             'Please select a subject'
                     ]"
                 />
-
+                <div style="color: #01C0FB; margin-top:20px; margin-bottom: 10px" align="left"> Description</div>
                 <q-input
                     v-model="description"
                     outlined
-                    label="Description"
+                   
                     lazy-rules
                     label-color="positive"
                     :rules="[
@@ -54,8 +53,8 @@
                     <q-btn
                         label="Add"
                         @click.prevent="updatePhotoClicked"
-                        color="accent"
-                        style="width: 30% ; border-radius:20px ; margin-left:0"
+                      color="accent"
+                        style="width: 30% ; border-radius:20px ; margin-left:0;height: 44px;"
                     ></q-btn>
 
                     <q-avatar
@@ -72,8 +71,9 @@
             v-model="accept"
             label="I accept the license and terms"
         ></q-toggle-->
+         
             </div>
-            <div style="margin:0; margin-top:1em">
+           <div style="margin:0; margin-top:1em">
                 <q-btn
                     label="Generate Issue"
                     type="submit"
@@ -86,7 +86,7 @@
                     color="primary"
                     flat
                     class="q-ml-sm"
-                    style="border:none !important"
+                    style="border:none !important; margin-top: 20px"
                 ></q-btn> -->
             </div>
             <div v-show="showdialog">
@@ -219,6 +219,8 @@ export default {
         },
         async uploadImageFromCamera() {
             let base64 = await cordovaCamera.getBase64FromCamera();
+            const imageData = this.removeBase64Prefix(base64);
+            this.imageUrl.push(imageData);
             console.log("base64", base64)
         }
     }
@@ -244,8 +246,10 @@ export default {
     border-radius: 20px;
 }
 .gradientButton {
-    background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);
+    background-image: linear-gradient(180deg, #01C0FB 30%, #01E8F8 90%);
     color: white;
+    height: 52px;
+    margin-top: 5px;
 }
 .addmediadiv {
     text-align: left;
