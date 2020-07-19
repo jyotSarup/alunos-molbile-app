@@ -9,7 +9,7 @@
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa aspernatur veniam eaque laborum repellendus blanditiis temporibus quis unde, nihil distinctio totam dolor.
 					<br>
 					<br>
-					Click CONTINUE to proceed.
+					Click <q-item to="/feedback-questions">CONTINUE</q-item> to proceed.
 				</div>
 			</q-card-section>
 		</q-card>
@@ -25,6 +25,7 @@
 
 	.cardsection {
 		padding: 2em;
+		margin-top: 4em;
 	}
 
 	.title {

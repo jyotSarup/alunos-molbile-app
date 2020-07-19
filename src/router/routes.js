@@ -33,6 +33,11 @@ const routes = [
                 name: 'feedback',
                 path: '/feedback',
                 component: () => import('../pages/Feedback.vue')
+            },
+            {
+                name: 'feedbackQuestions',
+                path: '/feedback-questions',
+                component: () => import('../pages/FeedbackMain.vue')
             }
         ]
     },

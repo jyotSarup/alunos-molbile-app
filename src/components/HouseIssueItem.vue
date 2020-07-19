@@ -3,13 +3,13 @@
         expand-icon-toggle
         :label="houseIssueDetail.title"
         :caption="houseIssueDetail.dateCreated"
-        
+
       >
         <q-item-section avatar>
             <q-avatar color="primary" text-color="white">J</q-avatar>
           </q-item-section>
         <q-card>
-          
+
           <q-card-section>
             <div class="text-subtitle2">{{houseIssueDetail.subject}}</div>
             {{houseIssueDetail.description}}
@@ -46,7 +46,7 @@
             <q-card-section align="left">
                 <div class="text-subtitle2" align="left">{{ houseIssueDetail.subject }}</div>
                 {{ houseIssueDetail.description }}
-                
+
             </q-card-section>
             <!-- <q-card-section v-if="houseIssueDetail.imgUrl">
                 <div>
@@ -63,13 +63,13 @@
                         square
                         size="70px"
                         class="image q-ma-sm"
-                        v-for="(img, index) in imageUrl"
+                        v-for="(attachment, index) in houseIssueDetail.attachments"
                         :key="index"
                     >
-                        <img class="imgborder" :src="img" />
+                        <img class="imgborder" :src="attachment.url" />
                     </q-avatar>
             </q-card-section>
-            <div v-if="houseIssueDetail.solved_at" align="left">STATUS: <span style="color:#757575">Resolved </span>  
+            <div v-if="houseIssueDetail.solved_at" align="left">STATUS: <span style="color:#757575">Resolved </span>
             </div>
             <div v-else>
                 <q-toolbar>
@@ -78,7 +78,7 @@
                     <q-btn rounded label="Resolved" style="background-color: #f32887; color: white" @click="resolveIssue"/>
                 </q-toolbar>
             </div>
-          
+
         </q-card>
     </q-expansion-item>
 </template>
@@ -106,8 +106,8 @@ export default {
         async resolveIssue() {
            const householdId = this.household.household.id
         //    console.log(householdId)
-           const issueId =  this.houseIssueDetail.id 
-             try {    
+           const issueId =  this.houseIssueDetail.id
+             try {
                 await this.$store.dispatch(
                     MUTATE_SOLVEISSUE,
                     issueId
@@ -135,7 +135,7 @@ export default {
     padding: 1em;
     border-radius: 20px;
     box-shadow: 3px 3px 7px grey;
-    
+
 }
 .avatarGrad {
     background-image: linear-gradient(180deg, #01c0fb 30%, #01e8f8 90%);

@@ -35,7 +35,7 @@
                 <q-input
                     v-model="description"
                     outlined
-                   
+
                     lazy-rules
                     label-color="positive"
                     :rules="[
@@ -71,7 +71,7 @@
             v-model="accept"
             label="I accept the license and terms"
         ></q-toggle-->
-         
+
             </div>
            <div style="margin:0; margin-top:1em">
                 <q-btn
@@ -123,7 +123,7 @@
                     </q-card>
                 </q-dialog>
         </q-form>
-           
+
     </div>
 </template>
 
@@ -146,6 +146,7 @@ export default {
             issueSubject: '',
             titleText: '',
             showdialog: false,
+            attachments: [],
             imageUrl: []
         };
     },
@@ -169,23 +170,27 @@ export default {
             await this.$router.replace({ name: "houseissues" });
         },
         async onSubmit() {
-            const title = this.titleText
-            const description = this.description
-            const authorId = this.household.memberId
-            
-             try {    
+            const title = this.titleText;
+            const description = this.description;
+            const authorId = this.household.memberId;
+            const attachments = this.attachments;
+
+             try {
                 await this.$store.dispatch(
                     MUTATE_CREATEISSUE,
-                    {authorId,
-                    title,
-                    description}
+                    {
+                        authorId,
+                        title,
+                        description,
+                        attachments
+                    }
                 );
-                
+
                 this.dialog = true
             } catch (error) {
                 console.log(error);
             }
-            
+
         },
 
         onReset() {
@@ -201,8 +206,8 @@ export default {
         },
         loadPhoto(event) {
             console.log('parent load photo triggered!');
-            var reader,
-                files = event.target.files;
+            var reader, files = event.target.files;
+            this.attachments = files;
 
             if (files.length === 0) {
                 console.log('peak a photo');
@@ -215,7 +220,7 @@ export default {
             reader.readAsDataURL(files[0]);
             this.showdialog = false;
             this.$forceUpdate();
-            console.log('parent photo', this.imageUrl);
+            console.log('parent photo', this.imageUrl, files);
         },
         async uploadImageFromCamera() {
             let base64 = await cordovaCamera.getBase64FromCamera();

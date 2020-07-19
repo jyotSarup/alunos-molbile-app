@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import {ApolloClient} from 'apollo-client'
-import {createHttpLink} from 'apollo-link-http'
+import {createUploadLink} from 'apollo-upload-client'
 import {InMemoryCache} from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo';
 import {onError} from "apollo-link-error";
@@ -11,8 +11,8 @@ import {hasAuthError} from "src/utils/errorHandler";
 
 Vue.use(VueApollo);
 
-const httpLink = createHttpLink({
-    uri: 'http://api.alunos.ca/graphql', // @TODO use .env
+const httpLink = createUploadLink({
+    uri: 'http://api.alunos.localhost/graphql', // @TODO use .env
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
