@@ -12,7 +12,7 @@ import {hasAuthError} from "src/utils/errorHandler";
 Vue.use(VueApollo);
 
 const httpLink = createUploadLink({
-    uri: 'http://api.alunos.localhost/graphql', // @TODO use .env
+    uri: 'http://api.alunos.ca/graphql', // @TODO use .env
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
