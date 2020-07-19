@@ -16,6 +16,10 @@ query($household_id: ID, $limit: Int, $page: Int) {
                 is_permanent
                 is_admin
             }
+            attachments {
+                name
+                url
+            }
             solved_at
         }
     }

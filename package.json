@@ -21,6 +21,7 @@
     "apollo-link": "^1.2.14",
     "apollo-link-error": "^1.1.13",
     "apollo-link-http": "^1.5.17",
+    "apollo-upload-client": "^13.0.0",
     "graphql": "^15.2.0",
     "graphql-tag": "^2.10.3",
     "quasar": "^1.0.0",

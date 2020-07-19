@@ -16,6 +16,10 @@ mutation($input: IssueInput) {
                 id
             }
         }
+        attachments {
+            name
+            url
+        }
         solved_at
     }
 }
