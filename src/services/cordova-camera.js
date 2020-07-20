@@ -49,6 +49,8 @@ async function getBase64FromFileObject(fileObject) {
     })
 }
 
+
+
 async function getBase64FromCamera() {
     let fileObject = await getCameraFileObject();
     let base64 = await getBase64FromFileObject(fileObject);

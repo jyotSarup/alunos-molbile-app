@@ -208,7 +208,7 @@ export default {
             console.log('parent load photo triggered!');
             var reader, files = event.target.files;
             this.attachments = files;
-
+            console.log("attachements", this.attachments)
             if (files.length === 0) {
                 console.log('peak a photo');
             }
@@ -224,10 +224,27 @@ export default {
         },
         async uploadImageFromCamera() {
             let base64 = await cordovaCamera.getBase64FromCamera();
-            const imageData = this.removeBase64Prefix(base64);
-            this.imageUrl.push(imageData);
-            console.log("base64", base64)
+            const imageFile = this.dataURLtoFile('data:image/jpeg;base64,aGVsbG8gd29ybGQ=','hello.jpeg')
+            this.imageUrl.push(base64);
+            this.attachments.push(imageFile);
+             this.showdialog = false;
+            this.$forceUpdate();
+            console.log("imageFile array", this.attachments)
+        },
+     dataURLtoFile(dataurl, filename) {
+
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), 
+            n = bstr.length, 
+            u8arr = new Uint8Array(n);
+            
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
         }
+        
+        return {0:new File([u8arr], filename, {type:mime}), length: 1};
+    }
     }
 };
 </script>

@@ -5,7 +5,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="index.html" />
+    <content src="http://192.168.0.119:8080" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -83,4 +83,5 @@
         <splash height="2732" src="res/screen/ios/Default@2x~universal~anyany.png" width="2732" />
     </platform>
     <allow-navigation href="about:*" />
+    <allow-navigation href="http://192.168.0.119:8080" />
 </widget>
