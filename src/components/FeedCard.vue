@@ -35,7 +35,7 @@
                         <small
                             class="q-mt-sm q-mb-xs text-grey"
                             style=" float:right"
-                            >{{feedItem.created_at.substring(0,10)}}</small
+                            >{{ feedItem.created_at.substring(0, 10) }}</small
                         >
                     </div>
 
@@ -44,7 +44,7 @@
                         style=" margin-top:1em; padding-right:1em; "
                         v-if="feedItem.content.length > 40"
                     >
-                        <span>{{ feedItem.content.substring(0,40) }}... </span>
+                        <span>{{ feedItem.content.substring(0, 40) }}... </span>
                         <q-btn
                             flat
                             label="See More"
@@ -56,7 +56,6 @@
                             @click="persistent = true"
                             no-caps
                         ></q-btn>
-
                     </div>
                     <div
                         class="text-caption text-grey full-width"
@@ -64,12 +63,8 @@
                         v-else
                     >
                         <span>{{ feedItem.content }} </span>
-                        
-
                     </div>
-                    <div>
-                        
-                    </div>
+                    <div></div>
                     <q-dialog
                         v-model="persistent"
                         persistent
@@ -98,8 +93,20 @@
                                 <div class="full-width">
                                     {{ feedItem.content }}
                                 </div>
-                                <div v-if="feedItem.author.description"> 
-                                    {{feedItem.author.description  }}
+                                <div v-if="feedItem.attachments">
+                                    <q-avatar
+                                        square
+                                        size="70px"
+                                        class="image q-ma-sm"
+                                        v-for="(attachment,
+                                        index) in feedItem.attachments"
+                                        :key="index"
+                                    >
+                                        <img
+                                            class="imgborder"
+                                            :src="attachment.url"
+                                        />
+                                    </q-avatar>
                                 </div>
                                 <div
                                     v-if="feedItem.author.__typename == 'Issue'"

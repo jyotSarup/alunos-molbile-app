@@ -33,6 +33,8 @@ export default {
     created() {
         this.$emit('updateTitle', 'House Issues');
         this.init();
+        this.$store.dispatch('changeActiveTab', "").then(()=>{
+            })
     },
     methods: {
         async init() {
