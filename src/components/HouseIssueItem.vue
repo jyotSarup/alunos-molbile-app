@@ -58,15 +58,16 @@
                     />
                 </div>
             </q-card-section> -->
-            <q-card-section>
+            <q-card-section  align="left">
                  <q-avatar
+                        align="left"
                         square
                         size="70px"
                         class="image q-ma-sm"
                         v-for="(attachment, index) in houseIssueDetail.attachments"
                         :key="index"
                     >
-                        <img class="imgborder" :src="attachment.url" />
+                        <img class="imgborder" align="left" :src="attachment.url" />
                     </q-avatar>
             </q-card-section>
             <div v-if="houseIssueDetail.solved_at" align="left">STATUS: <span style="color:#757575">Resolved </span>
