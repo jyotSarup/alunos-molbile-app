@@ -224,27 +224,42 @@ export default {
         },
         async uploadImageFromCamera() {
             let base64 = await cordovaCamera.getBase64FromCamera();
-            const imageFile = this.dataURLtoFile('data:image/jpeg;base64,aGVsbG8gd29ybGQ=','hello.jpeg')
+            const imageData = this.removeBase64Prefix(base64);
+            const imageFile = this.b64toBlob(imageData,'image/jpeg');
             this.imageUrl.push(base64);
             this.attachments.push(imageFile);
              this.showdialog = false;
             this.$forceUpdate();
             console.log("imageFile array", this.attachments)
+            console.log("base64", base64)
         },
-     dataURLtoFile(dataurl, filename) {
+        removeBase64Prefix(base64Str) {
+            return base64Str.substr(base64Str.indexOf(",") + 1);
+        },
+        b64toBlob(b64Data, contentType, sliceSize) {
+            contentType = contentType || '';
+            sliceSize = sliceSize || 512;
 
-        var arr = dataurl.split(','),
-            mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), 
-            n = bstr.length, 
-            u8arr = new Uint8Array(n);
-            
-        while(n--){
-            u8arr[n] = bstr.charCodeAt(n);
+            var byteCharacters = atob(b64Data);
+            var byteArrays = [];
+
+            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                var byteNumbers = new Array(slice.length);
+                for (var i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                var byteArray = new Uint8Array(byteNumbers);
+
+                byteArrays.push(byteArray);
+            }
+
+            var blob = new Blob(byteArrays, {type: contentType});
+            return blob;
         }
         
-        return {0:new File([u8arr], filename, {type:mime}), length: 1};
-    }
     }
 };
 </script>
