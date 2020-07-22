@@ -3,48 +3,75 @@
 		<q-card class="cardstyle">
 			<q-card-section class="cardsection">
 				<div class="title">
-					Lorem Ipsum
+					Homestay Feedback Survey
 				</div>
 				<div class="content">
-					Thank you for taking part in the survey. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati reiciendis deleniti eos, optio iusto odio animi accusamus.
+					Thank you for taking part in the survey.
 				</div>
 			</q-card-section>
 		</q-card>
 		<q-form class="feedback-form">
 			<div class="questionSection">
 				<p><span class="asterisk">*</span> Required</p>
-				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit? <span class="asterisk">*</span></p>
-				<q-radio v-model="selection" val="option1" label="Option" />
+				<p>Were you satisfied with the food provided by the host family? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="es" label="Extremely Satisfied" />
 				<br>
-				<q-radio v-model="selection" val="option2" label="Option" />
+				<q-radio v-model="selection" val="s" label="Satisfied" />
 				<br>
-				<q-radio v-model="selection" val="option3" label="Option" />
+				<q-radio v-model="selection" val="d" label="Dissatisfied" />
 				<br>
-				<q-radio v-model="selection" val="option4" label="Option" />
+				<q-radio v-model="selection" val="ed" label="Extremely Dissastisfied" />
+				<br>
+				<q-radio v-model="selection" val="na" label="Not Applicable" />
 				<hr>
 			</div>
 			<div class="questionSection">
-				<p><span class="asterisk">*</span> Required</p>
-				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit? <span class="asterisk">*</span></p>
-				<q-radio v-model="selection" val="option1" label="Option" />
+				<p>Was it easy to interact with the family? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
 				<br>
-				<q-radio v-model="selection" val="option2" label="Option" />
-				<br>
-				<q-radio v-model="selection" val="option3" label="Option" />
-				<br>
-				<q-radio v-model="selection" val="option4" label="Option" />
+				<q-radio v-model="selection" val="no" label="No" />
 				<hr>
 			</div>
 			<div class="questionSection">
-				<p><span class="asterisk">*</span> Required</p>
-				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit? <span class="asterisk">*</span></p>
-				<q-radio v-model="selection" val="option1" label="Option" />
+				<p>Were you comforted and welcomed by the host? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
 				<br>
-				<q-radio v-model="selection" val="option2" label="Option" />
+				<q-radio v-model="selection" val="no" label="No" />
+				<hr>
+			</div>
+			<div class="questionSection">
+				<p>Were the house and the room clean? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
 				<br>
-				<q-radio v-model="selection" val="option3" label="Option" />
+				<q-radio v-model="selection" val="no" label="No" />
+				<hr>
+			</div>
+			<div class="questionSection">
+				<p>Did you get to learn about the new culture or languages? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
 				<br>
-				<q-radio v-model="selection" val="option4" label="Option" />
+				<q-radio v-model="selection" val="no" label="No" />
+				<hr>
+			</div>
+			<div class="questionSection">
+				<p>Was it easy to contact the family, in case of a problem? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
+				<br>
+				<q-radio v-model="selection" val="no" label="No" />
+				<hr>
+			</div>
+			<div class="questionSection">
+				<p>Was an action taken to solve the problem? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
+				<br>
+				<q-radio v-model="selection" val="no" label="No" />
+				<hr>
+			</div>
+			<div class="questionSection">
+				<p>Were you able to study in a quiet and peaceful environment? <span class="asterisk">*</span></p>
+				<q-radio v-model="selection" val="yes" label="Yes" />
+				<br>
+				<q-radio v-model="selection" val="no" label="No" />
 				<hr>
 			</div>
 			<q-btn
