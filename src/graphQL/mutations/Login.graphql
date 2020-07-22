@@ -30,7 +30,10 @@ mutation($token: String) {
                         phone
                         display_name
                         id
-                        email
+                        email,
+                        avatar{
+                            url
+                        },
                         profile {
                             biography
                             birthdate
@@ -64,7 +67,10 @@ mutation($token: String) {
                 phone
                 display_name
                 id
-                email
+                email,
+                avatar{
+                    url
+                },
                 profile {
                     biography
                     birthdate

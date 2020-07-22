@@ -1,8 +1,22 @@
 <template>
     <q-footer bordered class="bg-white text-primary">
-        <q-btn label="Save" class="savebtn" text-color="white" />
+        <q-btn label="Save" class="savebtn" text-color="white" @click="saveProfile"/>
     </q-footer>
 </template>
+<script>
+import { EventBus } from "../services/event-bus.js";
+export default {
+    name: "savefooter",
+    data() {
+        return {};
+    },
+    methods: {
+        saveProfile() {
+        EventBus.$emit("saveProfile")
+      }
+    }
+};
+</script>
 <style lang="scss">
 .savebtn {
     width: 100%;

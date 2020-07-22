@@ -8,10 +8,12 @@ import {
     REQUEST_LOGIN_ACTION,
     TOKEN_LOCAL_STORAGE,
     MUTATE_MEMBER_ID,
-    MUTATE_IS_ADMIN
+    MUTATE_IS_ADMIN,
+    UPDATEME
 } from 'src/constants';
 import LOGIN from '../../graphQL/mutations/Login.graphql';
 import REQUEST_LOGIN from '../../graphQL/mutations/RequestLogin.graphql';
+import UPDATE_ME from '../../graphQL/mutations/updateMe';
 import { apolloClient } from 'boot/apollo';
 import { router } from 'src/router';
 
@@ -57,5 +59,18 @@ export default {
         commit(MUTATE_TOKEN, null);
         commit(MUTATE_USER, null);
         router.push({ name: 'auth.login' });
-    }
+    },
+    [UPDATEME]: async ({ commit, dispatch }, { first_name, last_name, display_name }) => {
+        await apolloClient.mutate({
+            mutation: UPDATE_ME,
+            variables: {
+                "input": {
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "display_name": display_name,
+
+                }
+            }
+        });
+    },
 };

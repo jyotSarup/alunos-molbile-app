@@ -6,6 +6,6 @@ export default {
     },
     [MUTATE_USER]: (state, user) => {
         state.user = user;
-        console.log(user);
+        console.log("the User: ", user);
     }
 };

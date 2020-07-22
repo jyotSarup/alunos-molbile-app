@@ -31,7 +31,7 @@ export default {
     },
     data() {},
     created() {
-        this.$emit('updateTitle', 'House Issues');
+        this.$emit('updateTitle', 'House Issues', '', '/feed');
         this.init();
         this.$store.dispatch('changeActiveTab', "").then(()=>{
             })
