@@ -27,7 +27,11 @@
           "backgroundColor": "#017eff"
         }
       },
-      "build": {}
+      "build": {
+        "spa": {
+          "iconHash": "f41c38b0cd3fa18c9de8c58c4ec28c49"
+        }
+      }
     }
   }
 }

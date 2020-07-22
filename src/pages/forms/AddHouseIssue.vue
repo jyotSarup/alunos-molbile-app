@@ -141,7 +141,7 @@ export default {
     data() {
         return {
             dialog: false,
-            issueTypes: ['Food', 'Plumbing', 'Rules'],
+            issueTypes: ['Food', 'General', 'Plumbing', 'Rules'],
             description: '',
             issueSubject: '',
             titleText: '',

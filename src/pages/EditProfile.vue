@@ -18,31 +18,34 @@
                     <q-input
                         v-if="userInfo.user.profile"
                         type="text"
-                        :value="userInfo.user.first_name"
+                        v-model="userInfo.user.first_name"
+                        ref="firstName"
                     />
                     <div class="title textPrimaryColor">Last Name</div>
                     <q-input
                         v-if="userInfo.user.profile"
                         type="text"
-                        :value="userInfo.user.last_name"
+                        v-model="userInfo.user.last_name"
+                        ref="lastName"
                     />
                     <div class="title textPrimaryColor">Email</div>
                     <q-input
                         v-if="userInfo.user.profile"
                         type="text"
-                        :value="userInfo.user.email"
+                        v-model="userInfo.user.email"
                     />
                     <div class="title textPrimaryColor">Display Name</div>
                     <q-input
                         v-if="userInfo.user.profile"
                         type="text"
-                        :value="userInfo.user.display_name"
+                        v-model="userInfo.user.display_name"
+                        ref="displayName"
                     />
                     <div class="title textPrimaryColor">Date of Birth</div>
                     <q-input
                         v-if="userInfo.user.profile"
                         type="text"
-                        :value="userInfo.user.profile.birthdate"
+                        v-model="userInfo.user.profile.birthdate"
                     />
                 </q-card-section>
             </q-card>
@@ -76,7 +79,7 @@
                     >
                         <q-input
                             type="text"
-                            :value="food_preference.food.name"
+                            v-model="food_preference.food.name"
                         />
                     </div>
                 </div>
@@ -88,7 +91,7 @@
                         v-for="(hobby, index) in userInfo.user.profile.hobbies"
                         :key="index"
                     >
-                        <q-input type="text" :value="hobby.description" />
+                        <q-input type="text" v-model="hobby.description" />
                     </div>
                 </div>
                 <div class="title textPrimaryColor">Allergies</div>
@@ -99,14 +102,14 @@
                             .allergies"
                         :key="index"
                     >
-                        <q-input type="text" :value="allergy.description" />
+                        <q-input type="text" v-model="allergy.description" />
                     </div>
                 </div>
                 <div class="title textPrimaryColor">Language</div>
                 <q-input
                     v-if="userInfo.user.profile"
                     type="text"
-                    :label="userInfo.user.profile.language"
+                    v-model="userInfo.user.profile.language"
                 />
             </q-card-section>
             <div v-show="showdialog">
@@ -123,12 +126,20 @@
 <script>
 import { mapState } from 'vuex';
 import UpdateOptionDialog from '../components/UpdatePhoto/UpdateOptions';
+import { UPDATEME } from '../constants';
+import { EventBus } from "../services/event-bus.js";
 export default {
     name: 'EditProfile',
     components: { UpdateOptionDialog },
     // props: ["selectedPhoto"],
     created() {
         this.$emit('updateTitle', 'Edit Profile', '', '/profile');
+    },
+     beforeMount() {
+        EventBus.$on("saveProfile", this.saveProfile);
+    },
+    beforeDestroy() {
+        EventBus.$off("saveProfile", this.saveProfile);
     },
     data() {
         return {
@@ -140,6 +151,25 @@ export default {
         updatePhotoClicked() {
             this.showdialog = true;
             this.$forceUpdate();
+        },
+        async saveProfile(){
+            let first_name = this.$refs.firstName.value;
+            let last_name = this.$refs.lastName.value;
+            let display_name = this.$refs.displayName.value;
+            console.log(first_name,last_name,display_name);
+             try {
+                await this.$store.dispatch(
+                    UPDATEME,
+                    {
+                        first_name,
+                        last_name,
+                        display_name,
+                    }
+                );
+
+            } catch (error) {
+                console.log(error);
+            }
         },
         loadPhoto(event) {
             console.log('parent load photo triggered!');
@@ -163,7 +193,7 @@ export default {
     computed: {
         ...mapState({
             userInfo: state => state.auth
-        })
+        }),
     }
     // watch: {
     //     showdialog

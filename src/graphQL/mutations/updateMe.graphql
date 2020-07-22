@@ -1,0 +1,46 @@
+# Write your query or mutation here
+mutation ($input: MeInput){
+  updateMe(input: $input){
+    id
+    first_name
+    last_name
+    display_name
+    email
+    phone
+    avatar{
+      name
+      mimetype
+      url
+      size
+    }
+    profile{
+      id
+      biography
+      country{
+        name
+        code
+        numeric_code
+        language{
+          name
+        }
+      }
+      language{
+        name
+      }
+      birthdate
+      allergies{
+        description
+      }
+      hobbies{
+        description
+      }
+      food_preferences{
+        food{
+          name
+        }
+        preference
+      }
+      
+    }
+  }
+}

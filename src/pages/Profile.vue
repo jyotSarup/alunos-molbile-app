@@ -3,7 +3,7 @@
         <q-card class="cardstyle">
             <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
             <q-avatar size="100px" class="image">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
+                <img src="userInfo.user.avatar.url" />
             </q-avatar>
             <q-card-section class="cardsection">
                 <div class="title" v-if="userInfo.user.profile">
