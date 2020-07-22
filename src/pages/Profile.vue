@@ -3,7 +3,7 @@
         <q-card class="cardstyle">
             <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
             <q-avatar size="100px" class="image">
-                <img src="userInfo.user.avatar.url" />
+                <img :src="userInfo.user.avatar.url" />
             </q-avatar>
             <q-card-section class="cardsection">
                 <div class="title" v-if="userInfo.user.profile">
@@ -117,6 +117,7 @@
 </template>
 <script>
 import { mapState } from 'vuex';
+import { REQUEST_LOGIN_ACTION } from '../constants';
 export default {
     name: 'Profile',
     created() {
