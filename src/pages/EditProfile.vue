@@ -29,7 +29,7 @@
                     </q-card>
                 </q-dialog>
             <q-avatar size="100px" class="image">
-                <img :src="userInfo.user.avatar.url"  />
+                <img :src="userInfo.user.avatar.url"/>
                 <q-btn
                     class="editphotoStyle"
                     @click.prevent="updatePhotoClicked"
