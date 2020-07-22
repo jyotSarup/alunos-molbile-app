@@ -3,8 +3,33 @@
         <q-card class="cardstyle">
             <!-- <Camera /> -->
             <!-- <q-img :src="profileImg" class="image" :ratio="1" basic /> -->
+              <q-dialog v-model="dialog">
+                    <q-card style="width: 300px">
+                        <q-card-section>
+                            <div class="text-h6" align="center"><q-icon name="done" size="42px"/></div>
+                        </q-card-section>
+
+                        <q-card-section class="q-pt-none" align="center">
+                           Profile Updated Successfully
+                        </q-card-section>
+
+                        <q-card-actions
+                            align="right"
+                            class="bg-white text-teal"
+                        >
+                            <q-separator />
+                            <q-btn
+                                flat
+                                label="Close"
+                                v-close-popup
+                                text-color="primary"
+                                class="fullwidth"
+                            />
+                        </q-card-actions>
+                    </q-card>
+                </q-dialog>
             <q-avatar size="100px" class="image">
-                <img :src="imageUrl" />
+                <img :src="userInfo.user.avatar.url"  />
                 <q-btn
                     class="editphotoStyle"
                     @click.prevent="updatePhotoClicked"
@@ -143,8 +168,10 @@ export default {
     },
     data() {
         return {
+            dialog:false,
             showdialog: false,
-            imageUrl: '../statics/img/profile.jpg'
+            imageUrl: '../statics/img/profile.jpg',
+            avatar:{}
         };
     },
     methods: {
@@ -156,6 +183,8 @@ export default {
             let first_name = this.$refs.firstName.value;
             let last_name = this.$refs.lastName.value;
             let display_name = this.$refs.displayName.value;
+            let avatar = this.avatar;
+             
             console.log(first_name,last_name,display_name);
              try {
                 await this.$store.dispatch(
@@ -164,9 +193,10 @@ export default {
                         first_name,
                         last_name,
                         display_name,
+                        avatar
                     }
                 );
-
+                this.dialog = true
             } catch (error) {
                 console.log(error);
             }
@@ -175,7 +205,8 @@ export default {
             console.log('parent load photo triggered!');
             var reader,
                 files = event.target.files;
-
+            this.avatar = files[0];
+          
             if (files.length === 0) {
                 console.log('peak a photo');
             }

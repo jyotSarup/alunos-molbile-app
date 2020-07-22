@@ -60,7 +60,8 @@ export default {
         commit(MUTATE_USER, null);
         router.push({ name: 'auth.login' });
     },
-    [UPDATEME]: async ({ commit, dispatch }, { first_name, last_name, display_name }) => {
+    [UPDATEME]: async ({ commit, dispatch }, { first_name, last_name, display_name, avatar }) => {
+        console.log("the Avatar: ", avatar);
         await apolloClient.mutate({
             mutation: UPDATE_ME,
             variables: {
@@ -68,7 +69,7 @@ export default {
                     "first_name": first_name,
                     "last_name": last_name,
                     "display_name": display_name,
-
+                    "avatar": avatar
                 }
             }
         });
